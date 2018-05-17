@@ -22,28 +22,35 @@ class MCController extends Controller
         {
             if(Admin::user()->isRole('admin'))
             {
-                MCInfo::where('id',$item)
-                      ->update([
-                                   'mode' => $mode,
-                                   'keyword' => $keyword,
-                                   'matching_name' => $matchingName,
-                                   'relation_name' => $relationName,
-                                   'note' => $note,
-                               ]);
+                $mc = MCInfo::find($item);
+                if(!is_null($mode))
+                    $mc->mode = $mode;
+                if(!is_null($keyword))
+                    $mc->mode = $keyword;
+                if(!is_null($matchingName))
+                    $mc->matching_name = $matchingName;
+                if(!is_null($relationName))
+                    $mc->relation_name = $relationName;
+                if(!is_null($note))
+                    $mc->note = $note;
+                $mc->save();
             }
             else
             {
                 try
                 {
-                    MCInfo::where('id',$item)
-                          ->where('user_id',Admin::user()->id)
-                          ->update([
-                                       'mode' => $mode,
-                                       'keyword' => $keyword,
-                                       'matching_name' => $matchingName,
-                                       'relation_name' => $relationName,
-                                       'note' => $note,
-                                   ]);
+                    $mc = MCInfo::where('user_id',Admin::user()->id)->find($item);
+                    if(!is_null($mode))
+                        $mc->mode = $mode;
+                    if(!is_null($keyword))
+                        $mc->mode = $keyword;
+                    if(!is_null($matchingName))
+                        $mc->matching_name = $matchingName;
+                    if(!is_null($relationName))
+                        $mc->relation_name = $relationName;
+                    if(!is_null($note))
+                        $mc->note = $note;
+                    $mc->save();
                 }
                 catch(Exception $e)
                 {
@@ -59,7 +66,9 @@ class MCController extends Controller
     
     public function getMCInfo($id = null)
     {
-        $mc = MCInfo::where('machine_code',$id)->firstOrFail();
+        $mc = MCInfo::where('machine_code',$id)->first();
+        if($mc == null)
+            return 'false';
         $string = $mc->mode.'|'.$mc->keyword.'|'.$mc->matching_name.'|'.$mc->relation_name;
         return $string;
     }

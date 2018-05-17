@@ -1,12 +1,12 @@
 <div class="layui-collapse">
     <div class="layui-colla-item">
-        <h2 class="layui-colla-title" style="border-radius: 10px;background-color: #dde1e6">批量修改</h2>
+        <h2 class="layui-colla-title" style="border-radius: 10px;background-color: #dde1e6">批量修改（<span style="color: darkcyan">留空则不修改当前项的值</span>）</h2>
         <div class="layui-colla-content">
             <form class="layui-form" action="" method="post">
                 <div class="layui-inline">
-                    <label class="layui-form-label">模式<span style="color: red;font-size: larger">*</span></label>
+                    <label class="layui-form-label">模式</label>
                     <div class="layui-input-inline">
-                        <select name="mode" id="mode1" lay-verify="required" lay-filter="mode">
+                        <select name="mode" id="mode1" lay-filter="mode">
                             <option value=""></option>
                             <option value="1">自动购买</option>
                             <option value="2">强制关联</option>
@@ -16,9 +16,9 @@
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">关键词 <span style="color: red;font-size: larger">*</span></label>
+                    <label class="layui-form-label">关键词</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="keyword" required  lay-verify="required" placeholder="请输入关键词（不为空）" autocomplete="off" class="layui-input">
+                        <input type="text" name="keyword" placeholder="请输入关键词（不为空）" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">

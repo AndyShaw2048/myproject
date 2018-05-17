@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\AdminUser;
 use App\MCInfo;
 
 use Encore\Admin\Form;
@@ -111,7 +112,12 @@ class MCInfoController extends Controller
     {
         return Admin::form(MCInfo::class, function (Form $form) {
             $form->display('id', '序号');
-            $form->text('mode','模式');
+            $form->select('mode','模式')->options([
+                                                    '1' => '自动购买',
+                                                    '2' => '强制关联',
+                                                    '3' => '点击广告',
+                                                    '4' => '关键词上首页'
+                                                ]);
             $form->text('machine_code','机器码')->rules('required|regex:/^\d+$/|min:14|max:15', [
                 'regex' => '机器码必须全部为数字',
                 'min'   => '机器码不能少于14个字符',
@@ -120,9 +126,14 @@ class MCInfoController extends Controller
             $form->text('keyword','关键词');
             $form->text('matching_name','匹配商品名');
             $form->text('relation_name','关联商品名');
-            $form->text('user_id','所属用户ID');
+            $form->select('user_id','所属用户ID')->options(AdminUser::all()->pluck('username', 'id'));
             $form->text('note','备注');
             $form->display('updated_at', '更新时间');
+
+            $form->tools(function (Form\Tools $tools) {
+                // 去掉返回按钮
+                $tools->disableBackButton();
+            });
         });
     }
 
@@ -131,13 +142,24 @@ class MCInfoController extends Controller
         return Admin::form(MCInfo::class, function (Form $form) {
             $form->display('id', '序号');
             $form->display('machine_code','机器码');
-            $form->text('mode','模式');
+            $form->select('mode','模式')->options([
+                '1' => '自动购买',
+                '2' => '强制关联',
+                '3' => '点击广告',
+                '4' => '关键词上首页'
+                                                ]);
             $form->text('keyword','关键词');
             $form->text('matching_name','匹配商品名');
             $form->text('relation_name','关联商品名');
-            $form->text('user_id','所属用户ID');
+            $form->select('user_id','所属用户ID')->options(AdminUser::all()->pluck('username', 'id'));
             $form->text('note','备注');
             $form->display('updated_at', '更新时间');
+
+            $form->tools(function (Form\Tools $tools) {
+                // 去掉返回按钮
+                $tools->disableBackButton();
+
+            });
         });
     }
 
