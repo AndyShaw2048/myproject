@@ -130,9 +130,12 @@ class MCInfoController extends Controller
                 'required' => '该项为必填项'
             ]);
             $form->text('relation_name','关联商品名')->help('填写该项需选择<span style="color: red">强制关联</span>模式');
-            $form->select('user_id','所属用户ID')->options(AdminUser::all()->pluck('username', 'id'))->rules('required', [
+            if(Admin::user()->isRole('admin'))
+                $form->select('user_id','所属用户ID')->options(AdminUser::all()->pluck('username', 'id'))->rules('required', [
                 'required' => '该项为必填项'
             ]);
+            else
+                $form->hidden('user_id')->value(Admin::user()->id);
             $form->text('note','备注');
 
             $form->tools(function (Form\Tools $tools) {
