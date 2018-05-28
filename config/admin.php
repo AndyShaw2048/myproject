@@ -5,12 +5,12 @@ return [
     /*
      * Laravel-admin name.
      */
-    'name' => '机器码管理系统',
+    'name' => '云控平台',
 
     /*
      * Logo in admin panel header.
      */
-    'logo' => '机器码管理系统',
+    'logo' => '云控平台',
 
     /*
      * Mini-logo in admin panel header.
