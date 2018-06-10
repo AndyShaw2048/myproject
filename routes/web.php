@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::post('/mcinfo','MCController@multiedit');
-Route::get('/{kind}/{id?}','MCController@getMCInfo')->where('id','[0-9]+');
+Route::get('/mcinfo/{kind}/{id?}','MCController@getMCInfo')->where('id','[0-9]+');
 
 Route::get('/register','RegisterController@index');
 Route::post('/register','RegisterController@store');
