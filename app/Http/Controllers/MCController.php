@@ -64,12 +64,43 @@ class MCController extends Controller
         return response()->json(['status'=>'ok'],200);
     }
     
-    public function getMCInfo($id = null)
+    public function getMCInfo($kind = null,$id = null)
     {
-        $mc = MCInfo::where('machine_code',$id)->first();
-        if($mc == null)
+        if(!($kind || $id))
             return 'false';
-        $string = $mc->mode.'|'.$mc->keyword.'|'.$mc->matching_name.'|'.$mc->relation_name;
-        return $string;
+        $mc = MCInfo::where('machine_code',$id)
+                    ->where('kind',$kind)->first();
+        if($mc == null)
+            return response()->json(array(
+                                        'code' => '202'
+                                        ,'msg' => '该机器码不存在'
+                                    ));
+        if($mc->end_time < date('Y-m-d',time()))
+            return response()->json(array(
+                                        'code' => '203'
+                                        ,'msg' => '该机器码已过期，请续费'
+                                    ));
+        return response()->json(array(
+            'model' => 'amazon'
+            ,'select' => $mc->ModeInfo->name
+            ,'keyword' => $mc->keyword
+            ,'matching_product' => array([
+                'name' => $mc->matching_name
+                ,'prime' => $mc->m_prime
+                                ])
+            ,'relation_product' => array([
+                 'name' => $mc->relation_name
+                 ,'prime' => $mc->r_prime
+                                         ])
+                                ));
+
+
+    }
+
+    public function setKind(Request $request)
+    {
+        session(['kind'=>$request->kind]);
+        session()->save();
+        return response()->json(array(['code'=>session()->get('kind')]));
     }
 }

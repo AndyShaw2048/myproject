@@ -12,4 +12,9 @@ class MCInfo extends Model
     {
         return $this->hasOne('App\Mode','id','mode');
     }
+
+    public function ScriptInfo()
+    {
+        return $this->hasOne('App\Script','name','kind');
+    }
 }

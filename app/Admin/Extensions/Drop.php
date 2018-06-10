@@ -2,6 +2,7 @@
 
 namespace App\Admin\Extensions;
 
+use App\AdminUser;
 use Encore\Admin\Admin;
 use Encore\Admin\Grid\Displayers\AbstractDisplayer;
 
@@ -9,6 +10,7 @@ class Drop extends AbstractDisplayer
 {
     public function display()
     {
+        $name = AdminUser::find($this->row->user_id)->name;
         return <<<EOT
 <!-- Button trigger modal -->
 <a style="color:#0ba8cc;font-weight:bold;cursor:pointer;" data-toggle="modal" data-target="#{$this->row->id}">
@@ -43,16 +45,28 @@ class Drop extends AbstractDisplayer
                     <td>{$this->row->matching_name}</td>
                 </tr>
                 <tr>
+                    <td>匹配商品_prime</td>
+                    <td>{$this->row->m_prime}</td>
+                </tr>
+                <tr>
                     <td>关联商品名</td>
                     <td>{$this->row->relation_name}</td>
                 </tr>
                 <tr>
-                    <td>所属用户ID</td>
-                    <td>{$this->row->user_id}</td>
+                    <td>关联商品名_prime</td>
+                    <td>{$this->row->r_prime}</td>
+                </tr>
+                <tr>
+                    <td>所属用户</td>
+                    <td>{$name}</td>
                 </tr>
                 <tr>
                     <td>备注</td>
                     <td>{$this->row->note}</td>
+                </tr>
+                <tr>
+                    <td>到期时间</td>
+                    <td>{$this->row->end_time}</td>
                 </tr>
 
             </table>

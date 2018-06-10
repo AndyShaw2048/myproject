@@ -2,10 +2,12 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Extensions\Renewal;
 use App\AdminUser;
 use App\MCInfo;
 use App\Mode;
 
+use App\Script;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Facades\Admin;
@@ -30,8 +32,13 @@ class MCInfoController extends Controller
 
             $content->header('机器码管理');
             $content->description('列表');
-
-            $content->body(view('filter'));
+            if(!session()->exists('kind'))
+            {
+                session(['kind'=>Script::first()->name]);
+                session()->save();
+            }
+            $sc = Script::all();
+            $content->body(view('filter',['sc'=>$sc]));
             $content->body($this->grid());
             $content->body(view('multiedit'));
         });
@@ -82,13 +89,20 @@ class MCInfoController extends Controller
             if(!Admin::user()->isRole('admin'))
                 $grid->model()->where('user_id',Admin::user()->id);
 
-            $grid->id('序号')->sortable();
+            $grid->model()->where('kind',session()->get('kind'));
+            $grid->id('ID')->sortable();
             $grid->column('机器码')->drop();
             $grid->note('备注')->sortable();
             $grid->updated_at('修改时间')->sortable();
 
             $grid->disableFilter();
             $grid->disableExport();
+
+            $grid->actions(function ($actions) {
+
+                // 添加操作
+                $actions->append(new Renewal($actions->getKey()));
+            });
 
             //过滤
             $grid->filter(function($filter){
@@ -113,7 +127,7 @@ class MCInfoController extends Controller
     protected function form()
     {
         return Admin::form(MCInfo::class, function (Form $form) {
-            $form->display('id', '序号');
+            $form->display('id', '唯一ID');
             $form->select('mode','模式')->options(Mode::all()->pluck('name', 'id'))->rules('required', [
                 'required' => '该项为必填项'
             ]);
@@ -126,10 +140,20 @@ class MCInfoController extends Controller
             $form->text('keyword','关键词')->rules('required', [
                 'required' => '该项为必填项'
             ]);
+            $form->select('kind','脚本编号')->options(Script::all()->pluck('name','name'))->rules('required', [
+                'required' => '该项为必填项'
+            ]);
             $form->text('matching_name','匹配商品名')->rules('required', [
                 'required' => '该项为必填项'
             ]);
+            $states = [
+                'on'  => ['value' => 'true', 'text' => 'True', 'color' => 'success'],
+                'off' => ['value' => 'false', 'text' => 'False', 'color' => 'danger'],
+            ];
+            $form->switch('m_prime','匹配_prime')->states($states);
+            $form->hidden('end_time')->value(date('Y-m-d',time()));
             $form->text('relation_name','关联商品名')->help('填写该项需选择<span style="color: red">强制关联</span>模式');
+            $form->switch('r_prime','关联_prime')->states($states);
             if(Admin::user()->isRole('admin'))
                 $form->select('user_id','所属用户ID')->options(AdminUser::all()->pluck('username', 'id'))->rules('required', [
                 'required' => '该项为必填项'
@@ -144,12 +168,22 @@ class MCInfoController extends Controller
             });
 
             $form->saving(function ($form) {
+                $mc = MCInfo::where('machine_code',$form->machine_code)
+                      ->where('kind',$form->kind)->first();
+                if(!is_null($mc))
+                {
+                    $error = new MessageBag([
+                                                'title' => '该机器码已存在于脚本编号中,请重新输入机器码',
+                                            ]);
+                    return back()->with(compact('error'))->withInput();
+                }
+
                 if(!is_null($form->relation_name))
                 {
                     if(!($form->mode == 2))
                     {
                         $error = new MessageBag([
-                                                    'message' => '填写关联商品名，请先选择-强制关联-模式',
+                                                    'title' => '填写关联商品名，请先选择-强制关联-模式',
                                                 ]);
 
                         return back()->with(compact('error'))->withInput();
@@ -161,7 +195,7 @@ class MCInfoController extends Controller
                     if(is_null($form->relation_name))
                     {
                         $error = new MessageBag([
-                                                    'message' => '-强制关联-模式下，关联商品名 不能为空',
+                                                    'title' => '-强制关联-模式下，关联商品名 不能为空',
                                                 ]);
 
                         return back()->with(compact('error'))->withInput();
@@ -175,12 +209,19 @@ class MCInfoController extends Controller
     protected function editedForm()
     {
         return Admin::form(MCInfo::class, function (Form $form) {
-            $form->display('id', '序号');
+            $form->display('id', '唯一ID');
             $form->display('machine_code','机器码');
             $form->select('mode','模式')->options(Mode::all()->pluck('name', 'id'));
             $form->text('keyword','关键词');
+            $form->select('kind','脚本编号')->options(Script::all()->pluck('name','name'));
             $form->text('matching_name','匹配商品名');
+            $states = [
+                'on'  => ['value' => 'true', 'text' => 'True', 'color' => 'success'],
+                'off' => ['value' => 'false', 'text' => 'False', 'color' => 'danger'],
+            ];
+            $form->switch('m_prime','匹配_prime')->states($states);
             $form->text('relation_name','关联商品名');
+            $form->switch('r_prime','关联_prime')->states($states);
             if(Admin::user()->isRole('admin'))
                 $form->select('user_id','所属用户ID')->options(AdminUser::all()->pluck('username', 'id'));
             $form->text('note','备注');
@@ -193,5 +234,6 @@ class MCInfoController extends Controller
             });
         });
     }
+
 
 }

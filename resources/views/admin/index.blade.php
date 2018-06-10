@@ -40,6 +40,8 @@
     <link rel="stylesheet" href="{{url('layui/css/layui.css')}}">
     <script src="{{url('layui/layui.js')}}"></script>
 
+    <link rel="stylesheet" href="{{url('message/message.css')}}">
+    <script src="{{url('message/message.min.js')}}"></script>
 </head>
 
 <body class="hold-transition {{config('admin.skin')}} {{join(' ', config('admin.layout'))}}">
