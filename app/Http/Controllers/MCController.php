@@ -75,7 +75,7 @@ class MCController extends Controller
                                         'code' => '202'
                                         ,'msg' => '该机器码不存在'
                                     ));
-        if($mc->end_time < date('Y-m-d',time()))
+        if($mc->end_time <= date('Y-m-d',time()))
             return response()->json(array(
                                         'code' => '203'
                                         ,'msg' => '该机器码已过期，请续费'

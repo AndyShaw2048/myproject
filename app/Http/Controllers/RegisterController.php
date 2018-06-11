@@ -38,6 +38,7 @@ class RegisterController extends Controller
         $user->username = $request->username;
         $user->name = $request->username;
         $user->password = bcrypt($request->password);
+        $user->balance = 0;
         $user->save();
         DB::insert("insert into admin_role_users (role_id,user_id) VALUES (?,?)",[2,$user->id]);
         return redirect()->back()->withErrors(['msg' => '注册成功，请登录']);
