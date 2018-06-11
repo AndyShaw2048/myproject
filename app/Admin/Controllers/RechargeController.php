@@ -119,9 +119,22 @@ class RechargeController extends Controller
                  ->update([
                      'balance' => $user->balance - $used_money
                           ]);
+
+        //续费时结束时间小于当前时间
+        $oldEndTime = $mc->end_time;
+        $currentTime = date("Y-m-d",time());
+        $newEndTime = null;
+        if($oldEndTime <= $currentTime)
+        {
+            $newEndTime = date("Y-m-d",strtotime("{$currentTime} + {$request->data['amount']} day"));
+        }
+        else
+        {
+            $newEndTime = date("Y-m-d",strtotime("{$mc->end_time} + {$request->data['amount']} day"));
+        }
         MCInfo::where('id',$request->data['mc_id'])
               ->update([
-                  'end_time' => date("Y-m-d",strtotime("{$mc->end_time} + {$request->data['amount']} day"))
+                  'end_time' => $newEndTime
                        ]);
 
         return response()->json(array([
