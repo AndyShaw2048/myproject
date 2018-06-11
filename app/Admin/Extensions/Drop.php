@@ -10,7 +10,16 @@ class Drop extends AbstractDisplayer
 {
     public function display()
     {
-        $name = AdminUser::find($this->row->user_id)->name;
+        $user = AdminUser::find($this->row->user_id);
+        $name = null;
+        if(is_null($user))
+        {
+            $name = $this->row->user_id;
+        }
+        else
+        {
+            $name = $user->name;
+        }
         return <<<EOT
 <!-- Button trigger modal -->
 <a style="color:#0ba8cc;font-weight:bold;cursor:pointer;" data-toggle="modal" data-target="#{$this->row->id}">
