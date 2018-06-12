@@ -71,16 +71,16 @@ class MCController extends Controller
         $mc = MCInfo::where('machine_code',$id)
                     ->where('kind',$kind)->first();
         if($mc == null)
-            return response()->json(array(
+            return json_encode(array(
                                         'code' => '202'
                                         ,'msg' => '该机器码不存在'
-                                    ));
+                                    ),JSON_UNESCAPED_UNICODE);
         if($mc->end_time <= date('Y-m-d',time()))
-            return response()->json(array(
+            return json_encode(array(
                                         'code' => '203'
                                         ,'msg' => '该机器码已过期，请续费'
-                                    ));
-        return response()->json(array(
+                                    ),JSON_UNESCAPED_UNICODE);
+        return json_encode(array(
             'model' => 'amazon'
             ,'select' => $mc->ModeInfo->name
             ,'keyword' => $mc->keyword
@@ -92,7 +92,8 @@ class MCController extends Controller
                  'name' => $mc->relation_name
                  ,'prime' => $mc->r_prime
                                          ])
-                                ));
+                                ),JSON_UNESCAPED_UNICODE);
+
 
 
     }
