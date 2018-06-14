@@ -1,39 +1,39 @@
 
-<form class="layui-form" action="">
-    <div class="layui-form-item" >
-        <label class="layui-form-label">脚本编号:</label>
-        <div class="layui-input-block">
-            @foreach($sc as $item)
-                <input type="radio" name="kind" value="{{$item->name}}" title="{{$item->name}}" lay-filter="script"
-                        {{(session()->get('kind') == $item->name) ? 'checked' : '' }}>
-            @endforeach
-        </div>
-    </div>
-</form>
+{{--<form class="layui-form" action="">--}}
+    {{--<div class="layui-form-item" >--}}
+        {{--<label class="layui-form-label">脚本编号:</label>--}}
+        {{--<div class="layui-input-block">--}}
+            {{--@foreach($sc as $item)--}}
+                {{--<input type="radio" name="kind" value="{{$item->name}}" title="{{$item->name}}" lay-filter="script"--}}
+                        {{--{{(session()->get('kind') == $item->name) ? 'checked' : '' }}>--}}
+            {{--@endforeach--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</form>--}}
 
-<script>
-    layui.use('form', function(){
-        var form = layui.form;
+{{--<script>--}}
+    {{--layui.use('form', function(){--}}
+        {{--var form = layui.form;--}}
 
-        form.on('radio(script)', function(data){
-            $.ajax({
-                type: 'POST',
-                url: '/mcinfo/kind',
-                data: {kind:data.value},
-                dataType: 'json',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                },
-                success: function(data){
-                    location.reload();
-                },
-                error: function(xhr, type){
-                    toastr.error('切换失败');
-                }
-            });
-        });
-    });
-</script>
+        {{--form.on('radio(script)', function(data){--}}
+            {{--$.ajax({--}}
+                {{--type: 'POST',--}}
+                {{--url: '/mcinfo/kind',--}}
+                {{--data: {kind:data.value},--}}
+                {{--dataType: 'json',--}}
+                {{--headers: {--}}
+                    {{--'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')--}}
+                {{--},--}}
+                {{--success: function(data){--}}
+                    {{--location.reload();--}}
+                {{--},--}}
+                {{--error: function(xhr, type){--}}
+                    {{--toastr.error('切换失败');--}}
+                {{--}--}}
+            {{--});--}}
+        {{--});--}}
+    {{--});--}}
+{{--</script>--}}
 
 <div class="layui-collapse">
     <div class="layui-colla-item">

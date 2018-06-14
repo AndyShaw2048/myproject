@@ -22,3 +22,5 @@ Route::get('/register','RegisterController@index');
 Route::post('/register','RegisterController@store');
 
 Route::post('/mcinfo/kind','MCController@setKind');
+
+Route::get('/facebook/{id?}','FacebookController@getInfo')->where('id','[0-9]+');

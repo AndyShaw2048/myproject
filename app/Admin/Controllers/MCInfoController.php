@@ -89,7 +89,7 @@ class MCInfoController extends Controller
             if(!Admin::user()->isRole('admin'))
                 $grid->model()->where('user_id',Admin::user()->id);
 
-            $grid->model()->where('kind',session()->get('kind'));
+//            $grid->model()->where('kind',session()->get('kind'));
             $grid->id('ID')->sortable();
             $grid->column('机器码')->drop();
             $grid->note('备注')->sortable();
