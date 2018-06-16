@@ -30,8 +30,7 @@ class MCInfoController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('机器码管理');
-            $content->description('列表');
+            $content->header('Amazon模块');
             if(!session()->exists('kind'))
             {
                 session(['kind'=>Script::first()->name]);
@@ -54,7 +53,7 @@ class MCInfoController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('机器码管理');
+            $content->header('Amazon模块');
             $content->description('编辑');
 
             $content->body($this->editedForm()->edit($id));
@@ -70,7 +69,7 @@ class MCInfoController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('机器码管理');
+            $content->header('Amazon模块');
             $content->description('新增');
 
             $content->body($this->form());

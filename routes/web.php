@@ -15,8 +15,8 @@ Route::get('/', function () {
     return redirect('/admin');
 });
 
-Route::post('/mcinfo','MCController@multiedit');
-Route::get('/mcinfo/{kind}/{id?}','MCController@getMCInfo')->where('id','[0-9]+');
+Route::post('/amazon','MCController@multiedit');
+Route::get('/amazon/{kind}/{id?}','MCController@getMCInfo')->where('id','[0-9]+');
 
 Route::get('/register','RegisterController@index');
 Route::post('/register','RegisterController@store');

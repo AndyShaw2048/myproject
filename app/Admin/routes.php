@@ -25,7 +25,10 @@ Route::group([
     $router->get('/renewal/{id}', 'RechargeController@renewalIndex');
     $router->post('/renewal', 'RechargeController@renewalStore');
     //Facebook模块
-    $router->get('/facebook', 'FacebookController@index');
+//    $router->get('/facebook', 'FacebookController@index');
+    $router->resource('/facebook', FacebookController::class);
     $router->post('/facebook', 'FacebookController@store');
+    $router->post('/facebook/edit', 'FacebookController@editStore');
+
 
 });

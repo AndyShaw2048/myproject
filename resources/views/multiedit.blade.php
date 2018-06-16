@@ -75,7 +75,7 @@
             else {
                 $.ajax({
                     type: 'POST',
-                    url: '/mcinfo',
+                    url: '/amazon',
                     data: {multi:check_val,
                         detail:data.field},
                     dataType: 'json',
