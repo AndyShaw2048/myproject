@@ -78,6 +78,9 @@ class FacebookController extends Controller
     protected function grid()
     {
         return Admin::grid(FacebookInfo::class, function (Grid $grid) {
+            if(!Admin::user()->isRole('admin'))
+                $grid->model()->where('user_id',Admin::user()->id);
+
             $grid->id('ID')->sortable();
             $grid->machine_code('机器码');
             $grid->updated_at('修改时间');
