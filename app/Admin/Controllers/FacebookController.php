@@ -95,6 +95,7 @@ class FacebookController extends Controller
                     return AdminUser::where('id',$id)->first()->name;
                 });
             }
+            $grid->note('备注')->sortable();
             $grid->updated_at('修改时间');
 
             $grid->actions(function ($actions) {
