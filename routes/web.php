@@ -14,13 +14,14 @@
 Route::get('/', function () {
     return redirect('/admin');
 });
-
-Route::post('/amazon','MCController@multiedit');
-Route::get('/amazon/{kind}/{id?}','MCController@getMCInfo')->where('id','[0-9]+');
-
 Route::get('/register','RegisterController@index');
 Route::post('/register','RegisterController@store');
 
-Route::post('/mcinfo/kind','MCController@setKind');
+//模块信息管理
+Route::post('/amazon','MCController@multiedit');
+Route::get('/amazon/{id?}','MCController@getMCInfo')->where('id','[0-9]+');
 
+Route::post('/facebook','FacebookController@multiedit');
 Route::get('/facebook/{id?}','FacebookController@getInfo')->where('id','[0-9]+');
+
+

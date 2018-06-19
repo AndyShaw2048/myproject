@@ -77,9 +77,16 @@ class RechargeController extends Controller
                                       ]));
     }
 
+
+    /**
+     * 续费操作，根据机器码ID进行续费
+     *
+     * @param null $id
+     * @return Content|void
+     */
     private $mc = null;
     private $id;
-    //续费操作
+
     public function renewalIndex($id=null)
     {
         $this->id = $id;
@@ -90,7 +97,7 @@ class RechargeController extends Controller
             return abort('404');
 
         return Admin::content(function(Content $content) {
-            $content->header('用户续费');
+            $content->header('Amazon模块');
             $content->body(view('renewal',['mc'=>$this->mc,'id'=>$this->id]));
         });
     }
@@ -98,14 +105,13 @@ class RechargeController extends Controller
     public function renewalStore(Request $request)
     {
         $mc = MCInfo::where('machine_code',$request->data['machine_code'])
-                    ->where('kind',session()->get('kind'))
                     ->where('user_id',Admin::user()->id)->first();
         if(!$mc) return response()->json(array([
             'code' => 201
             ,'msg' => '该机器码不存在'
                                                ]));
 
-        $sc = Script::where('name',session()->get('kind'))->first();
+        $sc = Script::where('name',$request->data['model'])->first();
         $user = AdminUser::find(Admin::user()->id);
 
         $used_money = $request->data['amount'] * $sc->rate;

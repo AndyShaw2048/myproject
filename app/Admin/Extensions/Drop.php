@@ -8,9 +8,10 @@ use Encore\Admin\Grid\Displayers\AbstractDisplayer;
 
 class Drop extends AbstractDisplayer
 {
-    public function display()
+    public function display($model = null)
     {
         $user = AdminUser::find($this->row->user_id);
+
         $name = null;
         if(is_null($user))
         {
@@ -20,7 +21,9 @@ class Drop extends AbstractDisplayer
         {
             $name = $user->name;
         }
-        return <<<EOT
+        if($model == 'amazon')
+        {
+            return <<<EOT
 <!-- Button trigger modal -->
 <a style="color:#0ba8cc;font-weight:bold;cursor:pointer;" data-toggle="modal" data-target="#{$this->row->id}">
   {$this->row->machine_code}
@@ -30,11 +33,11 @@ class Drop extends AbstractDisplayer
 <div class="modal fade" id="{$this->row->id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-body" style="margin-top:200px">
+      <div class="modal-body" style="margin-top:200px;color:#000;">
       <b>
             <table class="table table-bordered table-hover" style="table-layout:fixed;">
                 <tr>
-                    <td>序号</td>
+                    <td>ID</td>
                     <td>{$this->row->id}</td>
                 </tr>
                 <tr>
@@ -54,7 +57,7 @@ class Drop extends AbstractDisplayer
                     <td>{$this->row->matching_name}</td>
                 </tr>
                 <tr>
-                    <td>匹配商品_prime</td>
+                    <td>匹配商品名(Prime)</td>
                     <td>{$this->row->m_prime}</td>
                 </tr>
                 <tr>
@@ -62,7 +65,7 @@ class Drop extends AbstractDisplayer
                     <td>{$this->row->relation_name}</td>
                 </tr>
                 <tr>
-                    <td>关联商品名_prime</td>
+                    <td>关联商品名(Prime)</td>
                     <td>{$this->row->r_prime}</td>
                 </tr>
                 <tr>
@@ -85,6 +88,95 @@ class Drop extends AbstractDisplayer
   </div>
 </div>
 EOT;
+        }
+        if($model == 'facebook')
+        {
+            return <<<EOT
+<!-- Button trigger modal -->
+<a style="color:#0ba8cc;font-weight:bold;cursor:pointer;" data-toggle="modal" data-target="#{$this->row->id}">
+  {$this->row->machine_code}
+</a>
+
+<!-- Modal -->
+<div class="modal fade" id="{$this->row->id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body" style="margin-top:50px;color:#000;">
+      <b>
+            <table class="table table-bordered table-hover" style="table-layout:fixed;">
+                <tr>
+                    <td>ID</td>
+                    <td>{$this->row->id}</td>
+                </tr>
+                <tr>
+                    <td>地区</td>
+                    <td>{$this->row->area}</td>
+                </tr>
+                <tr>
+                    <td>加好友(Bool)</td>
+                    <td>{$this->row->addfriend_bool}</td>
+                </tr>
+                <tr>
+                    <td>加好友(数量)</td>
+                    <td>{$this->row->addfriend_num}</td>
+                </tr>
+                <tr>
+                    <td>接受请求(Bool)</td>
+                    <td>{$this->row->acceptrequest_bool}</td>
+                </tr>
+                <tr>
+                    <td>接受请求(数量)</td>
+                    <td>{$this->row->acceptrequest_num}</td>
+                </tr>
+                <tr>
+                    <td>拉进小组(Bool)</td>
+                    <td>{$this->row->intogroup_bool}</td>
+                </tr>
+                <tr>
+                    <td>拉进小组(名字)</td>
+                    <td>{$this->row->intogroup_groupname}</td>
+                </tr>
+                <tr>
+                    <td>点赞(Bool)</td>
+                    <td>{$this->row->pointzan_bool}</td>
+                </tr>
+                <tr>
+                    <td>点赞(数量)</td>
+                    <td>{$this->row->pointzan_num}</td>
+                </tr>
+                <tr>
+                    <td>共同好友(Bool)</td>
+                    <td>{$this->row->mutualfriend_bool}</td>
+                </tr>
+                <tr>
+                    <td>共同好友(数量)</td>
+                    <td>{$this->row->mutualfriend_num}</td>
+                </tr>
+                <tr>
+                    <td>间隔时长</td>
+                    <td>{$this->row->intervaltime_num}</td>
+                </tr>
+                <tr>
+                    <td>所属用户</td>
+                    <td>{$name}</td>
+                </tr>
+                <tr>
+                    <td>备注</td>
+                    <td>{$this->row->note}</td>
+                </tr>
+                <tr>
+                    <td>到期时间</td>
+                    <td>{$this->row->end_time}</td>
+                </tr>
+
+            </table>
+      </b>
+      </div>
+    </div>
+  </div>
+</div>
+EOT;
+        }
 
     }
 }

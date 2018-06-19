@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Admin\Extensions;
+namespace App\Admin\Extensions\Facebook;
 
 use Encore\Admin\Admin;
 
@@ -22,7 +22,7 @@ $('.grid-check-row').on('click', function () {
     // Your code.
     console.log($(this).data('id'));
     id = $(this).data('id');
-    window.setTimeout("window.location.href='amazon/renewal/'+id",0);
+    window.setTimeout("window.location.href='facebook/renewal/'+id",0);
 
 });
 

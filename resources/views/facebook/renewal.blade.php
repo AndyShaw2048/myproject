@@ -7,15 +7,14 @@
             <div class="layui-inline">
                 <label class="layui-form-label" style="font-weight: bold">机器码</label>
                 <div class="layui-input-inline">
-                    <input type="text" value="{{$mc->machine_code}}" name="amount" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-
+                    <input type="text" value="{{$fb->machine_code}}" name="amount" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
             <div class="layui-inline">
                 <label class="layui-form-label" style="font-weight: bold">脚本费率</label>
                 <div class="layui-input-inline">
-                    <span style="line-height: 38px;color: red">{{$mc->ScriptInfo->rate}} 元/天</span>
+                    <span style="line-height: 38px;color: red">{{$fb->ScriptInfo->rate}} 元/天</span>
                 </div>
             </div>
 
@@ -23,7 +22,7 @@
                 <label class="layui-form-label" style="font-weight: bold">续费天数</label>
                 <div class="layui-input-inline">
                     <input name="mc_id" hidden value="{{$id}}">
-                    <input name="machine_code" hidden value="{{$mc->machine_code}}">
+                    <input name="machine_code" hidden value="{{$fb->machine_code}}">
                     <input type="text" name="amount" required  lay-verify="required" placeholder="请输入续费天数" autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -48,7 +47,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '/admin/amazon/renewal',
+                url: '/admin/facebook/renewal',
                 data: {data:data.field},
                 dataType: 'json',
                 headers: {
@@ -58,7 +57,7 @@
                     if(data[0]['code'] == 200)
                     {
                         $.message('成功');
-                        window.setTimeout("location.href='/admin/mcinfo'",3000);
+                        window.setTimeout("location.href='/admin/facebook'",3000);
                     }
                     if(data[0]['code'] == 201)
                     {

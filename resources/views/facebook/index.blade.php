@@ -4,6 +4,7 @@
     </div>
     <div class="" style="font-size: 16px">
         <form class="layui-form" action="">
+            {{csrf_field()}}
             <p style="font-size: 14px;margin-top: 10px;margin-left: 20px;">所属机器码</p>
             <hr>
             <div class="layui-form-item">
@@ -97,6 +98,12 @@
                         <option value="马来西亚">马来西亚</option>
                         <option value="泰国">泰国</option>
                     </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</label>
+                <div class="layui-input-block">
+                    <input type="text" name="note" placeholder="请输入备注" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">

@@ -31,13 +31,8 @@ class MCInfoController extends Controller
         return Admin::content(function (Content $content) {
 
             $content->header('Amazon模块');
-            if(!session()->exists('kind'))
-            {
-                session(['kind'=>Script::first()->name]);
-                session()->save();
-            }
-            $sc = Script::all();
-            $content->body(view('filter',['sc'=>$sc]));
+
+            $content->body(view('filter'));
             $content->body($this->grid());
             $content->body(view('multiedit'));
         });
@@ -88,9 +83,17 @@ class MCInfoController extends Controller
             if(!Admin::user()->isRole('admin'))
                 $grid->model()->where('user_id',Admin::user()->id);
 
-//            $grid->model()->where('kind',session()->get('kind'));
             $grid->id('ID')->sortable();
-            $grid->column('机器码')->drop();
+            $grid->column('机器码')->drop('amazon');
+            if(Admin::user()->isRole('admin'))
+            {
+                $grid->column('模块')->display(function(){
+                    return 'Amazon';
+                });
+                $grid->user_id('所属用户')->display(function($id){
+                    return AdminUser::where('id',$id)->first()->name;
+                });
+            }
             $grid->note('备注')->sortable();
             $grid->updated_at('修改时间')->sortable();
 
@@ -127,6 +130,7 @@ class MCInfoController extends Controller
     {
         return Admin::form(MCInfo::class, function (Form $form) {
             $form->display('id', '唯一ID');
+            $form->hidden('model')->value('amazon');
             $form->select('mode','模式')->options(Mode::all()->pluck('name', 'id'))->rules('required', [
                 'required' => '该项为必填项'
             ]);
@@ -137,9 +141,6 @@ class MCInfoController extends Controller
                 'max'   => '机器码不能多于15个字符',
             ]);
             $form->text('keyword','关键词')->rules('required', [
-                'required' => '该项为必填项'
-            ]);
-            $form->select('kind','脚本编号')->options(Script::all()->pluck('name','name'))->rules('required', [
                 'required' => '该项为必填项'
             ]);
             $form->text('matching_name','匹配商品名')->rules('required', [
@@ -167,12 +168,11 @@ class MCInfoController extends Controller
             });
 
             $form->saving(function ($form) {
-                $mc = MCInfo::where('machine_code',$form->machine_code)
-                      ->where('kind',$form->kind)->first();
+                $mc = MCInfo::where('machine_code',$form->machine_code)->first();
                 if(!is_null($mc))
                 {
                     $error = new MessageBag([
-                                                'title' => '该机器码已存在于脚本编号中,请重新输入机器码',
+                                                'title' => '该机器码已存在,请重新输入',
                                             ]);
                     return back()->with(compact('error'))->withInput();
                 }
@@ -212,7 +212,6 @@ class MCInfoController extends Controller
             $form->display('machine_code','机器码');
             $form->select('mode','模式')->options(Mode::all()->pluck('name', 'id'));
             $form->text('keyword','关键词');
-            $form->select('kind','脚本编号')->options(Script::all()->pluck('name','name'));
             $form->text('matching_name','匹配商品名');
             $states = [
                 'on'  => ['value' => 'true', 'text' => 'True', 'color' => 'success'],

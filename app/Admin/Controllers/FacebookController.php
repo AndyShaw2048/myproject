@@ -2,9 +2,12 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Extensions\Facebook\Renewal;
+use App\AdminUser;
 use App\FacebookInfo;
 
 use App\MCInfo;
+use App\Script;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Facades\Admin;
@@ -30,7 +33,7 @@ class FacebookController extends Controller
 //            $content->description('description');
 
             $content->body($this->grid());
-//            $content->body(view('facebook.index'));
+            $content->body(view('facebook.multiedit'));
         });
     }
 
@@ -82,9 +85,23 @@ class FacebookController extends Controller
                 $grid->model()->where('user_id',Admin::user()->id);
 
             $grid->id('ID')->sortable();
-            $grid->machine_code('机器码');
+            $grid->machine_code('机器码')->drop('facebook');
+            if(Admin::user()->isRole('admin'))
+            {
+                $grid->column('模块')->display(function(){
+                    return 'Facebook';
+                });
+                $grid->user_id('所属用户')->display(function($id){
+                    return AdminUser::where('id',$id)->first()->name;
+                });
+            }
             $grid->updated_at('修改时间');
 
+            $grid->actions(function ($actions) {
+
+                // 添加操作
+                $actions->append(new Renewal($actions->getKey()));
+            });
             $grid->disableFilter();
             $grid->disableExport();
         });
@@ -132,6 +149,8 @@ class FacebookController extends Controller
         $fb->mutualfriend_num = $request->data['mutualFriendNum'];
         $fb->intervaltime_num = $request->data['intervalTimeNum'];
         $fb->user_id = Admin::user()->id;
+        $fb->note = $request->data['note'];
+        $fb->end_time = date('Y-m-d',time());
         $fb->save();
         return response()->json(array([
                                           'code'=>'200',
@@ -166,6 +185,76 @@ class FacebookController extends Controller
                              ]);
         return response()->json(array([
                                           'code'=>'200',
+                                      ]));
+    }
+    
+    /**
+     * 续费操作，根据机器码ID进行续费
+     *
+     * @param null $id
+     * @return Content|void
+     */
+    private $fb = null;
+    private $id;
+
+    public function renewalIndex($id=null)
+    {
+        $this->id = $id;
+        if(!$id) return abort('404');
+
+        $this->fb = FacebookInfo::where('id',$id)->where('user_id',Admin::user()->id)->first();
+        if(is_null($this->fb))
+            return abort('404');
+
+        return Admin::content(function(Content $content) {
+            $content->header('Facebook模块');
+            $content->body(view('facebook.renewal',['fb'=>$this->fb,'id'=>$this->id]));
+        });
+    }
+
+    public function renewalStore(Request $request)
+    {
+        $mc = FacebookInfo::where('machine_code',$request->data['machine_code'])
+                    ->where('user_id',Admin::user()->id)->first();
+        if(!$mc) return response()->json(array([
+                                                   'code' => 201
+                                                   ,'msg' => '该机器码不存在'
+                                               ]));
+
+        $sc = Script::where('name',$request->data['model'])->first();
+        $user = AdminUser::find(Admin::user()->id);
+
+        $used_money = $request->data['amount'] * $sc->rate;
+        if($used_money > $user->balance)
+            return response()->json(array([
+                                              'code' => 201
+                                              ,'msg' => '余额不足'
+                                          ]));
+
+        AdminUser::where('id',Admin::user()->id)
+                 ->update([
+                              'balance' => $user->balance - $used_money
+                          ]);
+
+        //续费时结束时间小于当前时间
+        $oldEndTime = $mc->end_time;
+        $currentTime = date("Y-m-d",time());
+        $newEndTime = null;
+        if($oldEndTime <= $currentTime)
+        {
+            $newEndTime = date("Y-m-d",strtotime("{$currentTime} + {$request->data['amount']} day"));
+        }
+        else
+        {
+            $newEndTime = date("Y-m-d",strtotime("{$mc->end_time} + {$request->data['amount']} day"));
+        }
+        FacebookInfo::where('id',$request->data['mc_id'])
+              ->update([
+                           'end_time' => $newEndTime
+                       ]);
+
+        return response()->json(array([
+                                          'code' => 200
                                       ]));
     }
 }

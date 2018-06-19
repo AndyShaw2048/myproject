@@ -15,6 +15,6 @@ class MCInfo extends Model
 
     public function ScriptInfo()
     {
-        return $this->hasOne('App\Script','name','kind');
+        return $this->hasOne('App\Script','name','model');
     }
 }

@@ -64,12 +64,11 @@ class MCController extends Controller
         return response()->json(['status'=>'ok'],200);
     }
     
-    public function getMCInfo($kind = null,$id = null)
+    public function getMCInfo($id = null)
     {
-        if(!($kind || $id))
-            return 'false';
-        $mc = MCInfo::where('machine_code',$id)
-                    ->where('kind',$kind)->first();
+        if(!$id)
+            return abort('404');
+        $mc = MCInfo::where('machine_code',$id)->first();
         if($mc == null)
             return json_encode(array(
                                         'code' => '202'
@@ -86,11 +85,11 @@ class MCController extends Controller
             ,'keyword' => $mc->keyword
             ,'matching_product' => array([
                 'name' => $mc->matching_name
-                ,'prime' => $mc->m_prime
+                ,'prime' => $mc->m_prime == 'true' ? true:false
                                 ])
             ,'relation_product' => array([
                  'name' => $mc->relation_name
-                 ,'prime' => $mc->r_prime
+                 ,'prime' => $mc->r_prime == 'true' ? true:false
                                          ])
                                 ),JSON_UNESCAPED_UNICODE);
 
@@ -98,10 +97,4 @@ class MCController extends Controller
 
     }
 
-    public function setKind(Request $request)
-    {
-        session(['kind'=>$request->kind]);
-        session()->save();
-        return response()->json(array(['code'=>session()->get('kind')]));
-    }
 }

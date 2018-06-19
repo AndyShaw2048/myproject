@@ -22,13 +22,15 @@ Route::group([
     $router->get('/recharge', 'RechargeController@index');
     $router->post('/recharge', 'RechargeController@store');
     //续费
-    $router->get('/renewal/{id}', 'RechargeController@renewalIndex');
-    $router->post('/renewal', 'RechargeController@renewalStore');
+    $router->get('/amazon/renewal/{id}', 'RechargeController@renewalIndex');
+    $router->post('/amazon/renewal', 'RechargeController@renewalStore');
     //Facebook模块
-//    $router->get('/facebook', 'FacebookController@index');
     $router->resource('/facebook', FacebookController::class);
     $router->post('/facebook', 'FacebookController@store');
     $router->post('/facebook/edit', 'FacebookController@editStore');
+
+    $router->get('/facebook/renewal/{id}', 'FacebookController@renewalIndex');
+    $router->post('/facebook/renewal', 'FacebookController@renewalStore');
 
 
 });
