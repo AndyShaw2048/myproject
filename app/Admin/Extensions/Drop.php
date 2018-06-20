@@ -177,6 +177,93 @@ EOT;
 </div>
 EOT;
         }
+        if($model == 'messenger')
+        {
+            return <<<EOT
+<!-- Button trigger modal -->
+<a style="color:#0ba8cc;font-weight:bold;cursor:pointer;" data-toggle="modal" data-target="#{$this->row->id}">
+  {$this->row->machine_code}
+</a>
+
+<!-- Modal -->
+<div class="modal fade" id="{$this->row->id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body" style="margin-top:50px;color:#000;">
+      <b>
+            <table class="table table-bordered table-hover" style="table-layout:fixed;">
+                <tr>
+                    <td>ID</td>
+                    <td>{$this->row->id}</td>
+                </tr>
+                <tr>
+                    <td>地区</td>
+                    <td>{$this->row->area}</td>
+                </tr>
+                <tr>
+                    <td>接受请求(Bool)</td>
+                    <td>{$this->row->acceptrequest_bool}</td>
+                </tr>
+                <tr>
+                    <td>接受请求(数量)</td>
+                    <td>{$this->row->acceptrequest_num}</td>
+                </tr>
+                <tr>
+                    <td>发送请求(Bool)</td>
+                    <td>{$this->row->sendmessage_bool}</td>
+                </tr>
+                <tr>
+                    <td>发送请求(数量)</td>
+                    <td>{$this->row->sendmessage_num}</td>
+                </tr>
+                <tr>
+                    <td>打招呼(Bool)</td>
+                    <td>{$this->row->hail_bool}</td>
+                </tr>
+                <tr>
+                    <td>打招呼(数量)</td>
+                    <td>{$this->row->hail_num}</td>
+                </tr>
+                <tr>
+                    <td>添加朋友(Bool)</td>
+                    <td>{$this->row->addfriend_bool}</td>
+                </tr>
+                <tr>
+                    <td>添加朋友(数量)</td>
+                    <td>{$this->row->addfriend_num}</td>
+                </tr>
+                <tr>
+                    <td>发送内容</td>
+                    <td>{$this->row->content}</td>
+                </tr>
+                <tr>
+                    <td>共同朋友</td>
+                    <td>{$this->row->mutualfriend_num}</td>
+                </tr>
+                <tr>
+                    <td>间隔时长</td>
+                    <td>{$this->row->intervaltime}</td>
+                </tr>
+                <tr>
+                    <td>所属用户</td>
+                    <td>{$name}</td>
+                </tr>
+                <tr>
+                    <td>备注</td>
+                    <td>{$this->row->note}</td>
+                </tr>
+                <tr>
+                    <td>到期时间</td>
+                    <td>{$this->row->end_time}</td>
+                </tr>
+            </table>
+      </b>
+      </div>
+    </div>
+  </div>
+</div>
+EOT;
+        }
 
     }
 }

@@ -24,13 +24,24 @@ Route::group([
     //续费
     $router->get('/amazon/renewal/{id}', 'RechargeController@renewalIndex');
     $router->post('/amazon/renewal', 'RechargeController@renewalStore');
-    //Facebook模块
+
+    /**
+     * Facebook模块
+     */
     $router->resource('/facebook', FacebookController::class);
     $router->post('/facebook', 'FacebookController@store');
     $router->post('/facebook/edit', 'FacebookController@editStore');
-
+    //--续费
     $router->get('/facebook/renewal/{id}', 'FacebookController@renewalIndex');
     $router->post('/facebook/renewal', 'FacebookController@renewalStore');
 
-
+    /**
+     * Messenger模块
+     */
+    $router->resource('/messenger', MessengerController::class);
+    $router->post('/messenger', 'MessengerController@store');
+    $router->post('/messenger/edit', 'MessengerController@editStore');
+    //--续费
+    $router->get('/messenger/renewal/{id}', 'MessengerController@renewalIndex');
+    $router->post('/messenger/renewal', 'MessengerController@renewalStore');
 });

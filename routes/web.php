@@ -24,4 +24,7 @@ Route::get('/amazon/{id?}','MCController@getMCInfo')->where('id','[0-9]+');
 Route::post('/facebook','FacebookController@multiedit');
 Route::get('/facebook/{id?}','FacebookController@getInfo')->where('id','[0-9]+');
 
+Route::post('/messenger','MessengerController@multiedit');
+Route::get('/messenger/{id?}','MessengerController@getInfo')->where('id','[0-9]+');
+
 

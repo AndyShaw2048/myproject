@@ -111,7 +111,7 @@ class RechargeController extends Controller
             ,'msg' => '该机器码不存在'
                                                ]));
 
-        $sc = Script::where('name',$request->data['model'])->first();
+        $sc = Script::where('name',$mc->model)->first();
         $user = AdminUser::find(Admin::user()->id);
 
         $used_money = $request->data['amount'] * $sc->rate;

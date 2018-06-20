@@ -2,11 +2,10 @@
 
 namespace App\Admin\Controllers;
 
-use App\Admin\Extensions\Facebook\Renewal;
+use App\Admin\Extensions\Messenger\Renewal;
 use App\AdminUser;
-use App\FacebookInfo;
+use App\Messenger;
 
-use App\MCInfo;
 use App\Script;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -16,7 +15,7 @@ use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 use Illuminate\Http\Request;
 
-class FacebookController extends Controller
+class MessengerController extends Controller
 {
     use ModelForm;
 
@@ -29,11 +28,10 @@ class FacebookController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('Facebook模块');
-//            $content->description('description');
+            $content->header('Messenger模块');
 
             $content->body($this->grid());
-            $content->body(view('facebook.multiedit'));
+            $content->body(view('messenger.multiedit'));
         });
     }
 
@@ -47,11 +45,12 @@ class FacebookController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('Facebook模块');
-            $content->description('编辑');
-            $fb = FacebookInfo::where('id',$id)->where('user_id',Admin::user()->id)->first();
-            if(!$fb)return abort('404');
-            $content->body(view('facebook.edit',['fb'=>$fb]));
+            $content->header('Messenger模块');
+            $content->description('description');
+            $msg = Messenger::where('id',$id)->where('user_id',Admin::user()->id)->first();
+            if(!$msg)return abort('404');
+            $content->body(view('messenger.edit',['msg'=>$msg]));
+//            $content->body($this->form()->edit($id));
         });
     }
 
@@ -64,12 +63,10 @@ class FacebookController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('Facebook模块');
-            $content->description('新建');
+            $content->header('Messenger模块');
+            $content->description('description');
 
-//            $content->body($this->form());
-            $content->body(view('facebook.index'));
-
+            $content->body(view('messenger.index'));
         });
     }
 
@@ -80,16 +77,16 @@ class FacebookController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(FacebookInfo::class, function (Grid $grid) {
+        return Admin::grid(Messenger::class, function (Grid $grid) {
             if(!Admin::user()->isRole('admin'))
                 $grid->model()->where('user_id',Admin::user()->id);
 
             $grid->id('ID')->sortable();
-            $grid->machine_code('机器码')->drop('facebook');
+            $grid->machine_code('机器码')->drop('messenger');
             if(Admin::user()->isRole('admin'))
             {
                 $grid->column('模块')->display(function(){
-                    return 'Facebook';
+                    return 'Messenger';
                 });
                 $grid->user_id('所属用户')->display(function($id){
                     return AdminUser::where('id',$id)->first()->name;
@@ -115,7 +112,7 @@ class FacebookController extends Controller
      */
     protected function form()
     {
-        return Admin::form(FacebookInfo::class, function (Form $form) {
+        return Admin::form(Messenger::class, function (Form $form) {
 
             $form->display('id', 'ID');
 
@@ -124,78 +121,89 @@ class FacebookController extends Controller
         });
     }
 
-
-
+    /**
+     * Messenger新增页面提交后，保存数据到数据库
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(Request $request)
     {
-        $facebook = FacebookInfo::where('machine_code',$request->data['machineCode'])->first();
-        if($facebook)
+        $messenger = Messenger::where('machine_code',$request->data['machineCode'])->first();
+        if($messenger)
             return response()->json(array([
                                               'code'=>'201'
                                               ,'msg'=>'机器码已存在'
                                           ]));
-        $fb = new FacebookInfo();
-        $fb->machine_code = $request->data['machineCode'];
-        $fb->model = "Facebook";
-        $fb->area = $request->data['area'];
-        $fb->addfriend_bool = isset($request->data['addFriendBool']) ? 'true' : 'false' ;
-        $fb->addfriend_num = $request->data['addFriendNum'];
-        $fb->acceptrequest_bool = isset($request->data['acceptRequestBool']) ? 'true' : 'false' ;
-        $fb->acceptrequest_num = $request->data['acceptRequestNum'];
-        $fb->intogroup_bool = isset($request->data['intoGroupBool']) ? 'true' : 'false' ;
-        $fb->intogroup_groupname = $request->data['intoGroupName'];
-        $fb->pointzan_bool = isset($request->data['pointZanBool']) ? 'true' : 'false' ;
-        $fb->pointzan_num = $request->data['pointZanNum'];
-        $fb->mutualfriend_bool = isset($request->data['mutualFriendBool']) ? 'true' : 'false' ;
-        $fb->mutualfriend_num = $request->data['mutualFriendNum'];
-        $fb->intervaltime_num = $request->data['intervalTimeNum'];
-        $fb->user_id = Admin::user()->id;
-        $fb->note = $request->data['note'];
-        $fb->end_time = date('Y-m-d',time());
-        $fb->save();
+
+        $msg = new Messenger();
+        $msg->machine_code = $request->data['machineCode'];
+        $msg->model = "Messenger";
+        $msg->acceptrequest_bool = isset($request->data['acceptRequestBool']) ? 'true' : 'false' ;
+        $msg->acceptrequest_num = $request->data['acceptRequestNum'];
+        $msg->sendmessage_bool = isset($request->data['sendMessageBool']) ? 'true' : 'false' ;
+        $msg->sendmessage_num = $request->data['sendMessageNum'];
+        $msg->hail_bool = isset($request->data['hailBool']) ? 'true' : 'false' ;
+        $msg->hail_num = $request->data['hailNum'];
+        $msg->addfriend_bool = isset($request->data['addFriendBool']) ? 'true' : 'false' ;
+        $msg->addfriend_num = $request->data['addFriendNum'];
+        $msg->content = $request->data['content'];
+        $msg->intervaltime = $request->data['intervalTime'];
+        $msg->area = $request->data['area'];
+        $msg->mutualfriend_num = $request->data['mutualFriend'];
+        $msg->user_id = Admin::user()->id;
+        $msg->note = $request->data['note'];
+        $msg->end_time = date('Y-m-d',time());
+        $msg->save();
         return response()->json(array([
                                           'code'=>'200',
                                       ]));
     }
 
+    /**
+     * Messenger编辑页面，保存数据到数据库
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function editStore(Request $request)
     {
-        $facebook = FacebookInfo::where('machine_code',$request->data['machineCode'])->first();
-        if($facebook && ($facebook->user_id != Admin::user()->id))
+        $messenger = Messenger::where('machine_code',$request->data['machineCode'])->first();
+        if($messenger && ($messenger->user_id != Admin::user()->id))
         {
             return response()->json(array([
                                               'code'=>'201'
                                               ,'msg'=>'无权操作'
                                           ]));
         }
-        FacebookInfo::where('machine_code',$request->data['machineCode'])
+        Messenger::where('machine_code',$request->data['machineCode'])
                     ->update([
                                  'machine_code' => $request->data['machineCode']
                                  ,'area' => $request->data['area']
-                                 ,'addfriend_bool' => isset($request->data['addFriendBool']) ? 'true' : 'false'
-                                 ,'addfriend_num' => $request->data['addFriendNum']
                                  ,'acceptrequest_bool' => isset($request->data['acceptRequestBool']) ? 'true' : 'false'
                                  ,'acceptrequest_num' => $request->data['acceptRequestNum']
-                                 ,'intogroup_bool' => isset($request->data['intoGroupBool']) ? 'true' : 'false'
-                                 ,'intogroup_groupname' => $request->data['intoGroupName']
-                                 ,'pointzan_bool' => isset($request->data['pointZanBool']) ? 'true' : 'false'
-                                 ,'pointzan_num' => $request->data['pointZanNum']
-                                 ,'mutualfriend_bool' => isset($request->data['mutualFriendBool']) ? 'true' : 'false'
-                                 ,'mutualfriend_num' => $request->data['mutualFriendNum']
-                                 ,'intervaltime_num' => $request->data['intervalTimeNum']
+                                 ,'sendmessage_bool' => isset($request->data['sendMessageBool']) ? 'true' : 'false'
+                                 ,'sendmessage_num' => $request->data['sendMessageNum']
+                                 ,'hail_bool' => isset($request->data['hailBool']) ? 'true' : 'false'
+                                 ,'hail_num' => $request->data['hailNum']
+                                 ,'addfriend_bool' => isset($request->data['addFriendBool']) ? 'true' : 'false'
+                                 ,'addfriend_num' => $request->data['addFriendNum']
+                                 ,'content' => $request->data['content']
+                                 ,'intervaltime' => $request->data['intervalTime']
+                                 ,'mutualfriend_num' => $request->data['mutualFriend']
+                                 ,'note' => $request->data['note']
                              ]);
         return response()->json(array([
                                           'code'=>'200',
                                       ]));
     }
-    
+
+
     /**
      * 续费操作，根据机器码ID进行续费
      *
      * @param null $id
      * @return Content|void
      */
-    private $fb = null;
+    private $msg = null;
     private $id;
 
     public function renewalIndex($id=null)
@@ -203,26 +211,26 @@ class FacebookController extends Controller
         $this->id = $id;
         if(!$id) return abort('404');
 
-        $this->fb = FacebookInfo::where('id',$id)->where('user_id',Admin::user()->id)->first();
-        if(is_null($this->fb))
+        $this->msg = Messenger::where('id',$id)->where('user_id',Admin::user()->id)->first();
+        if(is_null($this->msg))
             return abort('404');
 
         return Admin::content(function(Content $content) {
             $content->header('Facebook模块');
-            $content->body(view('facebook.renewal',['fb'=>$this->fb,'id'=>$this->id]));
+            $content->body(view('messenger.renewal',['msg'=>$this->msg,'id'=>$this->id]));
         });
     }
 
     public function renewalStore(Request $request)
     {
-        $fb = FacebookInfo::where('machine_code',$request->data['machine_code'])
-                    ->where('user_id',Admin::user()->id)->first();
-        if(!$fb) return response()->json(array([
+        $msg = Messenger::where('machine_code',$request->data['machine_code'])
+                          ->where('user_id',Admin::user()->id)->first();
+        if(!$msg) return response()->json(array([
                                                    'code' => 201
                                                    ,'msg' => '该机器码不存在'
                                                ]));
 
-        $sc = Script::where('name',$fb->model)->first();
+        $sc = Script::where('name',$msg->model)->first();
         $user = AdminUser::find(Admin::user()->id);
 
         $used_money = $request->data['amount'] * $sc->rate;
@@ -238,7 +246,7 @@ class FacebookController extends Controller
                           ]);
 
         //续费时结束时间小于当前时间
-        $oldEndTime = $fb->end_time;
+        $oldEndTime = $msg->end_time;
         $currentTime = date("Y-m-d",time());
         $newEndTime = null;
         if($oldEndTime <= $currentTime)
@@ -247,12 +255,12 @@ class FacebookController extends Controller
         }
         else
         {
-            $newEndTime = date("Y-m-d",strtotime("{$fb->end_time} + {$request->data['amount']} day"));
+            $newEndTime = date("Y-m-d",strtotime("{$msg->end_time} + {$request->data['amount']} day"));
         }
-        FacebookInfo::where('id',$request->data['mc_id'])
-              ->update([
-                           'end_time' => $newEndTime
-                       ]);
+        Messenger::where('id',$request->data['mc_id'])
+                    ->update([
+                                 'end_time' => $newEndTime
+                             ]);
 
         return response()->json(array([
                                           'code' => 200
