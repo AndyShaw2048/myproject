@@ -38,10 +38,6 @@ class MessengerController extends Controller
                                                                 "PitchOn" => $msg->sendmessage_bool == 'true' ? true : false
                                                                 , "Number" => $msg->sendmessage_num
                                                             ])
-                                     , "Hail" => array([
-                                                               "PitchOn" => $msg->hail_bool == 'true' ? true : false
-                                                               , "Number" => $msg->hail_num
-                                                           ])
                                      , "AddFriend" => array([
                                                                    "PitchOn" => $msg->addfriend_bool == 'true' ? true : false
                                                                    , "Number" => $msg->addfriend_num
@@ -58,8 +54,6 @@ class MessengerController extends Controller
         $acceptRequestNum = $request->detail['acceptRequestNum'];
         $sendMessageBool = isset($request->detail['sendMessageBool']) ? 'true':'false';
         $sendMessageNum = $request->detail['sendMessageNum'];
-        $hailBool = isset($request->detail['hailBool']) ? 'true':'false';
-        $hailNum = $request->detail['hailNum'];
         $addFriendBool = isset($request->detail['addFriendBool']) ? 'true':'false';
         $addFriendNum = $request->detail['addFriendNum'];
         $content = $request->detail['content'];
@@ -80,10 +74,6 @@ class MessengerController extends Controller
                     $msg->sendmessage_bool = $sendMessageBool;
                 if ( !is_null($sendMessageNum) )
                     $msg->sendmessage_num = $sendMessageNum;
-                if ( !is_null($hailBool) )
-                    $msg->hail_bool = $hailBool;
-                if ( !is_null($hailNum) )
-                    $msg->hail_num = $hailNum;
                 if ( !is_null($addFriendBool) )
                     $msg->addfriend_bool = $addFriendBool;
                 if ( !is_null($addFriendNum) )
@@ -110,10 +100,6 @@ class MessengerController extends Controller
                         $msg->sendmessage_bool = $sendMessageBool;
                     if ( !is_null($sendMessageNum) )
                         $msg->sendmessage_num = $sendMessageNum;
-                    if ( !is_null($hailBool) )
-                        $msg->hail_bool = $hailBool;
-                    if ( !is_null($hailNum) )
-                        $msg->hail_num = $hailNum;
                     if ( !is_null($addFriendBool) )
                         $msg->addfriend_bool = $addFriendBool;
                     if ( !is_null($addFriendNum) )

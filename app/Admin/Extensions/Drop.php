@@ -217,14 +217,6 @@ EOT;
                     <td>{$this->row->sendmessage_num}</td>
                 </tr>
                 <tr>
-                    <td>打招呼(Bool)</td>
-                    <td>{$this->row->hail_bool}</td>
-                </tr>
-                <tr>
-                    <td>打招呼(数量)</td>
-                    <td>{$this->row->hail_num}</td>
-                </tr>
-                <tr>
                     <td>添加朋友(Bool)</td>
                     <td>{$this->row->addfriend_bool}</td>
                 </tr>

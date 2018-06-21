@@ -142,8 +142,6 @@ class MessengerController extends Controller
         $msg->acceptrequest_num = $request->data['acceptRequestNum'];
         $msg->sendmessage_bool = isset($request->data['sendMessageBool']) ? 'true' : 'false' ;
         $msg->sendmessage_num = $request->data['sendMessageNum'];
-        $msg->hail_bool = isset($request->data['hailBool']) ? 'true' : 'false' ;
-        $msg->hail_num = $request->data['hailNum'];
         $msg->addfriend_bool = isset($request->data['addFriendBool']) ? 'true' : 'false' ;
         $msg->addfriend_num = $request->data['addFriendNum'];
         $msg->content = $request->data['content'];
@@ -182,8 +180,6 @@ class MessengerController extends Controller
                                  ,'acceptrequest_num' => $request->data['acceptRequestNum']
                                  ,'sendmessage_bool' => isset($request->data['sendMessageBool']) ? 'true' : 'false'
                                  ,'sendmessage_num' => $request->data['sendMessageNum']
-                                 ,'hail_bool' => isset($request->data['hailBool']) ? 'true' : 'false'
-                                 ,'hail_num' => $request->data['hailNum']
                                  ,'addfriend_bool' => isset($request->data['addFriendBool']) ? 'true' : 'false'
                                  ,'addfriend_num' => $request->data['addFriendNum']
                                  ,'content' => $request->data['content']

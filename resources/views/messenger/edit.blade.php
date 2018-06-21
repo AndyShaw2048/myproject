@@ -42,18 +42,6 @@
             <br>
             <div class="layui-inline">
                 <div class="layui-input-block">
-                    <input type="checkbox" name="hailBool" title="打&nbsp;&nbsp;招&nbsp;呼"  {{$msg->hail_bool == 'true' ? 'checked' : ''}}>
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label" style="width: 130px">次&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数：</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="hailNum" value="{{$msg->hail_num}}" placeholder="请输入次数" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <br>
-            <div class="layui-inline">
-                <div class="layui-input-block">
                     <input type="checkbox" name="addFriendBool" title="添加好友"  {{$msg->addfriend_bool == 'true' ? 'checked' : ''}}>
                 </div>
             </div>
