@@ -22,6 +22,11 @@ class MessengerController extends Controller
                                          'code' => 202
                                          , 'msg' => '该机器码不存在'
                                      ]), JSON_UNESCAPED_UNICODE);
+        if($msg->end_time <= date('Y-m-d',time()))
+            return json_encode(array(
+                                   'code' => '203'
+                                   ,'msg' => '该机器码已过期，请续费'
+                               ),JSON_UNESCAPED_UNICODE);
         return json_encode(array([
                                      "Model" => $msg->model
                                      , "Area" => $msg->area
