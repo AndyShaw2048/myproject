@@ -203,7 +203,11 @@ class FacebookController extends Controller
         $this->id = $id;
         if(!$id) return abort('404');
 
-        $this->fb = FacebookInfo::where('id',$id)->where('user_id',Admin::user()->id)->first();
+        if(Admin::user()->isRole('admin'))
+            $this->fb = FacebookInfo::where('id',$id)->first();
+        else
+            $this->fb = FacebookInfo::where('id',$id)->where('user_id',Admin::user()->id)->first();
+
         if(is_null($this->fb))
             return abort('404');
 
@@ -215,8 +219,16 @@ class FacebookController extends Controller
 
     public function renewalStore(Request $request)
     {
-        $fb = FacebookInfo::where('machine_code',$request->data['machine_code'])
-                    ->where('user_id',Admin::user()->id)->first();
+        $fb = null;
+        if(Admin::user()->isRole('admin'))
+        {
+            $fb = FacebookInfo::where('machine_code',$request->data['machine_code'])->first();
+        }
+        else
+        {
+            $fb = FacebookInfo::where('machine_code',$request->data['machine_code'])
+                              ->where('user_id',Admin::user()->id)->first();
+        }
         if(!$fb) return response()->json(array([
                                                    'code' => 201
                                                    ,'msg' => '该机器码不存在'
