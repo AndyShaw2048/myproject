@@ -212,7 +212,7 @@ class MessengerController extends Controller
             return abort('404');
 
         return Admin::content(function(Content $content) {
-            $content->header('Facebook模块');
+            $content->header('Messenger模块');
             $content->body(view('messenger.renewal',['msg'=>$this->msg,'id'=>$this->id]));
         });
     }
