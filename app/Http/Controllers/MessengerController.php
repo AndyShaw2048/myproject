@@ -91,7 +91,7 @@ class MessengerController extends Controller
                 $msg->save();
             } else
                 try {
-                    $msg = Messenger::where('id',Admin::user()->id)->find($item);
+                    $msg = Messenger::where('user_id',Admin::user()->id)->find($item);
                     if ( !is_null($acceptRequestBool) )
                         $msg->acceptrequest_bool = $acceptRequestBool;
                     if ( !is_null($acceptRequestNum) )
