@@ -196,10 +196,10 @@ EOT;
                     <td>ID</td>
                     <td>{$this->row->id}</td>
                 </tr>
-                <tr>
-                    <td>地区</td>
-                    <td>{$this->row->area}</td>
-                </tr>
+//                <tr>
+//                    <td>地区</td>
+//                    <td>{$this->row->area}</td>
+//                </tr>
                 <tr>
                     <td>接受请求(Bool)</td>
                     <td>{$this->row->acceptrequest_bool}</td>
