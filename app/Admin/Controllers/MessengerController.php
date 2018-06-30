@@ -149,7 +149,7 @@ class MessengerController extends Controller
         $msg->addfriend_num = $request->data['addFriendNum'];
         $msg->content = $request->data['content'];
         $msg->intervaltime = $request->data['intervalTime'];
-        $msg->area = $request->data['area'];
+//        $msg->area = $request->data['area'];
         $msg->mutualfriend_num = $request->data['mutualFriend'];
         $msg->user_id = Admin::user()->id;
         $msg->note = $request->data['note'];
@@ -178,7 +178,7 @@ class MessengerController extends Controller
         Messenger::where('machine_code',$request->data['machineCode'])
                     ->update([
                                  'machine_code' => $request->data['machineCode']
-                                 ,'area' => $request->data['area']
+//                                 ,'area' => $request->data['area']
                                  ,'acceptrequest_bool' => isset($request->data['acceptRequestBool']) ? 'true' : 'false'
                                  ,'acceptrequest_num' => $request->data['acceptRequestNum']
                                  ,'sendmessage_bool' => isset($request->data['sendMessageBool']) ? 'true' : 'false'

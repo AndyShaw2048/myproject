@@ -29,7 +29,7 @@ class MessengerController extends Controller
                                ),JSON_UNESCAPED_UNICODE);
         return json_encode(array([
                                      "Model" => $msg->model
-                                     , "Area" => $msg->area
+//                                     , "Area" => $msg->area
                                      , "AcceptRequest" => array([
                                                                     "PitchOn" => $msg->acceptrequest_bool == 'true' ? true : false
                                                                     , "Number" => $msg->acceptrequest_num
@@ -59,7 +59,7 @@ class MessengerController extends Controller
         $content = $request->detail['content'];
         $intervalTime = $request->detail['intervalTime'];
         $mutualFriend = $request->detail['mutualFriend'];
-        $area = $request->detail['area'];
+//        $area = $request->detail['area'];
         $note = $request->detail['note'];
         $multiArray = $request->multi;
 
@@ -84,8 +84,8 @@ class MessengerController extends Controller
                     $msg->intervaltime = $intervalTime;
                 if ( !is_null($mutualFriend) )
                     $msg->mutualfriend_num = $mutualFriend;
-                if ( !is_null($area) )
-                    $msg->area = $area;
+//                if ( !is_null($area) )
+//                    $msg->area = $area;
                 if ( !is_null($note) )
                     $msg->note = $note;
                 $msg->save();
@@ -110,8 +110,8 @@ class MessengerController extends Controller
                         $msg->intervaltime = $intervalTime;
                     if ( !is_null($mutualFriend) )
                         $msg->mutualfriend_num = $mutualFriend;
-                    if ( !is_null($area) )
-                        $msg->area = $area;
+//                    if ( !is_null($area) )
+//                        $msg->area = $area;
                     if ( !is_null($note) )
                         $msg->note = $note;
                     $msg->save();

@@ -65,12 +65,12 @@
                     <input type="text" name="intervalTime" value="{{$msg->intervaltime}}" placeholder="请输入间隔时间" autocomplete="off" class="layui-input">
                 </div>
             </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">所&nbsp;&nbsp;在&nbsp;地</label>
-                <div class="layui-input-block">
-                    <input type="text" name="area" value="{{$msg->area}}" placeholder="请输入所在地" autocomplete="off" class="layui-input">
-                </div>
-            </div>
+            {{--<div class="layui-form-item">--}}
+                {{--<label class="layui-form-label">所&nbsp;&nbsp;在&nbsp;地</label>--}}
+                {{--<div class="layui-input-block">--}}
+                    {{--<input type="text" name="area" value="{{$msg->area}}" placeholder="请输入所在地" autocomplete="off" class="layui-input">--}}
+                {{--</div>--}}
+            {{--</div>--}}
             <div class="layui-form-item">
                 <label class="layui-form-label">共同好友</label>
                 <div class="layui-input-block">
