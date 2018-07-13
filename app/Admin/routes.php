@@ -44,4 +44,15 @@ Route::group([
     //--续费
     $router->get('/messenger/renewal/{id}', 'MessengerController@renewalIndex');
     $router->post('/messenger/renewal', 'MessengerController@renewalStore');
+
+    /**
+     * Messenger模块
+     */
+    $router->resource('/wish', WishController::class);
+    $router->post('/wish', 'WishController@store');
+    $router->post('/wish/edit', 'WishController@editStore');
+    //--续费
+    $router->get('/wish/renewal/{id}', 'WishController@renewalIndex');
+    $router->post('/wish/renewal', 'WishController@renewalStore');
+
 });
