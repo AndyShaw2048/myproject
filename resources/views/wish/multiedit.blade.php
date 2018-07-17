@@ -96,9 +96,9 @@
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label" style="width: 130px">CW：</label>
+                    <label class="layui-form-label" style="width: 130px">CVV：</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="CW" placeholder="请输入CW" autocomplete="off" class="layui-input">
+                        <input type="text" name="CW" placeholder="请输入CVV" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <br>
@@ -106,6 +106,24 @@
                     <label class="layui-form-label" style="width: 130px;margin-left: 260px">期限：</label>
                     <div class="layui-input-inline">
                         <input type="text" name="term" placeholder="请输入期限" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <hr>
+                <div class="layui-inline">
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="isAutoLike" title="自&nbsp;&nbsp;动&nbsp;&nbsp;点&nbsp;&nbsp;赞">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label" style="width: 130px">点赞个数：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="likeAmount" placeholder="请输入点赞个数" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label" style="width: 130px">商品名称：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="likeGoodsName" placeholder="请输入商品名称" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
