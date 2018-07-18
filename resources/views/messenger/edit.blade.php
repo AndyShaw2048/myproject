@@ -10,6 +10,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">机器码</label>
                 <div class="layui-input-block">
+                    <input type="text" hidden value="{{$msg->id}}" name="id">
                     <input type="text" name="machineCode" value="{{$msg->machine_code}}" required  lay-verify="required" placeholder="请输入机器码" autocomplete="off" class="layui-input">
                 </div>
             </div>

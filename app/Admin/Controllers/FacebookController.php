@@ -160,7 +160,7 @@ class FacebookController extends Controller
 
     public function editStore(Request $request)
     {
-        $facebook = FacebookInfo::where('machine_code',$request->data['machineCode'])->first();
+        $facebook = FacebookInfo::where('id',$request->data['id'])->first();
         if($facebook && ($facebook->user_id != Admin::user()->id))
         {
             return response()->json(array([
@@ -168,7 +168,7 @@ class FacebookController extends Controller
                                               ,'msg'=>'无权操作'
                                           ]));
         }
-        FacebookInfo::where('machine_code',$request->data['machineCode'])
+        FacebookInfo::where('id',$request->data['id'])
                     ->update([
                                  'machine_code' => $request->data['machineCode']
                                  ,'area' => $request->data['area']

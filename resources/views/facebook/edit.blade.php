@@ -9,6 +9,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">机器码</label>
                 <div class="layui-input-block">
+                    <input type="text" hidden value="{{$fb->id}}" name="id">
                     <input value="{{$fb->machine_code}}" type="text" name="machineCode" required  lay-verify="required" placeholder="请输入机器码" autocomplete="off" class="layui-input">
                 </div>
             </div>

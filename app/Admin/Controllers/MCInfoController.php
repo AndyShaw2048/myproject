@@ -209,7 +209,7 @@ class MCInfoController extends Controller
     {
         return Admin::form(MCInfo::class, function (Form $form) {
             $form->display('id', '唯一ID');
-            $form->display('machine_code','机器码');
+            $form->text('machine_code','机器码');
             $form->select('mode','模式')->options(Mode::all()->pluck('name', 'id'));
             $form->text('keyword','关键词');
             $form->text('matching_name','匹配商品名');

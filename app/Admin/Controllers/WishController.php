@@ -179,7 +179,7 @@ class WishController extends Controller
      */
     public function editStore(Request $request)
     {
-        $wish = Wish::where('machine_code',$request->data['machineCode'])->first();
+        $wish = Wish::where('id',$request->data['id'])->first();
         if($wish && ($wish->user_id != Admin::user()->id))
         {
             return response()->json(array([
@@ -187,8 +187,9 @@ class WishController extends Controller
                                               ,'msg'=>'无权操作'
                                           ]));
         }
-        Wish::where('machine_code',$request->data['machineCode'])
+        Wish::where('id',$request->data['id'])
                  ->update([
+                                'machine_code' => $request->data['machineCode'],
                                 'isRegister' => isset($request->data['isRegister']) ? 'true' : 'false' ,
                                 'lastName' => $request->data['lastName'],
                                 'firstName' => $request->data['firstName'],

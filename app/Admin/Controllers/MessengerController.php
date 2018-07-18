@@ -167,7 +167,7 @@ class MessengerController extends Controller
      */
     public function editStore(Request $request)
     {
-        $messenger = Messenger::where('machine_code',$request->data['machineCode'])->first();
+        $messenger = Messenger::where('id',$request->data['id'])->first();
         if($messenger && ($messenger->user_id != Admin::user()->id))
         {
             return response()->json(array([
@@ -175,10 +175,9 @@ class MessengerController extends Controller
                                               ,'msg'=>'无权操作'
                                           ]));
         }
-        Messenger::where('machine_code',$request->data['machineCode'])
+        Messenger::where('id',$request->data['id'])
                     ->update([
                                  'machine_code' => $request->data['machineCode']
-//                                 ,'area' => $request->data['area']
                                  ,'acceptrequest_bool' => isset($request->data['acceptRequestBool']) ? 'true' : 'false'
                                  ,'acceptrequest_num' => $request->data['acceptRequestNum']
                                  ,'sendmessage_bool' => isset($request->data['sendMessageBool']) ? 'true' : 'false'
