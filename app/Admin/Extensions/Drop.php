@@ -252,7 +252,129 @@ EOT;
 </div>
 EOT;
         }
+        if($model == 'wish')
+        {
+            return <<<EOT
+<!-- Button trigger modal -->
+<a style="color:#0ba8cc;font-weight:bold;cursor:pointer;" data-toggle="modal" data-target="#{$this->row->id}">
+  {$this->row->machine_code}
+</a>
 
+<!-- Modal -->
+<div class="modal fade" id="{$this->row->id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body" style="margin-top:50px;color:#000;">
+      <b>
+            <table class="table table-bordered table-hover" style="table-layout:fixed;">
+                <tr>
+                    <td>ID</td>
+                    <td>{$this->row->id}</td>
+                </tr>
+                <tr>
+                    <td>是否注册</td>
+                    <td>{$this->row->isRegister}</td>
+                </tr>
+                <tr>
+                    <td>姓</td>
+                    <td>{$this->row->lastName}</td>
+                </tr>
+                <tr>
+                    <td>名</td>
+                    <td>{$this->row->firstName}</td>
+                </tr>
+                <tr>
+                    <td>电子邮件</td>
+                    <td>{$this->row->email}</td>
+                </tr>
+                <tr>
+                    <td>密码</td>
+                    <td>{$this->row->password}</td>
+                </tr>
+                <tr>
+                    <td>是否自动点赞</td>
+                    <td>{$this->row->isAutoLike}</td>
+                </tr>
+                <tr>
+                    <td>点赞数量</td>
+                    <td>{$this->row->likeAmount}</td>
+                </tr>
+                <tr>
+                    <td>商品名称</td>
+                    <td>{$this->row->likeGoodsName}</td>
+                </tr>
+                <tr>
+                    <td>是否添加地址</td>
+                    <td>{$this->row->isAddAddress}</td>
+                </tr>
+                <tr>
+                    <td>地址</td>
+                    <td>{$this->row->address}</td>
+                </tr>
+                <tr>
+                    <td>州名</td>
+                    <td>{$this->row->state}</td>
+                </tr>
+                <tr>
+                    <td>城市名</td>
+                    <td>{$this->row->city}</td>
+                </tr>
+                <tr>
+                    <td>邮编</td>
+                    <td>{$this->row->code}</td>
+                </tr>
+                <tr>
+                    <td>电话号码</td>
+                    <td>{$this->row->telephone}</td>
+                </tr>
+                <tr>
+                    <td>是否自动购买</td>
+                    <td>{$this->row->isAutoBuy}</td>
+                </tr>
+                <tr>
+                    <td>商品名称</td>
+                    <td>{$this->row->goodsName}</td>
+                </tr>
+                <tr>
+                    <td>商品清单</td>
+                    <td>{$this->row->goodsList}</td>
+                </tr>
+                <tr>
+                    <td>银行卡号码</td>
+                    <td>{$this->row->cardNumber}</td>
+                </tr>
+                <tr>
+                    <td>CVV</td>
+                    <td>{$this->row->cw}</td>
+                </tr>
+                <tr>
+                    <td>截止时间</td>
+                    <td>{$this->row->term}</td>
+                </tr>
+                <tr>
+                    <td>间隔时长</td>
+                    <td>{$this->row->intervalTime}</td>
+                </tr>
+                <tr>
+                    <td>所属用户</td>
+                    <td>{$name}</td>
+                </tr>
+                <tr>
+                    <td>备注</td>
+                    <td>{$this->row->note}</td>
+                </tr>
+                <tr>
+                    <td>到期时间</td>
+                    <td>{$this->row->end_time}</td>
+                </tr>
+            </table>
+      </b>
+      </div>
+    </div>
+  </div>
+</div>
+EOT;
+        }
     }
 }
 

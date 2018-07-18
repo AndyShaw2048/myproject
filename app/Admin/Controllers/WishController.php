@@ -85,7 +85,7 @@ class WishController extends Controller
                 $grid->model()->where('user_id',Admin::user()->id);
 
             $grid->id('ID')->sortable();
-            $grid->machine_code('机器码');
+            $grid->machine_code('机器码')->drop("wish");
 //            $grid->machine_code('机器码')->drop('wish');
             if(Admin::user()->isRole('admin'))
             {
