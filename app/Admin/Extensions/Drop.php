@@ -375,6 +375,15 @@ EOT;
 </div>
 EOT;
         }
+        if($model == 'whatsapp')
+        {
+            return <<<EOT
+<!-- Button trigger modal -->
+<a style="color:#0ba8cc;font-weight:bold;cursor:pointer;" href="whatsapp/telephones/{$this->row->id}">
+  {$this->row->machine_code}
+</a>
+EOT;
+        }
     }
 }
 

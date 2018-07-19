@@ -85,7 +85,7 @@ class WishController extends Controller
                 $grid->model()->where('user_id',Admin::user()->id);
 
             $grid->id('ID')->sortable();
-            $grid->machine_code('机器码')->drop("wish");
+            $grid->machine_code('机器码')->drop('wish');
 //            $grid->machine_code('机器码')->drop('wish');
             if(Admin::user()->isRole('admin'))
             {
@@ -179,7 +179,7 @@ class WishController extends Controller
      */
     public function editStore(Request $request)
     {
-        $wish = Wish::where('id',$request->data['id'])->first();
+        $wish = Wish::where('machine_code',$request->data['machineCode'])->first();
         if($wish && ($wish->user_id != Admin::user()->id))
         {
             return response()->json(array([
@@ -187,9 +187,8 @@ class WishController extends Controller
                                               ,'msg'=>'无权操作'
                                           ]));
         }
-        Wish::where('id',$request->data['id'])
+        Wish::where('machine_code',$request->data['machineCode'])
                  ->update([
-                                'machine_code' => $request->data['machineCode'],
                                 'isRegister' => isset($request->data['isRegister']) ? 'true' : 'false' ,
                                 'lastName' => $request->data['lastName'],
                                 'firstName' => $request->data['firstName'],

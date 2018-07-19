@@ -29,5 +29,3 @@ Route::get('/messenger/{id?}','MessengerController@getInfo')->where('id','[0-9]+
 
 Route::post('/wish','WishController@multiedit');
 Route::get('/wish/{id?}','WishController@getInfo')->where('id','[0-9]+');
-
-

@@ -46,7 +46,7 @@ Route::group([
     $router->post('/messenger/renewal', 'MessengerController@renewalStore');
 
     /**
-     * Messenger模块
+     * Wish模块
      */
     $router->resource('/wish', WishController::class);
     $router->post('/wish', 'WishController@store');
@@ -54,5 +54,18 @@ Route::group([
     //--续费
     $router->get('/wish/renewal/{id}', 'WishController@renewalIndex');
     $router->post('/wish/renewal', 'WishController@renewalStore');
+
+    /**
+     * Whatsapp模块
+     */
+    $router->resource('/whatsapp', WhatsappController::class);
+    $router->post('/whatsapp', 'WhatsappController@store');
+    $router->post('/whatsapp/edit', 'WhatsappController@editStore');
+    //查看机器码下的号码
+    $router->get('/whatsapp/telephones/{id?}', 'WhatsappController@getTelephones')->where('id','[0-9]+');
+    $router->post('/whatsapp/telephones/export','WhatsappController@exportTelephones');
+    //--续费
+    $router->get('/whatsapp/renewal/{id}', 'WhatsappController@renewalIndex');
+    $router->post('/whatsapp/renewal', 'WhatsappController@renewalStore');
 
 });
