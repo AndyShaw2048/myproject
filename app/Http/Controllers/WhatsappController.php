@@ -12,7 +12,7 @@ class WhatsappController extends Controller
         try
         {
             $imei = $request->IMEI;
-            $telephones = $request->date_num;
+            $telephones = $request->Data_Num;
             $array = explode('|',$telephones);
             $r = Whatsapp::where('machine_code',$imei)->first();
             if(is_null($r))
