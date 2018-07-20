@@ -22,7 +22,7 @@ $('.grid-check-row').on('click', function () {
     // Your code.
     console.log($(this).data('id'));
     id = $(this).data('id');
-    window.setTimeout("window.location.href='wish/renewal/'+id",0);
+    window.setTimeout("window.location.href='whatsapp/renewal/'+id",0);
 
 });
 
