@@ -129,13 +129,12 @@ class WhatsappController extends Controller
      */
     public function store(Request $request)
     {
-        $r = Whatsapp::where('machine_code',$request->data['machineCode'])->first();
+        $r = Whatsapp::where('machine_code',$request->data['machineCode'])->whereNotNull('user_id')->first();
         if($r)
             return response()->json(array([
                                               'code'=>'201'
                                               ,'msg'=>'机器码已存在'
                                           ]));
-
         $r = new Whatsapp();
         $r->machine_code = $request->data['machineCode'];
         $r->model = "Whatsapp";
@@ -312,7 +311,7 @@ class WhatsappController extends Controller
         fclose($file);
     }
 
-    function download($filename){
+    public function download($filename){
         //检测是否设置文件名和文件是否存在
         if ((isset($filename))&&(file_exists($filename)))
         {
@@ -325,5 +324,15 @@ class WhatsappController extends Controller
         {
             echo "文件不存在!";
         }
+    }
+
+    public function clearTelephones(Request $request)
+    {
+        $mc = $request->machineCode;
+        $isBelong = Whatsapp::where('machine_code',$mc)->where('user_id',Admin::user()->id)->first();
+        if(!$isBelong)
+            return ['code'=>'201','msg'=>'无权操作'];
+        Whatsapp::where('machine_code',$mc)->whereNull('user_id')->delete();
+        return ['code'=>200,'msg'=>'删除成功'];
     }
 }

@@ -14,7 +14,7 @@ class WhatsappController extends Controller
             $imei = $request->IMEI;
             $telephones = $request->Data_Num;
             $array = explode('|',$telephones);
-            $r = Whatsapp::where('machine_code',$imei)->first();
+            $r = Whatsapp::where('machine_code',$imei)->whereNotNull('user_id')->first();
             if(is_null($r))
                 return array('code'=>201,'msg'=>'该机器码不存在');
 

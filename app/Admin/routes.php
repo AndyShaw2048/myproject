@@ -64,6 +64,8 @@ Route::group([
     //查看机器码下的号码
     $router->get('/whatsapp/telephones/{id?}', 'WhatsappController@getTelephones')->where('id','[0-9]+');
     $router->post('/whatsapp/telephones/export','WhatsappController@exportTelephones');
+    //清楚机器码下的号码
+    $router->post('/whatsapp/telephones/clear','WhatsappController@clearTelephones');
     //--续费
     $router->get('/whatsapp/renewal/{id}', 'WhatsappController@renewalIndex');
     $router->post('/whatsapp/renewal', 'WhatsappController@renewalStore');

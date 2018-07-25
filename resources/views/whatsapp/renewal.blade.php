@@ -7,7 +7,7 @@
             <div class="layui-inline">
                 <label class="layui-form-label" style="font-weight: bold">机器码</label>
                 <div class="layui-input-inline">
-                    <input type="text" value="{{$msg->machine_code}}" name="amount" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                    <input type="text" value="{{$msg->machine_code}}" name="machineCode" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
                 </div>
             </div>
 
@@ -47,7 +47,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '/admin/wish/renewal',
+                url: '/admin/whatsapp/renewal',
                 data: {data:data.field},
                 dataType: 'json',
                 headers: {

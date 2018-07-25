@@ -11,7 +11,7 @@
                 <label class="layui-form-label">机器码</label>
                 <div class="layui-input-block">
                     <input type="text" value="{{$mc->id}}" name="id" class="layui-input layui-hide">
-                    <input type="text" value="{{$mc->machine_code}}" name="machineCode" class="layui-input" readonly disabled>
+                    <input type="text" value="{{$mc->machine_code}}" id="mc" name="machineCode" class="layui-input" readonly disabled>
                 </div>
             </div>
             <div class="layui-form-item">
@@ -20,7 +20,7 @@
                     <input type="text" value="{{$mc->note}}" name="note" class="layui-input" readonly>
                 </div>
             </div>
-            <p style="font-size: 14px;margin-top: 10px;margin-left: 20px;">电话号码</p>
+            <p style="font-size: 14px;margin-top: 10px;margin-left: 20px;">电话号码 <a type="button" onclick="sendPost()" style="color: #0096ff;cursor: pointer">清除记录</a></p>
             <hr>
             <table class="layui-table">
                 <colgroup>
@@ -65,5 +65,34 @@
         </div>
     </div>
 </div>
-
-
+<script>
+    function sendPost(){
+        var mc = $("#mc").val();
+        $.ajax({
+            type: 'POST',
+            url: '/admin/whatsapp/telephones/clear',
+            data: {machineCode:mc},
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            },
+            success: function(data){
+                if(data['code'] == 200)
+                {
+                    $.message('删除成功');
+                    window.setTimeout('location.reload()',1000);
+                }
+                if(data['code'] == 201)
+                {
+                    $.message({
+                        message:data['msg'],
+                        type:'error'
+                    });
+                }
+            },
+            error: function(xhr, type){
+                toastr.error('删除失败');
+            }
+        });
+    }
+</script>
