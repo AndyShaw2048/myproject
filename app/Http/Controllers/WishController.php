@@ -59,22 +59,22 @@ class WishController extends Controller
     public function multiedit(Request $request)
     {
         $isRegister = isset($request->data['isRegister']) ? 'true' : 'false' ;
-        $lastName = $request->data['lastName'];
-        $firstName = $request->data['firstName'];
-        $email = $request->data['email'];
-        $password = $request->data['password'];
+//        $lastName = $request->data['lastName'];
+//        $firstName = $request->data['firstName'];
+//        $email = $request->data['email'];
+//        $password = $request->data['password'];
         $isAddAddress = isset($request->data['isAddAddress']) ? 'true' : 'false' ;
-        $address = $request->data['address'];
-        $state = $request->data['state'];
-        $city = $request->data['city'];
-        $code = $request->data['code'];
-        $telephone = $request->data['telephone'];
+//        $address = $request->data['address'];
+//        $state = $request->data['state'];
+//        $city = $request->data['city'];
+//        $code = $request->data['code'];
+//        $telephone = $request->data['telephone'];
         $isAutoBuy = isset($request->data['isAutoBuy']) ? 'true' : 'false' ;
         $goodsName = $request->data['goodsName'];
         $goodsList = $request->data['goodsList'];
-        $cardNumber = $request->data['cardNumber'];
-        $CW = $request->data['CW'];
-        $term = $request->data['term'];
+//        $cardNumber = $request->data['cardNumber'];
+//        $CW = $request->data['CW'];
+//        $term = $request->data['term'];
         $isAutoLike = isset($request->data['isAutoLike']) ? 'true' : 'false' ;
         $likeAmount = $request->data['likeAmount'];
         $likeGoodsName = $request->data['likeGoodsName'];
@@ -87,38 +87,38 @@ class WishController extends Controller
                 $r = Wish::find($item);
                 if ( !is_null($isRegister) )
                     $r->isRegister = $isRegister;
-                if ( !is_null($lastName) )
-                    $r->lastName = $lastName;
-                if ( !is_null($firstName) )
-                    $r->firstName = $firstName;
-                if ( !is_null($email) )
-                    $r->email = $email;
-                if ( !is_null($password) )
-                    $r->password = $password;
+//                if ( !is_null($lastName) )
+//                    $r->lastName = $lastName;
+//                if ( !is_null($firstName) )
+//                    $r->firstName = $firstName;
+//                if ( !is_null($email) )
+//                    $r->email = $email;
+//                if ( !is_null($password) )
+//                    $r->password = $password;
                 if ( !is_null($isAddAddress) )
                     $r->isAddAddress = $isAddAddress;
-                if ( !is_null($address) )
-                    $r->address = $address;
-                if ( !is_null($state) )
-                    $r->state = $state;
-                if ( !is_null($city) )
-                    $r->city = $city;
-                if ( !is_null($code) )
-                    $r->code = $code;
-                if ( !is_null($telephone) )
-                    $r->telephone = $telephone;
+//                if ( !is_null($address) )
+//                    $r->address = $address;
+//                if ( !is_null($state) )
+//                    $r->state = $state;
+//                if ( !is_null($city) )
+//                    $r->city = $city;
+//                if ( !is_null($code) )
+//                    $r->code = $code;
+//                if ( !is_null($telephone) )
+//                    $r->telephone = $telephone;
                 if ( !is_null($isAutoBuy) )
                     $r->isAutoBuy = $isAutoBuy;
                 if ( !is_null($goodsList) )
                     $r->goodsList = $goodsList;
                 if ( !is_null($goodsName) )
                     $r->goodsName = $goodsName;
-                if ( !is_null($cardNumber) )
-                    $r->cardNumber = $cardNumber;
-                if ( !is_null($CW) )
-                    $r->CW = $CW;
-                if ( !is_null($term) )
-                    $r->term = $term;
+//                if ( !is_null($cardNumber) )
+//                    $r->cardNumber = $cardNumber;
+//                if ( !is_null($CW) )
+//                    $r->CW = $CW;
+//                if ( !is_null($term) )
+//                    $r->term = $term;
                 if ( !is_null($isAutoLike) )
                     $r->isAutoLike = $isAutoLike;
                 if ( !is_null($likeAmount) )
@@ -135,38 +135,38 @@ class WishController extends Controller
                     $r = Wish::where('user_id',Admin::user()->id)->find($item);
                     if ( !is_null($isRegister) )
                         $r->isRegister = $isRegister;
-                    if ( !is_null($lastName) )
-                        $r->lastName = $lastName;
-                    if ( !is_null($firstName) )
-                        $r->firstName = $firstName;
-                    if ( !is_null($email) )
-                        $r->email = $email;
-                    if ( !is_null($password) )
-                        $r->password = $password;
+//                    if ( !is_null($lastName) )
+//                        $r->lastName = $lastName;
+//                    if ( !is_null($firstName) )
+//                        $r->firstName = $firstName;
+//                    if ( !is_null($email) )
+//                        $r->email = $email;
+//                    if ( !is_null($password) )
+//                        $r->password = $password;
                     if ( !is_null($isAddAddress) )
                         $r->isAddAddress = $isAddAddress;
-                    if ( !is_null($address) )
-                        $r->address = $address;
-                    if ( !is_null($state) )
-                        $r->state = $state;
-                    if ( !is_null($city) )
-                        $r->city = $city;
-                    if ( !is_null($code) )
-                        $r->code = $code;
-                    if ( !is_null($telephone) )
-                        $r->telephone = $telephone;
+//                    if ( !is_null($address) )
+//                        $r->address = $address;
+//                    if ( !is_null($state) )
+//                        $r->state = $state;
+//                    if ( !is_null($city) )
+//                        $r->city = $city;
+//                    if ( !is_null($code) )
+//                        $r->code = $code;
+//                    if ( !is_null($telephone) )
+//                        $r->telephone = $telephone;
                     if ( !is_null($isAutoBuy) )
                         $r->isAutoBuy = $isAutoBuy;
                     if ( !is_null($goodsList) )
                         $r->goodsList = $goodsList;
                     if ( !is_null($goodsName) )
                         $r->goodsName = $goodsName;
-                    if ( !is_null($cardNumber) )
-                        $r->cardNumber = $cardNumber;
-                    if ( !is_null($CW) )
-                        $r->CW = $CW;
-                    if ( !is_null($term) )
-                        $r->term = $term;
+//                    if ( !is_null($cardNumber) )
+//                        $r->cardNumber = $cardNumber;
+//                    if ( !is_null($CW) )
+//                        $r->CW = $CW;
+//                    if ( !is_null($term) )
+//                        $r->term = $term;
                     if ( !is_null($isAutoLike) )
                         $r->isAutoLike = $isAutoLike;
                     if ( !is_null($likeAmount) )

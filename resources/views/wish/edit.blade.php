@@ -22,72 +22,72 @@
                     <input type="checkbox" name="isRegister" title="注 册 新 账号" {{$r->isRegister == 'true' ? 'checked' : ''}}>
                 </div>
             </div>
-            <div class="layui-inline">
-                <label class="layui-form-label" style="width: 130px">姓：</label>
-                <div class="layui-input-inline">
-                    <input value="{{$r->lastName}}" type="text" name="lastName" placeholder="请输入  姓" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label" style="width: 130px">名：</label>
-                <div class="layui-input-inline">
-                    <input value="{{$r->firstName}}" type="text" name="firstName" placeholder="请输入  名" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label" style="width: 130px;margin-left: 260px">邮箱：</label>
-                <div class="layui-input-inline">
-                    <input value="{{$r->email}}" type="text" name="email" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label" style="width: 130px">密码：</label>
-                <div class="layui-input-inline">
-                    <input value="{{$r->password}}" type="text" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
-                </div>
-            </div>
+            {{--<div class="layui-inline">--}}
+                {{--<label class="layui-form-label" style="width: 130px">姓：</label>--}}
+                {{--<div class="layui-input-inline">--}}
+                    {{--<input value="{{$r->lastName}}" type="text" name="lastName" placeholder="请输入  姓" autocomplete="off" class="layui-input">--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="layui-inline">--}}
+                {{--<label class="layui-form-label" style="width: 130px">名：</label>--}}
+                {{--<div class="layui-input-inline">--}}
+                    {{--<input value="{{$r->firstName}}" type="text" name="firstName" placeholder="请输入  名" autocomplete="off" class="layui-input">--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="layui-inline">--}}
+                {{--<label class="layui-form-label" style="width: 130px;margin-left: 260px">邮箱：</label>--}}
+                {{--<div class="layui-input-inline">--}}
+                    {{--<input value="{{$r->email}}" type="text" name="email" placeholder="请输入邮箱" autocomplete="off" class="layui-input">--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="layui-inline">--}}
+                {{--<label class="layui-form-label" style="width: 130px">密码：</label>--}}
+                {{--<div class="layui-input-inline">--}}
+                    {{--<input value="{{$r->password}}" type="text" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">--}}
+                {{--</div>--}}
+            {{--</div>--}}
             <hr>
             <div class="layui-inline">
                 <div class="layui-input-block">
                     <input type="checkbox" name="isAddAddress" title="添加收货地址" {{$r->isAddAddress == 'true' ? 'checked' : ''}}>
                 </div>
             </div>
-            <div class="layui-inline">
-                <label class="layui-form-label" style="width: 130px">收货地址：</label>
-                <div class="layui-input-inline">
-                    <input value="{{$r->address}}" type="text" name="address" placeholder="请输入收货地址" autocomplete="off" class="layui-input" style="width: 508px">
-                </div>
-            </div>
-            <br>
-            <div class="layui-inline">
-                <label class="layui-form-label" style="width: 130px;margin-left: 260px">州名：</label>
-                <div class="layui-input-inline">
-                    <input value="{{$r->state}}" type="text" name="state" placeholder="请输入州名" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label" style="width: 130px">城市名：</label>
-                <div class="layui-input-inline">
-                    <input value="{{$r->city}}" type="text" name="city" placeholder="请输入城市名" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <br>
-            <div class="layui-inline">
-                <label class="layui-form-label" style="width: 130px;margin-left: 260px">邮政编码：</label>
-                <div class="layui-input-inline">
-                    <input value="{{$r->code}}" type="text" name="code" placeholder="请输入邮政编码" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label" style="width: 130px">手机号：</label>
-                <div class="layui-input-inline">
-                    <input value="{{$r->telephone}}" type="text" name="telephone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
-                </div>
-            </div>
+            {{--<div class="layui-inline">--}}
+                {{--<label class="layui-form-label" style="width: 130px">收货地址：</label>--}}
+                {{--<div class="layui-input-inline">--}}
+                    {{--<input value="{{$r->address}}" type="text" name="address" placeholder="请输入收货地址" autocomplete="off" class="layui-input" style="width: 508px">--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<br>--}}
+            {{--<div class="layui-inline">--}}
+                {{--<label class="layui-form-label" style="width: 130px;margin-left: 260px">州名：</label>--}}
+                {{--<div class="layui-input-inline">--}}
+                    {{--<input value="{{$r->state}}" type="text" name="state" placeholder="请输入州名" autocomplete="off" class="layui-input">--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="layui-inline">--}}
+                {{--<label class="layui-form-label" style="width: 130px">城市名：</label>--}}
+                {{--<div class="layui-input-inline">--}}
+                    {{--<input value="{{$r->city}}" type="text" name="city" placeholder="请输入城市名" autocomplete="off" class="layui-input">--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<br>--}}
+            {{--<div class="layui-inline">--}}
+                {{--<label class="layui-form-label" style="width: 130px;margin-left: 260px">邮政编码：</label>--}}
+                {{--<div class="layui-input-inline">--}}
+                    {{--<input value="{{$r->code}}" type="text" name="code" placeholder="请输入邮政编码" autocomplete="off" class="layui-input">--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="layui-inline">--}}
+                {{--<label class="layui-form-label" style="width: 130px">手机号：</label>--}}
+                {{--<div class="layui-input-inline">--}}
+                    {{--<input value="{{$r->telephone}}" type="text" name="telephone" placeholder="请输入手机号" autocomplete="off" class="layui-input">--}}
+                {{--</div>--}}
+            {{--</div>--}}
             <hr>
             <div class="layui-inline">
                 <div class="layui-input-block">
-                    <input type="checkbox" name="isRegister" title="自&nbsp;&nbsp;动&nbsp;&nbsp;购&nbsp;&nbsp;买" {{$r->isAutoBuy == 'true' ? 'checked' : ''}}>
+                    <input type="checkbox" name="isAutoBuy" title="自&nbsp;&nbsp;动&nbsp;&nbsp;购&nbsp;&nbsp;买" {{$r->isAutoBuy == 'true' ? 'checked' : ''}}>
                 </div>
             </div>
             <div class="layui-inline">
@@ -97,31 +97,31 @@
                 </div>
             </div>
             <div class="layui-inline">
-                <label class="layui-form-label" style="width: 130px">商品列表：</label>
+                <label class="layui-form-label" style="width: 130px">商品清单：</label>
                 <div class="layui-input-inline">
                     <input value="{{$r->goodsList}}" type="text" name="goodsList" placeholder="请输入商品列表" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <br>
-            <div class="layui-inline">
-                <label class="layui-form-label" style="width: 130px;margin-left: 260px">银行卡号：</label>
-                <div class="layui-input-inline">
-                    <input value="{{$r->cardNumber}}" type="text" name="cardNumber" placeholder="请输入银行卡号" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-inline">
-                <label class="layui-form-label" style="width: 130px">CVV：</label>
-                <div class="layui-input-inline">
-                    <input value="{{$r->CW}}" type="text" name="CW" placeholder="请输入CVV" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <br>
-            <div class="layui-inline">
-                <label class="layui-form-label" style="width: 130px;margin-left: 260px">期限：</label>
-                <div class="layui-input-inline">
-                    <input value="{{$r->term}}" type="text" name="term" placeholder="请输入期限" autocomplete="off" class="layui-input">
-                </div>
-            </div>
+            {{--<div class="layui-inline">--}}
+                {{--<label class="layui-form-label" style="width: 130px;margin-left: 260px">银行卡号：</label>--}}
+                {{--<div class="layui-input-inline">--}}
+                    {{--<input value="{{$r->cardNumber}}" type="text" name="cardNumber" placeholder="请输入银行卡号" autocomplete="off" class="layui-input">--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="layui-inline">--}}
+                {{--<label class="layui-form-label" style="width: 130px">CVV：</label>--}}
+                {{--<div class="layui-input-inline">--}}
+                    {{--<input value="{{$r->CW}}" type="text" name="CW" placeholder="请输入CVV" autocomplete="off" class="layui-input">--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<br>--}}
+            {{--<div class="layui-inline">--}}
+                {{--<label class="layui-form-label" style="width: 130px;margin-left: 260px">期限：</label>--}}
+                {{--<div class="layui-input-inline">--}}
+                    {{--<input value="{{$r->term}}" type="text" name="term" placeholder="请输入期限" autocomplete="off" class="layui-input">--}}
+                {{--</div>--}}
+            {{--</div>--}}
             <hr>
             <div class="layui-inline">
                 <div class="layui-input-block">
