@@ -54,7 +54,7 @@ Route::group([
     //--续费
     $router->get('/wish/renewal/{id}', 'WishController@renewalIndex');
     $router->post('/wish/renewal', 'WishController@renewalStore');
-
+    $router->post('/wish/renewal', 'WishController@renewalStore');
     /**
      * Whatsapp模块
      */

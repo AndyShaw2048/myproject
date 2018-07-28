@@ -35,6 +35,8 @@ class MCInfoController extends Controller
             $content->body(view('filter'));
             $content->body($this->grid());
             $content->body(view('multiedit'));
+            $r = Script::where('name','amazon')->first();
+            $content->body(view('multicharge',compact('r')));
         });
     }
 

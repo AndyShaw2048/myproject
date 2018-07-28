@@ -27,11 +27,11 @@ class WishController extends Controller
     public function index()
     {
         return Admin::content(function (Content $content) {
-
             $content->header('Wish模块');
-
             $content->body($this->grid());
             $content->body(view('wish.multiedit'));
+            $r = Script::where('name','wish')->first();
+            $content->body(view('wish.multicharge',compact('r')));
         });
     }
 

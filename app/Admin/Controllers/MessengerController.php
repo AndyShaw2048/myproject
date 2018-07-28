@@ -32,6 +32,8 @@ class MessengerController extends Controller
 
             $content->body($this->grid());
             $content->body(view('messenger.multiedit'));
+            $r = Script::where('name','messenger')->first();
+            $content->body(view('messenger.multicharge',compact('r')));
         });
     }
 

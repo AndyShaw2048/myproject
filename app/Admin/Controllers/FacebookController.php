@@ -34,6 +34,8 @@ class FacebookController extends Controller
 
             $content->body($this->grid());
             $content->body(view('facebook.multiedit'));
+            $r = Script::where('name','facebook')->first();
+            $content->body(view('facebook.multicharge',compact('r')));
         });
     }
 

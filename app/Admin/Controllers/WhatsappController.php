@@ -29,8 +29,9 @@ class WhatsappController extends Controller
         return Admin::content(function (Content $content) {
 
             $content->header('Whatsapp模块');
-
             $content->body($this->grid());
+            $r = Script::where('name','whatsapp')->first();
+            $content->body(view('whatsapp.multicharge',compact('r')));
         });
     }
 
