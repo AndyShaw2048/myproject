@@ -41,10 +41,6 @@ class Drop extends AbstractDisplayer
                     <td>{$this->row->id}</td>
                 </tr>
                 <tr>
-                    <td>模式</td>
-                    <td>{$this->row->ModeInfo->name}</td>
-                </tr>
-                <tr>
                     <td>机器码</td>
                     <td>{$this->row->machine_code}</td>
                 </tr>
