@@ -28,7 +28,7 @@ class MCController extends Controller
                 if(!is_null($mode))
                     $mc->mode = $mode;
                 if(!is_null($keyword))
-                    $mc->mode = $keyword;
+                    $mc->keyword = $keyword;
                 if(!is_null($matchingName))
                     $mc->matching_name = $matchingName;
                 if(!is_null($relationName))
@@ -45,7 +45,7 @@ class MCController extends Controller
                     if(!is_null($mode))
                         $mc->mode = $mode;
                     if(!is_null($keyword))
-                        $mc->mode = $keyword;
+                        $mc->keyword = $keyword;
                     if(!is_null($matchingName))
                         $mc->matching_name = $matchingName;
                     if(!is_null($relationName))

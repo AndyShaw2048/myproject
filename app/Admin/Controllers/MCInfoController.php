@@ -171,10 +171,10 @@ class MCInfoController extends Controller
 
             $form->saving(function ($form) {
                 $mc = MCInfo::where('machine_code',$form->machine_code)->first();
-                if(!is_null($mc))
+                if($mc->user_id != Admin::user()->id)
                 {
                     $error = new MessageBag([
-                                                'title' => '该机器码已存在,请重新输入',
+                                                'title' => '机器码已存在',
                                             ]);
                     return back()->with(compact('error'))->withInput();
                 }
