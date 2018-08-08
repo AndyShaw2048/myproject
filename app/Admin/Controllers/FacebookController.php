@@ -51,7 +51,10 @@ class FacebookController extends Controller
 
             $content->header('Facebook模块');
             $content->description('编辑');
-            $fb = FacebookInfo::where('id',$id)->where('user_id',Admin::user()->id)->first();
+            if(Admin::user()->isRole('admin'))
+                $fb = FacebookInfo::where('id',$id)->first();
+            else
+                $fb = FacebookInfo::where('id',$id)->where('user_id',Admin::user()->id)->first();
             if(!$fb)return abort('404');
             $content->body(view('facebook.edit',['fb'=>$fb]));
         });
@@ -163,12 +166,15 @@ class FacebookController extends Controller
     public function editStore(Request $request)
     {
         $facebook = FacebookInfo::where('id',$request->data['id'])->first();
-        if($facebook && ($facebook->user_id != Admin::user()->id))
+        if(!Admin::user()->isRole('admin'))
         {
-            return response()->json(array([
-                                              'code'=>'201'
-                                              ,'msg'=>'无权操作'
-                                          ]));
+            if($facebook && ($facebook->user_id != Admin::user()->id))
+            {
+                return response()->json(array([
+                                                  'code'=>'201'
+                                                  ,'msg'=>'无权操作'
+                                              ]));
+            }
         }
         FacebookInfo::where('id',$request->data['id'])
                     ->update([
