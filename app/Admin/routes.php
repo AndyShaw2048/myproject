@@ -70,4 +70,18 @@ Route::group([
     $router->get('/whatsapp/renewal/{id}', 'WhatsappController@renewalIndex');
     $router->post('/whatsapp/renewal', 'WhatsappController@renewalStore');
 
+    /**
+     * Line模块
+     */
+    $router->resource('/line', LineController::class);
+    $router->post('/line', 'LineController@store');
+    $router->post('/line/edit', 'LineController@editStore');
+    //查看机器码下的号码
+    $router->get('/line/telephones/{id?}', 'LineController@getTelephones')->where('id','[0-9]+');
+    $router->post('/line/telephones/export','LineController@exportTelephones');
+    //清楚机器码下的号码
+    $router->post('/line/telephones/clear','LineController@clearTelephones');
+    //--续费
+    $router->get('/line/renewal/{id}', 'LineController@renewalIndex');
+    $router->post('/line/renewal', 'LineController@renewalStore');
 });

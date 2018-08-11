@@ -179,7 +179,7 @@
             else {
                 $.ajax({
                     type: 'POST',
-                    url: '/whatsapp',
+                    url: '/line',
                     data: {multi:check_val,
                         data:data.field},
                     dataType: 'json',
@@ -187,7 +187,7 @@
                         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                     },
                     success: function(data){
-                        window.setTimeout("window.location='/admin/whatsapp'",2000);
+                        window.setTimeout("window.location='/admin/line'",2000);
                         toastr.success('更新成功');
                     },
                     error: function(xhr, type){
