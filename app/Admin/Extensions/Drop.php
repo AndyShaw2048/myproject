@@ -323,6 +323,17 @@ EOT;
   {$this->row->machine_code}
 </a>
 EOT;
+
+        }
+        if($model == 'line')
+        {
+            return <<<EOT
+<!-- Button trigger modal -->
+<a style="color:#0ba8cc;font-weight:bold;cursor:pointer;" href="line/telephones/{$this->row->id}">
+  {$this->row->machine_code}
+</a>
+EOT;
+
         }
     }
 }
