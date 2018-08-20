@@ -37,3 +37,7 @@ Route::post('/wish/multiCharge','WishController@multiCharge');
 Route::post('/whatsapp/multiCharge','WhatsappController@multiCharge');
 
 Route::post('/line/multiCharge','LineController@multiCharge');
+
+Route::post('/amazon2','AmazonController@multiedit');
+Route::get('/amazon2/{id?}','AmazonController@getInfo')->where('id','[0-9]+');
+Route::post('/amazon2/multiCharge','AmazonController@multiCharge');

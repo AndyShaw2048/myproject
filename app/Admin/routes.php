@@ -84,4 +84,14 @@ Route::group([
     //--续费
     $router->get('/line/renewal/{id}', 'LineController@renewalIndex');
     $router->post('/line/renewal', 'LineController@renewalStore');
+
+    /**
+     * Amazon_2模块
+     */
+    $router->resource('/amazon2', AmazonController::class);
+    $router->post('/amazon2', 'AmazonController@store');
+    $router->post('/amazon2/edit', 'AmazonController@editStore');
+    //--续费
+    $router->get('/amazon2/renewal/{id}', 'AmazonController@renewalIndex');
+    $router->post('/amazon2/renewal', 'AmazonController@renewalStore');
 });
