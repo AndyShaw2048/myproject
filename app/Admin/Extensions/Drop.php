@@ -335,6 +335,101 @@ EOT;
 EOT;
 
         }
+        if($model == 'amazon2')
+        {
+            return <<<EOT
+<!-- Button trigger modal -->
+<a style="color:#0ba8cc;font-weight:bold;cursor:pointer;" data-toggle="modal" data-target="#{$this->row->id}">
+  {$this->row->machine_code}
+</a>
+
+<!-- Modal -->
+<div class="modal fade" id="{$this->row->id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body" style="margin-top:50px;color:#000;">
+      <b>
+            <table class="table table-bordered table-hover" style="table-layout:fixed;">
+                <tr>
+                    <td>ID</td>
+                    <td>{$this->row->id}</td>
+                </tr>
+                <tr>
+                    <td>关键词</td>
+                    <td>{$this->row->keyword}</td>
+                </tr>
+                <tr>
+                    <td>匹配商品名</td>
+                    <td>{$this->row->matching_name}</td>
+                </tr>
+                <tr>
+                    <td>匹配商品名(Prime)</td>
+                    <td>{$this->row->m_prime}</td>
+                </tr>
+                <tr>
+                    <td>关联商品名</td>
+                    <td>{$this->row->relation_name}</td>
+                </tr>
+                <tr>
+                    <td>间隔时间</td>
+                    <td>{$this->row->interval_minute}分{$this->row->interval_second}秒</td>
+                </tr>
+                <tr>
+                    <td>上网工具</td>
+                    <td>{$this->row->vpn}</td>
+                </tr>
+                <tr>
+                    <td>街道</td>
+                    <td>{$this->row->street}</td>
+                </tr>
+                <tr>
+                    <td>城市名</td>
+                    <td>{$this->row->city}</td>
+                </tr>
+                <tr>
+                    <td>州名</td>
+                    <td>{$this->row->state}</td>
+                </tr>
+                <tr>
+                    <td>邮编</td>
+                    <td>{$this->row->zip}</td>
+                </tr>
+                <tr>
+                    <td>联系方式</td>
+                    <td>{$this->row->contact}</td>
+                </tr>
+                <tr>
+                    <td>卡号</td>
+                    <td>{$this->row->card_num}</td>
+                </tr>
+                <tr>
+                    <td>到期月</td>
+                    <td>{$this->row->end_month}</td>
+                </tr>
+                <tr>
+                    <td>到期年</td>
+                    <td>{$this->row->end_year}</td>
+                </tr>
+                <tr>
+                    <td>所属用户</td>
+                    <td>{$name}</td>
+                </tr>
+                <tr>
+                    <td>备注</td>
+                    <td>{$this->row->note}</td>
+                </tr>
+                <tr>
+                    <td>到期时间</td>
+                    <td>{$this->row->end_time}</td>
+                </tr>
+            </table>
+      </b>
+      </div>
+    </div>
+  </div>
+</div>
+EOT;
+        }
     }
 }
 

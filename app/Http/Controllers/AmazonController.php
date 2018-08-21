@@ -31,28 +31,24 @@ class AmazonController extends Controller
                                ),JSON_UNESCAPED_UNICODE);
         return json_encode(array([
                                      "Model" => $r->model
-                                     , "Area" => $r->area
-                                     , "AddFriend" => array([
-                                                                "PitchOn" => $r->addfriend_bool == 'true' ? true : false
-                                                                , "Number" => $r->addfriend_num
-                                                            ])
-                                     , "AcceptRequest" => array([
-                                                                    "PitchOn" => $r->acceptrequest_bool == 'true' ? true : false
-                                                                    , "Number" => $r->acceptrequest_num
-                                                                ])
-                                     , "IntoGroup" => array([
-                                                                "PitchOn" => $r->intogroup_bool == 'true' ? true : false
-                                                                , "GroupName" => $r->intogroup_groupname
-                                                            ])
-                                     , "PointZan" => array([
-                                                               "PitchOn" => $r->pointzan_bool == 'true' ? true : false
-                                                               , "Number" => $r->pointzan_num
-                                                           ])
-                                     , "MutualFriend" => array([
-                                                                   "PitchOn" => $r->mutualfriend_bool == 'true' ? true : false
-                                                                   , "Number" => $r->mutualfriend_num
-                                                               ])
-                                     , "IntervalTime" => $r->intervaltime_num
+                                     ,'mode' => $r->mode
+                                     ,'keyword' => $r->keyword
+                                     ,'m_prime' => isset($r->m_prime) ? 'true' : 'false'
+                                     ,'matching_name' => $r->matching_name
+                                     ,'r_prime' => isset($r->r_prime) ? 'true' : 'false'
+                                     ,'relation_name' => $r->relation_name
+                                     ,'interval_minute' => $r->interval_minute
+                                     ,'interval_second' => $r->interval_second
+                                     ,'vpn' => $r->vpn
+                                     ,'street' => $r->street
+                                     ,'city' => $r->city
+                                     ,'state' => $r->state
+                                     ,'zip' => $r->zip
+                                     ,'contact' => $r->contact
+                                     ,'card_num' => $r->card_num
+                                     ,'end_month' => $r->end_month
+                                     ,'end_year' => $r->end_year
+                                     ,'note' => $r->note
                                  ]), JSON_UNESCAPED_UNICODE);
     }
     public function multiedit(Request $request)

@@ -89,7 +89,7 @@ class AmazonController extends Controller
                 $grid->model()->where('user_id',Admin::user()->id);
             
             $grid->id('ID')->sortable();
-            $grid->machine_code('机器码')->drop('amazon');
+            $grid->machine_code('机器码')->drop('amazon2');
             if(Admin::user()->isRole('admin'))
             {
                 $grid->column('模块')->display(function(){
