@@ -46,6 +46,7 @@ class InstagramController extends Controller
     
     public function multiedit(Request $request)
     {
+
         $auth_code = $request->data['authCode'];
         $comment = $request->data['comment'];
         $topic = $request->data['topic'];

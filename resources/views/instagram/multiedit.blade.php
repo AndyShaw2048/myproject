@@ -62,7 +62,7 @@
 
                 <div class="layui-inline">
                     <div class="layui-input-block">
-                        <button class="layui-btn" lay-submit lay-filter="chargeForm">批量修改</button>
+                        <button class="layui-btn" lay-submit lay-filter="editedForm">批量修改</button>
                     </div>
                 </div>
             </form>
@@ -82,7 +82,7 @@
         var form = layui.form;
         form.render();
         //监听提交
-        form.on('submit(chargeForm)', function(data){
+        form.on('submit(editedForm)', function(data){
 //            layer.msg(JSON.stringify(data.field));
             //获取多选框的值
             obj = document.getElementsByClassName('grid-row-checkbox');
