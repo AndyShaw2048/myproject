@@ -430,6 +430,73 @@ EOT;
 </div>
 EOT;
         }
+        if($model == 'instagram')
+        {
+            return <<<EOT
+<!-- Button trigger modal -->
+<a style="color:#0ba8cc;font-weight:bold;cursor:pointer;" data-toggle="modal" data-target="#{$this->row->id}">
+  {$this->row->machine_code}
+</a>
+
+<!-- Modal -->
+<div class="modal fade" id="{$this->row->id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body" style="margin-top:50px;color:#000;">
+      <b>
+            <table class="table table-bordered table-hover" style="table-layout:fixed;">
+                <tr>
+                    <td>ID</td>
+                    <td>{$this->row->id}</td>
+                </tr>
+                <tr>
+                    <td>首次运行授权码</td>
+                    <td>{$this->row->auth_code}</td>
+                </tr>
+                <tr>
+                    <td>评论输入框</td>
+                    <td>{$this->row->comment}</td>
+                </tr>
+                <tr>
+                    <td>搜索话题</td>
+                    <td>{$this->row->topic}</td>
+                </tr>
+                <tr>
+                    <td>给粉丝发消息</td>
+                    <td>{$this->row->message}</td>
+                </tr>
+                <tr>
+                    <td>上传照片数量</td>
+                    <td>{$this->row->images_num}</td>
+                </tr>
+                <tr>
+                    <td>评论发布照片</td>
+                    <td>{$this->row->comment_images}</td>
+                </tr>
+                <tr>
+                    <td>人物点击间隔时间</td>
+                    <td>{$this->row->interval_time}</td>
+                </tr>
+                <tr>
+                    <td>每轮运行间隔</td>
+                    <td>{$this->row->round_time}</td>
+                </tr>
+                <tr>
+                    <td>所属用户</td>
+                    <td>{$name}</td>
+                </tr>
+                <tr>
+                    <td>到期时间</td>
+                    <td>{$this->row->end_time}</td>
+                </tr>
+            </table>
+      </b>
+      </div>
+    </div>
+  </div>
+</div>
+EOT;
+        }
     }
 }
 

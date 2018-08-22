@@ -94,4 +94,15 @@ Route::group([
     //--续费
     $router->get('/amazon2/renewal/{id}', 'AmazonController@renewalIndex');
     $router->post('/amazon2/renewal', 'AmazonController@renewalStore');
+
+    /**
+     * Instagram模块
+     */
+    $router->resource('/instagram', InstagramController::class);
+    $router->post('/instagram', 'InstagramController@store');
+    $router->post('/instagram/edit', 'InstagramController@editStore');
+    //--续费
+    $router->get('/instagram/renewal/{id}', 'InstagramController@renewalIndex');
+    $router->post('/instagram/renewal', 'Instagramontroller@renewalStore');
+    $router->post('/instagram/renewal', 'InstagramController@renewalStore');
 });

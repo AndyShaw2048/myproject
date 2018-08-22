@@ -67,7 +67,7 @@ class WishController extends Controller
         return Admin::content(function (Content $content) {
 
             $content->header('Wish模块');
-            $content->description('description');
+            $content->description('新建');
 
             $content->body(view('wish.index'));
         });
