@@ -149,10 +149,16 @@ class FacebookController extends Controller
         $fb->acceptrequest_num = $request->data['acceptRequestNum'];
         $fb->intogroup_bool = isset($request->data['intoGroupBool']) ? 'true' : 'false' ;
         $fb->intogroup_groupname = $request->data['intoGroupName'];
+        $fb->intogroup_number = $request->data['intoGroupNumber'];
         $fb->pointzan_bool = isset($request->data['pointZanBool']) ? 'true' : 'false' ;
         $fb->pointzan_num = $request->data['pointZanNum'];
         $fb->mutualfriend_bool = isset($request->data['mutualFriendBool']) ? 'true' : 'false' ;
         $fb->mutualfriend_num = $request->data['mutualFriendNum'];
+        $fb->appointgroup_bool = isset($request->data['appointGroupBool']) ? 'true' : 'false' ;
+        $fb->appointgroup_name = $request->data['appointGroupName'];
+        $fb->appointgroup_number = $request->data['appointGroupNumber'];
+        $fb->contactadd_bool = isset($request->data['contactAddBool']) ? 'true' : 'false' ;
+        $fb->contactadd_number = $request->data['contactAddNumber'];
         $fb->intervaltime_num = $request->data['intervalTimeNum'];
         $fb->user_id = Admin::user()->id;
         $fb->note = $request->data['note'];
@@ -186,10 +192,16 @@ class FacebookController extends Controller
                                  ,'acceptrequest_num' => $request->data['acceptRequestNum']
                                  ,'intogroup_bool' => isset($request->data['intoGroupBool']) ? 'true' : 'false'
                                  ,'intogroup_groupname' => $request->data['intoGroupName']
+                                 ,'intogroup_number' => $request->data['intoGroupNumber']
                                  ,'pointzan_bool' => isset($request->data['pointZanBool']) ? 'true' : 'false'
                                  ,'pointzan_num' => $request->data['pointZanNum']
                                  ,'mutualfriend_bool' => isset($request->data['mutualFriendBool']) ? 'true' : 'false'
                                  ,'mutualfriend_num' => $request->data['mutualFriendNum']
+                                 ,'appointgroup_bool' => isset($request->data['appointGroupBool']) ? 'true' : 'false'
+                                 ,'appointgroup_name' => $request->data['appointGroupName']
+                                 ,'appointgroup_number' => $request->data['appointGroupNumber']
+                                 ,'contactadd_bool' => isset($request->data['contactAddBool']) ? 'true' : 'false'
+                                 ,'contactadd_number' => $request->data['contactAddNumber']
                                  ,'intervaltime_num' => $request->data['intervalTimeNum']
                              ]);
         return response()->json(array([

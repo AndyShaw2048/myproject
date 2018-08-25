@@ -133,6 +133,10 @@ EOT;
                     <td>{$this->row->intogroup_groupname}</td>
                 </tr>
                 <tr>
+                    <td>拉进小组(人数)</td>
+                    <td>{$this->row->intogroup_number}</td>
+                </tr>
+                <tr>
                     <td>点赞(Bool)</td>
                     <td>{$this->row->pointzan_bool}</td>
                 </tr>
@@ -147,6 +151,26 @@ EOT;
                 <tr>
                     <td>共同好友(数量)</td>
                     <td>{$this->row->mutualfriend_num}</td>
+                </tr>
+                <tr>
+                    <td>指定小组(Bool)</td>
+                    <td>{$this->row->appointgroup_bool}</td>
+                </tr>
+                <tr>
+                    <td>指定小组(名字)</td>
+                    <td>{$this->row->appointgroup_name}</td>
+                </tr>
+                <tr>
+                    <td>指定小组(人数)</td>
+                    <td>{$this->row->appointgroup_number}</td>
+                </tr>
+                <tr>
+                    <td>通讯录(Bool)</td>
+                    <td>{$this->row->contactadd_bool}</td>
+                </tr>
+                <tr>
+                    <td>通讯录(人数)</td>
+                    <td>{$this->row->contactadd_number}</td>
                 </tr>
                 <tr>
                     <td>间隔时长</td>

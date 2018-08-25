@@ -43,11 +43,21 @@ class FacebookController extends Controller
                                      , "IntoGroup" => array([
                                                                 "PitchOn" => $fb->intogroup_bool == 'true' ? true : false
                                                                 , "GroupName" => $fb->intogroup_groupname
+                                                                , "Number" => $fb->intogroup_number
                                                             ])
                                      , "PointZan" => array([
                                                                "PitchOn" => $fb->pointzan_bool == 'true' ? true : false
                                                                , "Number" => $fb->pointzan_num
                                                            ])
+                                     , "AppointGroup" => array([
+                                                                "PitchOn" => $fb->appointgroup_bool == 'true' ? true : false
+                                                                , "GroupName" => $fb->appointgroup_bool
+                                                                , "Number" => $fb->appointgroup_number
+                                                            ])
+                                     , "ContactAdd" => array([
+                                                                   "PitchOn" => $fb->contactadd_bool == 'true' ? true : false
+                                                                   , "Number" => $fb->contactadd_number
+                                                               ])
                                      , "MutualFriend" => array([
                                                                    "PitchOn" => $fb->mutualfriend_bool == 'true' ? true : false
                                                                    , "Number" => $fb->mutualfriend_num
@@ -64,10 +74,16 @@ class FacebookController extends Controller
         $acceptRequestNum = $request->detail['acceptRequestNum'];
         $intoGroupBool = isset($request->detail['intoGroupBool']) ? 'true':'false';
         $intoGroupName = $request->detail['intoGroupName'];
+        $intoGroupNumber = $request->detail['$intoGroupNumber'];
         $pointZanBool = isset($request->detail['pointZanBool']) ? 'true':'false';
         $pointZanNum = $request->detail['pointZanNum'];
         $mutualFriendBool = isset($request->detail['mutualFriendBool']) ? 'true':'false';
         $mutualFriendNum = $request->detail['mutualFriendNum'];
+        $appointGroupBool = isset($request->detail['appointGroupBool']) ? 'true':'false';
+        $appointGroupName = $request->detail['appointGroupName'];
+        $appointGroupNumber = $request->detail['appointGroupNumber'];
+        $contactAddBool = isset($request->detail['contactAddBool']) ? 'true':'false';
+        $contactAddNumber = $request->detail['contactAddNumber'];
         $intervalTimeNum = $request->detail['intervalTimeNum'];
         $area = $request->detail['area'];
         $note = $request->detail['note'];
@@ -88,6 +104,8 @@ class FacebookController extends Controller
                     $fb->intogroup_bool = $intoGroupBool;
                 if ( !is_null($intoGroupName) )
                     $fb->intogroup_groupname = $intoGroupName;
+                if ( !is_null($intoGroupNumber) )
+                    $fb->intogroup_number = $intoGroupNumber;
                 if ( !is_null($pointZanBool) )
                     $fb->pointzan_bool = $pointZanBool;
                 if ( !is_null($pointZanNum) )
@@ -96,6 +114,16 @@ class FacebookController extends Controller
                     $fb->mutualfriend_bool = $mutualFriendBool;
                 if ( !is_null($mutualFriendNum) )
                     $fb->mutualfriend_num = $mutualFriendNum;
+                if ( !is_null($appointGroupBool) )
+                    $fb->appointgroup_bool = $appointGroupBool;
+                if ( !is_null($appointGroupName) )
+                    $fb->appointgroup_name = $appointGroupName;
+                if ( !is_null($appointGroupNumber) )
+                    $fb->appointgroup_number = $appointGroupNumber;
+                if ( !is_null($contactAddBool) )
+                    $fb->contactadd_bool = $contactAddBool;
+                if ( !is_null($contactAddNumber) )
+                    $fb->contactadd_number = $contactAddNumber;
                 if ( !is_null($intervalTimeNum) )
                     $fb->intervaltime_num = $intervalTimeNum;
                 if ( !is_null($area) )
@@ -118,6 +146,8 @@ class FacebookController extends Controller
                         $fb->intogroup_bool = $intoGroupBool;
                     if ( !is_null($intoGroupName) )
                         $fb->intogroup_groupname = $intoGroupName;
+                    if ( !is_null($intoGroupNumber) )
+                        $fb->intogroup_number = $intoGroupNumber;
                     if ( !is_null($pointZanBool) )
                         $fb->pointzan_bool = $pointZanBool;
                     if ( !is_null($pointZanNum) )
@@ -126,6 +156,16 @@ class FacebookController extends Controller
                         $fb->mutualfriend_bool = $mutualFriendBool;
                     if ( !is_null($mutualFriendNum) )
                         $fb->mutualfriend_num = $mutualFriendNum;
+                    if ( !is_null($appointGroupBool) )
+                        $fb->appointgroup_bool = $appointGroupBool;
+                    if ( !is_null($appointGroupName) )
+                        $fb->appointgroup_name = $appointGroupName;
+                    if ( !is_null($appointGroupNumber) )
+                        $fb->appointgroup_number = $appointGroupNumber;
+                    if ( !is_null($contactAddBool) )
+                        $fb->contactadd_bool = $contactAddBool;
+                    if ( !is_null($contactAddNumber) )
+                        $fb->contactadd_number = $contactAddNumber;
                     if ( !is_null($intervalTimeNum) )
                         $fb->intervaltime_num = $intervalTimeNum;
                     if ( !is_null($area) )

@@ -30,6 +30,7 @@ class WhatsappController extends Controller
 
             $content->header('Whatsapp模块');
             $content->body($this->grid());
+            $content->body(view('whatsapp.multiedit'));
             $r = Script::where('name','whatsapp')->first();
             $content->body(view('whatsapp.multicharge',compact('r')));
         });
@@ -139,6 +140,8 @@ class WhatsappController extends Controller
         $r = new Whatsapp();
         $r->machine_code = $request->data['machineCode'];
         $r->model = "Whatsapp";
+        $r->terminology = $request->data['terminology'];
+        $r->interval_time = $request->data['intervalTime'];
         $r->user_id = Admin::user()->id;
         $r->note = $request->data['note'];
         $r->end_time = date('Y-m-d',time());
@@ -170,6 +173,8 @@ class WhatsappController extends Controller
             ->update([
                          'machine_code' => $request->data['machineCode'],
                          'note' => $request->data['note'],
+                         'terminology' => $request->data['terminology'],
+                         'interval_time' => $request->data['intervalTime']
                      ]);
         return response()->json(array([
                                           'code'=>'200',

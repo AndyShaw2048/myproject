@@ -34,7 +34,9 @@ Route::post('/wish','WishController@multiedit');
 Route::get('/wish/{id?}','WishController@getInfo')->where('id','[0-9]+');
 Route::post('/wish/multiCharge','WishController@multiCharge');
 
+Route::post('/whatsapp','WhatsappController@multiedit');
 Route::post('/whatsapp/multiCharge','WhatsappController@multiCharge');
+Route::get('/whatsapp/{id?}','WhatsappController@getInfo')->where('id','[0-9]+');
 
 Route::post('/line/multiCharge','LineController@multiCharge');
 

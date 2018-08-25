@@ -14,7 +14,18 @@
                     <input type="text" name="machineCode" value="{{$r->machine_code}}" required  lay-verify="required" placeholder="请输入机器码" autocomplete="off" class="layui-input">
                 </div>
             </div>
-
+            <div class="layui-form-item">
+                <label class="layui-form-label">语术语句</label>
+                <div class="layui-input-block">
+                    <input value="{{$r->terminology}}" type="text" name="terminology" placeholder="请填写发送的话术语句" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">间隔时间</label>
+                <div class="layui-input-block">
+                    <input value="{{$r->interval_time}}" type="text" name="intervalTime" placeholder="请填写间隔时间(秒)" autocomplete="off" class="layui-input">
+                </div>
+            </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</label>
                 <div class="layui-input-block">
