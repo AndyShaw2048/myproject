@@ -115,9 +115,6 @@ class MCInfoController extends Controller
 
                 $filter->equal('mode');
                 $filter->equal('machine_code');
-                $filter->like('keyword');
-                $filter->like('matching_name');
-                $filter->like('relation_name');
                 $filter->equal('note');
             });
         });
@@ -145,6 +142,7 @@ class MCInfoController extends Controller
             $form->text('keyword','关键词')->rules('required', [
                 'required' => '该项为必填项'
             ]);
+            $form->text('relation_kw','关联关键词');
             $form->text('matching_name','匹配商品名')->rules('required', [
                 'required' => '该项为必填项'
             ]);
@@ -162,6 +160,7 @@ class MCInfoController extends Controller
             ]);
             else
                 $form->hidden('user_id')->value(Admin::user()->id);
+            $form->text('interval_time','间隔时间');
             $form->text('note','备注');
 
             $form->tools(function (Form\Tools $tools) {
@@ -214,6 +213,7 @@ class MCInfoController extends Controller
             $form->text('machine_code','机器码');
             $form->select('mode','模式')->options(Mode::all()->pluck('name', 'id'));
             $form->text('keyword','关键词');
+            $form->text('relation_kw','关联关键词');
             $form->text('matching_name','匹配商品名');
             $states = [
                 'on'  => ['value' => 'true', 'text' => 'True', 'color' => 'success'],
@@ -224,6 +224,7 @@ class MCInfoController extends Controller
             $form->switch('r_prime','关联_prime')->states($states);
             if(Admin::user()->isRole('admin'))
                 $form->select('user_id','所属用户ID')->options(AdminUser::all()->pluck('username', 'id'));
+            $form->text('interval_time','间隔时间');
             $form->text('note','备注');
             $form->display('updated_at', '更新时间');
 

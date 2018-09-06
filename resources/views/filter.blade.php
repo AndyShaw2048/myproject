@@ -17,24 +17,6 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">关键词 <span style="color: red;font-size: larger">*</span></label>
-                    <div class="layui-input-block">
-                        <input type="text" name="keyword" required  lay-verify="required" placeholder="请输入关键词（不为空）" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">匹配商品名</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="matchingName" placeholder="请输入匹配商品名" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item" id="relation_name" style="display: none">
-                    <label class="layui-form-label">关联商品名</label>
-                    <div class="layui-input-block">
-                        <input type="text" id="relationName" name="relationName" placeholder="请输入关联商品名" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
                     <label class="layui-form-label">机器码</label>
                     <div class="layui-input-block">
                         <input type="text" name="machineCode" placeholder="请输入机器码" autocomplete="off" class="layui-input">
@@ -82,18 +64,6 @@
             if(data.field['mode'] != '')
             {
                 url = url + "&mode=" + data.field['mode'];
-            }
-            if(data.field['keyword'] != '')
-            {
-                url = url + "&keyword=" + data.field['keyword'];
-            }
-            if(data.field['matchingName'] != '')
-            {
-                url = url + "&matchingName=" + data.field['matchingName'];
-            }
-            if(data.field['relationName'] != '')
-            {
-                url = url + "&relationName=" + data.field['relationName'];
             }
             if(data.field['machineCode'] != '')
             {

@@ -85,6 +85,7 @@ class MCController extends Controller
             'model' => 'amazon'
             ,'select' => $mc->ModeInfo->name
             ,'keyword' => $mc->keyword
+            ,'relation_keyword' => $mc->relation_kw
             ,'matching_product' => array([
                 'name' => $mc->matching_name
                 ,'prime' => $mc->m_prime == 'true' ? true:false
@@ -93,6 +94,7 @@ class MCController extends Controller
                  'name' => $mc->relation_name
                  ,'prime' => $mc->r_prime == 'true' ? true:false
                                          ])
+            ,'interval_time' => $mc->interval_time
                                 ),JSON_UNESCAPED_UNICODE);
     }
 
