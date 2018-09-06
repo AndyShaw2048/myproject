@@ -49,6 +49,10 @@ class Drop extends AbstractDisplayer
                     <td>{$this->row->keyword}</td>
                 </tr>
                 <tr>
+                    <td>关联关键词</td>
+                    <td>{$this->row->relation_kw}</td>
+                </tr>
+                <tr>
                     <td>匹配商品名</td>
                     <td>{$this->row->matching_name}</td>
                 </tr>
@@ -67,6 +71,10 @@ class Drop extends AbstractDisplayer
                 <tr>
                     <td>所属用户</td>
                     <td>{$name}</td>
+                </tr>
+                <tr>
+                    <td>间隔时间</td>
+                    <td>{$this->row->interval_time}</td>
                 </tr>
                 <tr>
                     <td>备注</td>
