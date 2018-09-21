@@ -22,16 +22,22 @@
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">匹配商品名</label>
+                    <label class="layui-form-label">关联关键词</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="matchingName" placeholder="请输入匹配商品名" autocomplete="off" class="layui-input">
+                        <input type="text" name="relationKW" placeholder="请输入关联关键词" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <br>
+                <div class="layui-inline">
+                    <label class="layui-form-label">匹配商品名</label>
+                    <div class="layui-input-inline">
+                        <input  style="width: 197px" type="text" name="matchingName" placeholder="请输入匹配商品名" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
                 <div class="layui-inline" id="relation_name">
                     <label class="layui-form-label">关联商品名</label>
                     <div class="layui-input-inline">
-                        <input style="width: 197px" type="text" id="relationName" name="relationName" placeholder="请输入关联商品名" autocomplete="off" class="layui-input">
+                        <input type="text" id="relationName" name="relationName" placeholder="请输入关联商品名" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">

@@ -15,6 +15,7 @@ class MCController extends Controller
     {
         $mode = $request->detail['mode'];
         $keyword = $request->detail['keyword'];
+        $relationKW = $request->detail['relationKW'];
         $matchingName = $request->detail['matchingName'];
         $relationName = $request->detail['relationName'];
         $note = $request->detail['note'];
@@ -29,6 +30,8 @@ class MCController extends Controller
                     $mc->mode = $mode;
                 if(!is_null($keyword))
                     $mc->keyword = $keyword;
+                if(!is_null($relationKW))
+                    $mc->relation_kw = $relationKW;
                 if(!is_null($matchingName))
                     $mc->matching_name = $matchingName;
                 if(!is_null($relationName))
@@ -46,6 +49,8 @@ class MCController extends Controller
                         $mc->mode = $mode;
                     if(!is_null($keyword))
                         $mc->keyword = $keyword;
+                    if(!is_null($relationKW))
+                        $mc->relation_kw = $relationKW;
                     if(!is_null($matchingName))
                         $mc->matching_name = $matchingName;
                     if(!is_null($relationName))
