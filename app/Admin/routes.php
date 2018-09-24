@@ -18,6 +18,8 @@ Route::group([
     //序列号生成
     $router->get('/serials/generate', 'MCController@index');
     $router->post('/serials/generate', 'MCController@store');
+    //序列号导出
+    $router->get('/serials/export', 'MCController@export');
     //充值
     $router->get('/recharge', 'RechargeController@index');
     $router->post('/recharge', 'RechargeController@store');

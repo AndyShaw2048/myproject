@@ -60,7 +60,7 @@
 
 
 {{--表格--}}
-<p style="font-size: 20px;margin-top: 10px;margin-left: 20px;">列表(未使用)</p>
+<p style="font-size: 20px;margin-top: 10px;margin-left: 20px;">列表(未使用) <a href="export" style="color: #00a8ff" target="_blank">点击导出</a></p>
 <hr>
 <table class="layui-table">
     <colgroup>

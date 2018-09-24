@@ -5,6 +5,11 @@
         {{csrf_field()}}
         <br>
         <div class="layui-inline">
+            <div class="layui-input-block" style="margin-left: 0px">
+                <a class="layui-btn layui-btn-sm" href="http://pay.51bestseller.com" target="_blank">购买序列号</a>
+            </div>
+        </div>
+        <div class="layui-inline">
             <label class="layui-form-label">当前余额</label>
             <div class="layui-input-inline">
                 <span style="line-height: 36px;font-size: 16px;color: #02c3dd;font-weight: bold">{{\Encore\Admin\Facades\Admin::user()->balance}} 元</span>
@@ -18,7 +23,7 @@
         </div>
         <div class="layui-inline" style="text-align: center;">
             <div class="layui-input-block">
-                <button class="layui-btn layui-btn-sm" type="submit" lay-submit lay-filter="chargeForm" >充值</button>
+                <button class="layui-btn layui-btn-sm  layui-btn-primary" type="submit" lay-submit lay-filter="chargeForm" >充值</button>
             </div>
         </div>
     </form>

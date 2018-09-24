@@ -12,8 +12,11 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
+use Illuminate\Support\Facades\DB;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Http\Request;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class MCController extends Controller
 {
@@ -72,6 +75,33 @@ class MCController extends Controller
         }
         return redirect()->back();
     }
-
-
+    
+    public function export()
+    {
+        if(!Admin::user()->isRole('admin'))
+            return '无权操作';
+        try
+        {
+            $spreadsheet = new Spreadsheet();
+            $sheet = $spreadsheet->getActiveSheet();
+            $sheet->setCellValue('A1', '序列号');
+            $sheet->setCellValue('B1', '金额');
+            $ascii = '67';
+            $serials = DB::table('serials')->where('status','0')->get();
+            foreach($serials as $i => $serial)
+            {
+                $sheet->setCellValue('A'.($i+2), $serial->content);
+                $sheet->setCellValue('B'.($i+2), $serial->money);
+                $ascii++;
+            }
+            $writer = new Xlsx($spreadsheet);
+            $filename = 'export/'.md5(time()).'.xlsx';
+            $writer->save($filename);
+        }
+        catch(\Exception $e)
+        {
+            return '导出失败';
+        }
+        return redirect(url($filename));
+    }
 }
