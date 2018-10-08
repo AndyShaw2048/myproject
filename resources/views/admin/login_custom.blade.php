@@ -14,8 +14,8 @@
   <div class="wrapper">
     <div class="login">
       <form action="" method="post" class="container offset1 loginform" data-am-validator>
-        <div style="text-align: center;font-size: 24px;margin-top: 10px;color: grey">云控平台</div>
-        {{csrf_field()}}
+          <div style="text-align: center;font-size: 24px;margin-top: 10px;color: grey">云控平台</div>
+          {{csrf_field()}}
         <div id="owl-login">
           <div class="hand"></div>
           <div class="hand hand-r"></div>
@@ -25,12 +25,12 @@
           </div>
         </div>
         <div class="pad" style="padding-top: 10px">
-          @if(!$errors->isEmpty())
-            <div class="am-alert am-alert-warning" data-am-alert style="width: 338px;margin: 0 auto;height: 40px;line-height: 20px;margin-bottom: 10px">
-              <button type="button" class="am-close">&times;</button>
-              <p>用户名或密码错误</p>
-            </div>
-          @endif
+            @if(!$errors->isEmpty())
+                <div class="am-alert am-alert-warning" data-am-alert style="width: 338px;margin: 0 auto;height: 40px;line-height: 20px;margin-bottom: 10px">
+                    <button type="button" class="am-close">&times;</button>
+                    <p>用户名或密码错误</p>
+                </div>
+            @endif
           <div class="control-group">
             <div class="controls">
               <label for="telephone" class="control-label fa fa-user"></label>
@@ -46,8 +46,8 @@
         </div>
 
         <div class="form-actions"><a href="#" tabindex="5" onclick="alert('请联系网站管理员');" class="btn pull-left btn-link text-muted">忘记密码?</a>
-          <a href="/register" tabindex="6" class="btn btn-link text-muted">注册</a>
-          <button type="submit" tabindex="4" class="btn btn-primary">登录</button>
+            <a href="/register" tabindex="6" class="btn btn-link text-muted">注册</a>
+            <button type="submit" tabindex="4" class="btn btn-primary">登录</button>
         </div>
       </form>
     </div>

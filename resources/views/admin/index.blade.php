@@ -6,7 +6,7 @@
     <title>{{ Admin::title() }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta name="_token" content="{{ csrf_token() }}"/>
+
     <link rel="stylesheet" href="{{ admin_asset("/vendor/laravel-admin/AdminLTE/bootstrap/css/bootstrap.min.css") }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ admin_asset("/vendor/laravel-admin/font-awesome/css/font-awesome.min.css") }}">
@@ -37,11 +37,6 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="{{url('layui/css/layui.css')}}">
-    <script src="{{url('layui/layui.js')}}"></script>
-
-    <link rel="stylesheet" href="{{url('message/message.css')}}">
-    <script src="{{url('message/message.min.js')}}"></script>
 </head>
 
 <body class="hold-transition {{config('admin.skin')}} {{join(' ', config('admin.layout'))}}">

@@ -17,7 +17,7 @@
                 <span>{{$item['title']}}</span>
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
-            <ul class="treeview-menu" style="top: 35px;">
+            <ul class="treeview-menu">
                 @foreach($item['children'] as $item)
                     @include('admin::partials.menu', $item)
                 @endforeach
