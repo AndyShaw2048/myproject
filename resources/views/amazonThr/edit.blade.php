@@ -257,9 +257,11 @@
 <script>
 
     //Demo
-    layui.use('form', function(){
-        var form = layui.form;
+    layui.use(['form','element'], function(){
+        var form = layui.form
+                ,element = layui.element
         form.render();
+        element.render();
 
         form.on('submit(submitForm)', function(data){
             console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
