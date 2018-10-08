@@ -173,7 +173,7 @@
                         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                     },
                     success: function(data){
-                        window.setTimeout("window.location='/admin/facebook'",2000);
+                        window.setTimeout("window.location='/admin/amazon'",2000);
                         toastr.success('更新成功');
                     },
                     error: function(xhr, type){

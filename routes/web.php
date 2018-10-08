@@ -22,6 +22,10 @@ Route::post('/amazon','MCController@multiedit');
 Route::get('/amazon/{id?}','MCController@getMCInfo')->where('id','[0-9]+');
 Route::post('/amazon/multiCharge','MCController@multiCharge');
 
+Route::post('/amazonThr','AmazonThrController@multiedit');
+Route::get('/amazonThr/{id?}','AmazonThrController@getInfo')->where('id','[0-9]+');
+Route::post('/amazonThr/multiCharge','AmazonThrController@multiCharge');
+
 Route::post('/facebook','FacebookController@multiedit');
 Route::get('/facebook/{id?}','FacebookController@getInfo')->where('id','[0-9]+');
 Route::post('/facebook/multiCharge','FacebookController@multiCharge');

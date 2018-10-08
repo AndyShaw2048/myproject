@@ -93,7 +93,7 @@ class Drop extends AbstractDisplayer
 </div>
 EOT;
         }
-        if($model == 'facebook')
+        elseif($model == 'facebook')
         {
             return <<<EOT
 <!-- Button trigger modal -->
@@ -205,7 +205,7 @@ EOT;
 </div>
 EOT;
         }
-        if($model == 'messenger')
+        elseif($model == 'messenger')
         {
             return <<<EOT
 <!-- Button trigger modal -->
@@ -280,7 +280,7 @@ EOT;
 </div>
 EOT;
         }
-        if($model == 'wish')
+        elseif($model == 'wish')
         {
             return <<<EOT
 <!-- Button trigger modal -->
@@ -347,7 +347,7 @@ EOT;
 </div>
 EOT;
         }
-        if($model == 'whatsapp')
+        elseif($model == 'whatsapp')
         {
             return <<<EOT
 <!-- Button trigger modal -->
@@ -357,7 +357,7 @@ EOT;
 EOT;
 
         }
-        if($model == 'line')
+        elseif($model == 'line')
         {
             return <<<EOT
 <!-- Button trigger modal -->
@@ -367,7 +367,7 @@ EOT;
 EOT;
 
         }
-        if($model == 'amazon2')
+        elseif($model == 'amazon2')
         {
             return <<<EOT
 <!-- Button trigger modal -->
@@ -462,7 +462,7 @@ EOT;
 </div>
 EOT;
         }
-        if($model == 'instagram')
+        elseif($model == 'instagram')
         {
             return <<<EOT
 <!-- Button trigger modal -->
@@ -522,6 +522,156 @@ EOT;
                     <td>{$this->row->end_time}</td>
                 </tr>
             </table>
+      </b>
+      </div>
+    </div>
+  </div>
+</div>
+EOT;
+        }
+        elseif($model == 'AmazonThr')
+        {
+            return <<<EOT
+<!-- Button trigger modal -->
+<a style="color:#0ba8cc;font-weight:bold;cursor:pointer;" data-toggle="modal" data-target="#{$this->row->id}">
+  {$this->row->machine_code}
+</a>
+
+<!-- Modal -->
+<div class="modal fade" id="{$this->row->id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body" style="margin-top:50px;color:#000;">
+      <b>
+      <div style="display:inline-block; width:49%">
+            <table class="table table-bordered table-hover" style="table-layout:fixed;">
+                <tr>
+                    <td>ID</td>
+                    <td>{$this->row->id}</td>
+                </tr>
+                <tr>
+                    <td>机器码</td>
+                    <td>{$this->row->machine_code}</td>
+                </tr>
+                <tr>
+                    <td>第一次执行功能</td>
+                    <td>{$this->row->first_run}</td>
+                </tr>
+                <tr>
+                    <td>第二次执行功能</td>
+                    <td>{$this->row->second_run}</td>
+                </tr>
+                <tr>
+                    <td>第三次执行功能</td>
+                    <td>{$this->row->third_run}</td>
+                </tr>
+                <tr>
+                    <td>第四次执行功能</td>
+                    <td>{$this->row->fourth_run}</td>
+                </tr>
+                <tr>
+                    <td>第五次执行功能</td>
+                    <td>{$this->row->fifth_run}</td>
+                </tr>
+                <tr>
+                    <td>运行速度</td>
+                    <td>{$this->row->run_speed}</td>
+                </tr>
+                <tr>
+                    <td>运行次数</td>
+                    <td>{$this->row->run_times}</td>
+                </tr>
+                <tr>
+                    <td>定时运行</td>
+                    <td>{$this->row->timing_run_hours} 时 {$this->row->timing_run_minutes} 分</td>
+                </tr>
+                <tr>
+                    <td>等待时间</td>
+                    <td>{$this->row->each_time_interval}</td>
+                </tr>
+                <tr>
+                    <td>自动购买</td>
+                    <td>{$this->row->auto_buy_prime}</td>
+                </tr>
+                <tr>
+                    <td>自动购买_关键词</td>
+                    <td>{$this->row->auto_buy_keyword}</td>
+                </tr>
+                <tr>
+                    <td>自动购买_匹配商品</td>
+                    <td>{$this->row->auto_buy_item}</td>
+                </tr>
+                <tr>
+                    <td>强制关联</td>
+                    <td>{$this->row->relevance_item_prime}</td>
+                </tr>
+                </table>
+                </div>
+                <div style="display:inline-block; width:49%">
+                <table class="table table-bordered table-hover" style="table-layout:fixed;">
+
+                <tr>
+                    <td>强制关联_关键词1</td>
+                    <td>{$this->row->relevance_item_keyword_one}</td>
+                </tr>
+                <tr>
+                    <td>强制关联_商品1</td>
+                    <td>{$this->row->relevance_item_item_one}</td>
+                </tr>
+                <tr>
+                    <td>强制关联_关键词2</td>
+                    <td>{$this->row->relevance_item_keyword_two}</td>
+                </tr>
+                <tr>
+                    <td>强制关联_商品2</td>
+                    <td>{$this->row->relevance_item_item_two}</td>
+                </tr>
+                <tr>
+                    <td>点击广告</td>
+                    <td>{$this->row->sponsored_prime}</td>
+                </tr>
+                <tr>
+                    <td>点击广告_关键词</td>
+                    <td>{$this->row->sponsored_keyword}</td>
+                </tr>
+                <tr>
+                    <td>关键词上首页</td>
+                    <td>{$this->row->keyword_top_prime}</td>
+                </tr>
+                <tr>
+                    <td>关键词上首页_关键词</td>
+                    <td>{$this->row->keyword_top_keyword}</td>
+                </tr>
+                <tr>
+                    <td>关键词上首页_商品</td>
+                    <td>{$this->row->keyword_top_item}</td>
+                </tr>
+                <tr>
+                    <td>删除评论</td>
+                    <td>{$this->row->delete_review_prime}</td>
+                </tr>
+                <tr>
+                    <td>删除评论_关键词</td>
+                    <td>{$this->row->delete_review_keyword}</td>
+                </tr>
+                <tr>
+                    <td>删除评论_商品</td>
+                    <td>{$this->row->delete_review_item}</td>
+                </tr>
+                <tr>
+                    <td>备注</td>
+                    <td>{$this->row->note}</td>
+                </tr>
+                <tr>
+                    <td>所属用户</td>
+                    <td>{$name}</td>
+                </tr>
+                <tr>
+                    <td>到期时间</td>
+                    <td>{$this->row->end_time}</td>
+                </tr>
+            </table>
+            </div>
       </b>
       </div>
     </div>

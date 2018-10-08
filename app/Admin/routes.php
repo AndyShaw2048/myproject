@@ -98,6 +98,16 @@ Route::group([
     $router->post('/amazon2/renewal', 'AmazonController@renewalStore');
 
     /**
+     * Amazon_2模块
+     */
+    $router->resource('/amazonThr', AmazonThrController::class);
+    $router->post('/amazonThr', 'AmazonThrController@store');
+    $router->post('/amazonThr/edit', 'AmazonThrController@editStore');
+    //--续费
+    $router->get('/amazonThr/renewal/{id}', 'AmazonThrController@renewalIndex');
+    $router->post('/amazonThr/renewal', 'AmazonThrController@renewalStore');
+
+    /**
      * Instagram模块
      */
     $router->resource('/instagram', InstagramController::class);
