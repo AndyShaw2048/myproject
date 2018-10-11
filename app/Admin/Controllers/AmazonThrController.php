@@ -167,6 +167,12 @@ class AmazonThrController extends Controller
         $r->delete_review_prime = isset( $request->data['delete_review_prime'] ) ? 'true' : 'false';
         $r->delete_review_keyword = $request->data['delete_review_keyword'];
         $r->delete_review_item = $request->data['delete_review_item'];
+        $r->leave_review_prime = isset( $request->data['leave_review_prime'] ) ? 'true' : 'false';
+        $r->leave_review_keyword = $request->data['leave_review_keyword'];
+        $r->leave_review_item = $request->data['leave_review_item'];
+        $r->leave_review_star = $request->data['leave_review_star'];
+        $r->leave_review_contact = $request->data['leave_review_contact'];
+        $r->leave_review_title = $request->data['leave_review_title'];
         $r->note = $request->data['note'];
         $r->user_id = Admin::user()->id;
         $r->end_time = date('Y-m-d',time());
@@ -219,6 +225,12 @@ class AmazonThrController extends Controller
                             'delete_review_prime' => isset( $request->data['delete_review_prime'] ) ? 'true' : 'false',
                             'delete_review_keyword' => $request->data['delete_review_keyword'],
                             'delete_review_item' => $request->data['delete_review_item'],
+                            'leave_review_prime' => isset( $request->data['leave_review_prime'] ) ? 'true' : 'false',
+                            'leave_review_keyword' => $request->data['leave_review_keyword'],
+                            'leave_review_item' => $request->data['leave_review_item'],
+                            'leave_review_star' => $request->data['leave_review_star'],
+                            'leave_review_contact' => $request->data['leave_review_contact'],
+                            'leave_review_title' => $request->data['leave_review_title'],
                             'note' => $request->data['note'],
                        ]);
         return response()->json(array([

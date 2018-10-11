@@ -605,10 +605,6 @@ EOT;
                     <td>强制关联</td>
                     <td>{$this->row->relevance_item_prime}</td>
                 </tr>
-                </table>
-                </div>
-                <div style="display:inline-block; width:49%">
-                <table class="table table-bordered table-hover" style="table-layout:fixed;">
 
                 <tr>
                     <td>强制关联_关键词1</td>
@@ -626,6 +622,10 @@ EOT;
                     <td>强制关联_商品2</td>
                     <td>{$this->row->relevance_item_item_two}</td>
                 </tr>
+                </table>
+                </div>
+                <div style="display:inline-block; width:49%">
+                <table class="table table-bordered table-hover" style="table-layout:fixed;">
                 <tr>
                     <td>点击广告</td>
                     <td>{$this->row->sponsored_prime}</td>
@@ -657,6 +657,30 @@ EOT;
                 <tr>
                     <td>删除评论_商品</td>
                     <td>{$this->row->delete_review_item}</td>
+                </tr>
+                <tr>
+                    <td>留直评</td>
+                    <td>{$this->row->leave_review_prime}</td>
+                </tr>
+                <tr>
+                    <td>留直评_关键词</td>
+                    <td>{$this->row->leave_review_keyword}</td>
+                </tr>
+                <tr>
+                    <td>留直评_商品</td>
+                    <td>{$this->row->leave_review_item}</td>
+                </tr>
+                <tr>
+                    <td>留直评_星级</td>
+                    <td>{$this->row->leave_review_star}</td>
+                </tr>
+                <tr>
+                    <td>留直评_内容</td>
+                    <td>{$this->row->leave_review_content}</td>
+                </tr>
+                <tr>
+                    <td>留直评_标题</td>
+                    <td>{$this->row->leave_review_title}</td>
                 </tr>
                 <tr>
                     <td>备注</td>

@@ -36,6 +36,7 @@ class AmazonThrController extends Controller
                                      ,'Run4' => $r->fourth_run
                                      ,'Run5' => $r->fifth_run
                                      ,'Run_Speed' => $r->run_speed
+                                     ,'Run_Times' => $r->run_times
                                      ,'Timing_time' => $r->timing_run_hours.':'.$r->timing_run_minutes
                                      ,'Each_Time_Interval:' => $r->each_time_interval
 
@@ -65,6 +66,14 @@ class AmazonThrController extends Controller
                                                                    , "Keyword" => $r->delete_review_keyword
                                                                    , "Item" => $r->delete_review_item
                                                                ])
+                                     , 'Leave_A_Review' => array([
+                                                                    "Prime" => $r->leave_review_prime == 'true' ? true : false
+                                                                    , "Keyword" => $r->leave_review_keyword
+                                                                    , "Item" => $r->leave_review_item
+                                                                    , "Star" => $r->leave_review_star
+                                                                    , "Contact" => $r->leave_review_contact
+                                                                    , "Title" => $r->leave_review_title
+                                                                ])
                                      ,'note' => $r->note
                                  ]), JSON_UNESCAPED_UNICODE);
     }
@@ -96,6 +105,12 @@ class AmazonThrController extends Controller
         $delete_review_prime = isset( $request->data['delete_review_prime'] ) ? 'true' : 'false';
         $delete_review_keyword = $request->data['delete_review_keyword'];
         $delete_review_item = $request->data['delete_review_item'];
+        $leave_review_prime = isset( $request->data['leave_review_prime'] ) ? 'true' : 'false';
+        $leave_review_keyword = $request->data['leave_review_keyword'];
+        $leave_review_item = $request->data['leave_review_item'];
+        $leave_review_star = $request->data['leave_review_star'];
+        $leave_review_contact = $request->data['leave_review_contact'];
+        $leave_review_title = $request->data['leave_review_title'];
         $note = $request->data['note'];
         $multiArray = $request->multi;
         
@@ -152,8 +167,18 @@ class AmazonThrController extends Controller
                     $r->delete_review_prime = $delete_review_prime;
                 if ( !is_null($delete_review_keyword) )
                     $r->delete_review_keyword = $delete_review_keyword;
-                if ( !is_null($delete_review_item) )
-                    $r->delete_review_item = $delete_review_item;
+                if ( !is_null($leave_review_prime) )
+                    $r->leave_review_prime = $leave_review_prime;
+                if ( !is_null($leave_review_keyword) )
+                    $r->leave_review_keyword = $leave_review_keyword;
+                if ( !is_null($leave_review_item) )
+                    $r->leave_review_item = $leave_review_item;
+                if ( !is_null($leave_review_star) )
+                    $r->leave_review_star = $leave_review_star;
+                if ( !is_null($leave_review_contact) )
+                    $r->leave_review_contact = $leave_review_contact;
+                if ( !is_null($leave_review_title) )
+                    $r->leave_review_title = $leave_review_title;
                 if ( !is_null($note) )
                     $r->note = $note;
                 $r->save();
@@ -212,6 +237,18 @@ class AmazonThrController extends Controller
                         $r->delete_review_keyword = $delete_review_keyword;
                     if ( !is_null($delete_review_item) )
                         $r->delete_review_item = $delete_review_item;
+                    if ( !is_null($leave_review_prime) )
+                        $r->leave_review_prime = $leave_review_prime;
+                    if ( !is_null($leave_review_keyword) )
+                        $r->leave_review_keyword = $leave_review_keyword;
+                    if ( !is_null($leave_review_item) )
+                        $r->leave_review_item = $leave_review_item;
+                    if ( !is_null($leave_review_star) )
+                        $r->leave_review_star = $leave_review_star;
+                    if ( !is_null($leave_review_contact) )
+                        $r->leave_review_contact = $leave_review_contact;
+                    if ( !is_null($leave_review_title) )
+                        $r->leave_review_title = $leave_review_title;
                     if ( !is_null($note) )
                         $r->note = $note;
                     $r->save();

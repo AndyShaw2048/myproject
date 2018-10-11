@@ -26,6 +26,7 @@
                             <option value="3">点击广告</option>
                             <option value="4">关键词上首页</option>
                             <option value="5">删除差评</option>
+                            <option value="6">留直评</option>
                         </select>
                     </div>
                 </div>
@@ -40,6 +41,7 @@
                             <option value="3">点击广告</option>
                             <option value="4">关键词上首页</option>
                             <option value="5">删除差评</option>
+                            <option value="6">留直评</option>
                         </select>
                     </div>
                 </div>
@@ -54,6 +56,7 @@
                             <option value="3">点击广告</option>
                             <option value="4">关键词上首页</option>
                             <option value="5">删除差评</option>
+                            <option value="6">留直评</option>
                         </select>
                     </div>
                 </div>
@@ -68,6 +71,7 @@
                             <option value="3">点击广告</option>
                             <option value="4">关键词上首页</option>
                             <option value="5">删除差评</option>
+                            <option value="6">留直评</option>
                         </select>
                     </div>
                 </div>
@@ -82,6 +86,7 @@
                             <option value="3">点击广告</option>
                             <option value="4">关键词上首页</option>
                             <option value="5">删除差评</option>
+                            <option value="6">留直评</option>
                         </select>
                     </div>
                 </div>
@@ -235,6 +240,52 @@
                                     <label class="layui-form-label" style="width: 130px">匹配商品</label>
                                     <div class="layui-input-inline">
                                         <input type="text" name="delete_review_item" placeholder="" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">留直评</h2>
+                        <div class="layui-colla-content">
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <input type="checkbox" name="leave_review_prime" title="Prime">
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label" style="width: 130px">关键词</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="leave_review_keyword" placeholder="" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label" style="width: 130px">匹配商品</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="leave_review_item" placeholder="" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label" style="width: 200px;">星级</label>
+                                    <div class="layui-input-inline">
+                                        <select name="leave_review_star">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label" style="width: 130px">填写内容</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="leave_review_contact" placeholder="" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label" style="width: 130px">内容标题</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="leave_review_title" placeholder="" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                             </div>
