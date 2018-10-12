@@ -676,7 +676,7 @@ EOT;
                 </tr>
                 <tr>
                     <td>留直评_内容</td>
-                    <td>{$this->row->leave_review_content}</td>
+                    <td>{$this->row->leave_review_contact}</td>
                 </tr>
                 <tr>
                     <td>留直评_标题</td>
