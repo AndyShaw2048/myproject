@@ -257,13 +257,13 @@
                             <div class="layui-inline">
                                 <label class="layui-form-label" style="width: 130px">关键词</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="leave_review_keyword" {{$r->leave_review_keyword}} placeholder="" autocomplete="off" class="layui-input">
+                                    <input type="text" name="leave_review_keyword" value="{{$r->leave_review_keyword}}" placeholder="" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-inline">
                                 <label class="layui-form-label" style="width: 130px">匹配商品</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="leave_review_item" {{$r->leave_review_item}} placeholder="" autocomplete="off" class="layui-input">
+                                    <input type="text" name="leave_review_item"  value="{{$r->leave_review_item}}" placeholder="" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-inline">
@@ -281,13 +281,13 @@
                             <div class="layui-inline">
                                 <label class="layui-form-label" style="width: 130px">填写内容</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="leave_review_contact" {{$r->leave_review_contact}} placeholder="" autocomplete="off" class="layui-input">
+                                    <input type="text" name="leave_review_contact"  value="{{$r->leave_review_contact}}" placeholder="" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-inline">
                                 <label class="layui-form-label" style="width: 130px">内容标题</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="leave_review_title" {{$r->leave_review_title}} placeholder="" autocomplete="off" class="layui-input">
+                                    <input type="text" name="leave_review_title"  value="{{$r->leave_review_title}}" placeholder="" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                         </div>
