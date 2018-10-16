@@ -129,6 +129,7 @@
                     <select name="area">
                         <option value=""></option>
                         <option value="美国" {{$fb->area=='美国' ? 'selected':''}}>美国</option>
+                        <option value="德国" {{$fb->area=='德国' ? 'selected':''}}>美国</option>
                         <option value="英国" {{$fb->area=='英国' ? 'selected':''}}>英国</option>
                         <option value="台湾" {{$fb->area=='台湾' ? 'selected':''}}>台湾</option>
                         <option value="日本" {{$fb->area=='日本' ? 'selected':''}}>日本</option>
