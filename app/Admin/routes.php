@@ -117,4 +117,11 @@ Route::group([
     $router->get('/instagram/renewal/{id}', 'InstagramController@renewalIndex');
     $router->post('/instagram/renewal', 'Instagramontroller@renewalStore');
     $router->post('/instagram/renewal', 'InstagramController@renewalStore');
+
+    /**
+     * DLA模块
+     */
+    $router->resource('/dla', DLAController::class);
+    $router->post('/dla/{id}', 'DLAController@purchase');
+//    $router->post('/dla/edit', 'DLAController@editStore');
 });
