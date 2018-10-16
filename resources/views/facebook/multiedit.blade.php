@@ -126,6 +126,7 @@
                             <option value="新加坡">新加坡</option>
                             <option value="马来西亚">马来西亚</option>
                             <option value="泰国">泰国</option>
+                            <option value="德国">德国</option>
                         </select>
                     </div>
                 </div>
