@@ -51,7 +51,7 @@ class FacebookController extends Controller
                                                            ])
                                      , "AppointGroup" => array([
                                                                 "PitchOn" => $fb->appointgroup_bool == 'true' ? true : false
-                                                                , "GroupName" => $fb->appointgroup_bool
+                                                                , "GroupName" => $fb->appointgroup_name
                                                                 , "Number" => $fb->appointgroup_number
                                                             ])
                                      , "ContactAdd" => array([
