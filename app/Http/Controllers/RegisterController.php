@@ -47,7 +47,7 @@ class RegisterController extends Controller
         $user->password = bcrypt($request->password);
         $user->balance = 0;
         $user->save();
-        DB::update("update invitation set user_id=?,used_time=?",[$user->id,date('Y-m-d H:i:s',time())]);
+        DB::update("update invitation set user_id=?,used_time=? where code = ?",[$user->id,date('Y-m-d H:i:s',time()),$code->code]);
         DB::insert("insert into admin_role_users (role_id,user_id) VALUES (?,?)",[2,$user->id]);
         return redirect()->back()->withErrors(['msg' => '注册成功，请登录']);
     }
