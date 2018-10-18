@@ -70,6 +70,7 @@ class UserController extends Controller
             $grid->id('ID')->sortable();
             $grid->username(trans('admin.username'));
             $grid->name(trans('admin.name'));
+            $grid->balance('余额');
             $grid->roles(trans('admin.roles'))->pluck('name')->label();
             $grid->created_at(trans('admin.created_at'));
             $grid->updated_at(trans('admin.updated_at'));
@@ -85,6 +86,7 @@ class UserController extends Controller
                     $actions->disableDelete();
                 });
             });
+
         });
     }
 
@@ -100,6 +102,7 @@ class UserController extends Controller
 
             $form->text('username', trans('admin.username'))->rules('required');
             $form->text('name', trans('admin.name'))->rules('required');
+            $form->number('balance','余额');
             $form->image('avatar', trans('admin.avatar'));
             $form->password('password', trans('admin.password'))->rules('required|confirmed');
             $form->password('password_confirmation', trans('admin.password_confirmation'))->rules('required')

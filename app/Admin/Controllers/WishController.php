@@ -104,8 +104,11 @@ class WishController extends Controller
                 // 添加操作
                 $actions->append(new Renewal($actions->getKey()));
             });
-            $grid->disableFilter();
-            $grid->disableExport();
+            $grid->filter(function($filter){
+                $filter->disableIdFilter();
+                $filter->equal('machine_code','机器码');
+                $filter->like('note','备注');
+            });            $grid->disableExport();
         });
     }
 

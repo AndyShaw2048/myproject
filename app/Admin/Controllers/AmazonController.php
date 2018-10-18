@@ -101,13 +101,14 @@ class AmazonController extends Controller
             }
             $grid->note('备注')->sortable();
             $grid->updated_at('修改时间');
-            
             $grid->actions(function ($actions) {
-                
-                // 添加操作
                 $actions->append(new Renewal($actions->getKey()));
             });
-            $grid->disableFilter();
+            $grid->filter(function($filter){
+                $filter->disableIdFilter();
+                $filter->equal('machine_code','机器码');
+                $filter->like('note','备注');
+            });
             $grid->disableExport();
         });
     }

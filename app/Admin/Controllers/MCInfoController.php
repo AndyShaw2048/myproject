@@ -99,7 +99,6 @@ class MCInfoController extends Controller
             $grid->note('备注')->sortable();
             $grid->updated_at('修改时间')->sortable();
 
-            $grid->disableFilter();
             $grid->disableExport();
 
             $grid->actions(function ($actions) {
@@ -108,14 +107,10 @@ class MCInfoController extends Controller
                 $actions->append(new Renewal($actions->getKey()));
             });
 
-            //过滤
             $grid->filter(function($filter){
-                // 去掉默认的id过滤器
                 $filter->disableIdFilter();
-
-                $filter->equal('mode');
-                $filter->equal('machine_code');
-                $filter->equal('note');
+                $filter->equal('machine_code','机器码');
+                $filter->like('note','备注');
             });
         });
     }
