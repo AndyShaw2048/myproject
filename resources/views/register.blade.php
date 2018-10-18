@@ -31,6 +31,12 @@
                             <p>{{$errors->has('username') ? $errors->first('username') : ($errors->has('password') ? $errors->first('password') : null)}}</p>
                         </div>
                     @endif
+                    @if($errors->has('error'))
+                        <div class="am-alert am-alert-warning" data-am-alert style="width: 338px;margin: 0 auto;height: 40px;line-height: 20px;margin-bottom: 10px">
+                            <button typeerror="button" class="am-close">&times;</button>
+                            <p>{{$errors->first('error')}}</p>
+                        </div>
+                    @endif
                     @if($errors->has('msg'))
                         <div class="am-alert am-alert-success" data-am-alert style="width: 338px;margin: 0 auto;height: 40px;line-height: 20px;margin-bottom: 10px">
                             <button type="button" class="am-close">&times;</button>
@@ -53,6 +59,12 @@
                         <div class="controls">
                             <label for="password" class="control-label fa fa-asterisk"></label>
                             <input id="password" required type="password" name="password_confirmation" placeholder="确认密码" tabindex="2" class="form-control input-medium">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label for="password" class="control-label fa fa-envelope-o"></label>
+                            <input id="invitation" required type="text" name="invitation" placeholder="邀请码" tabindex="2" class="form-control input-medium">
                         </div>
                     </div>
                 </div>

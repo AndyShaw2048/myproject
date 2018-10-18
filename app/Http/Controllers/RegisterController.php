@@ -18,13 +18,15 @@ class RegisterController extends Controller
     {
         $rules = [
             'username' => 'required|alpha_dash|unique:admin_users',
-            'password' => 'required|alpha_dash|confirmed'
+            'password' => 'required|alpha_dash|confirmed',
+            'invitation' => 'required'
         ];
         $msg = [
             'username.alpha_dash' => '用户名包含非法字符',
             'username.unique' => '用户名已存在',
             'password.alpha_dash' => '密码包含非法字符',
             'password.confirmed' => '两次输入密码不匹配',
+            'invitation.required' => '请填写邀请码'
         ];
         $validator  = Validator::make($request->all(),$rules,$msg);
 
@@ -34,12 +36,18 @@ class RegisterController extends Controller
                              ->withInput();
         }
 
+        //判断邀请码是否有效
+        $code = DB::table('invitation')->where('code',$request->invitation)->first();
+        if(!$code) return redirect()->back()->withInput()->withErrors(['error' => '邀请码无效']);
+        if($code->user_id != null) return redirect()->back()->withInput()->withErrors(['error' => '邀请码已被使用']);
+
         $user = new AdminUser();
         $user->username = $request->username;
         $user->name = $request->username;
         $user->password = bcrypt($request->password);
         $user->balance = 0;
         $user->save();
+        DB::update("update invitation set user_id=?,used_time=?",[$user->id,date('Y-m-d H:i:s',time())]);
         DB::insert("insert into admin_role_users (role_id,user_id) VALUES (?,?)",[2,$user->id]);
         return redirect()->back()->withErrors(['msg' => '注册成功，请登录']);
     }

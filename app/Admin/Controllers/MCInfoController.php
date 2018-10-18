@@ -32,7 +32,7 @@ class MCInfoController extends Controller
 
             $content->header('Amazon模块');
 
-            $content->body(view('filter'));
+//            $content->body(view('filter'));
             $content->body($this->grid());
             $content->body(view('multiedit'));
             $r = Script::where('name','amazon')->first();

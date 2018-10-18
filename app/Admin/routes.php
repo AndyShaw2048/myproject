@@ -123,5 +123,10 @@ Route::group([
      */
     $router->resource('/dla', DLAController::class);
     $router->post('/dla/{id}', 'DLAController@purchase');
-//    $router->post('/dla/edit', 'DLAController@editStore');
+
+    /**
+     * 邀请码模块
+     */
+    $router->resource('/invitation', InvitationController::class);
+    $router->post('/invitation', 'InvitationController@generate');
 });

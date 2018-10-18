@@ -51,3 +51,5 @@ Route::post('/amazon2/multiCharge','AmazonController@multiCharge');
 Route::post('/instagram','InstagramController@multiedit');
 Route::get('/instagram/{id?}','InstagramController@getInfo')->where('id','[0-9]+');
 Route::post('/instagram/multiCharge','InstagramController@multiCharge');
+
+Route::post('/invitation','InvitationController@generate');
