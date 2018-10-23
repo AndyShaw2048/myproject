@@ -11,7 +11,7 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/',function(){
-        return redirect('/admin/mcinfo');
+        return redirect('/admin/amazonThr');
     });
     $router->resource('/mcinfo', MCInfoController::class);
     $router->resource('/scripts', ScriptController::class);

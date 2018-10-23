@@ -18,9 +18,9 @@ Route::get('/register','RegisterController@index');
 Route::post('/register','RegisterController@store');
 
 //模块信息管理
-Route::post('/amazon','MCController@multiedit');
-Route::get('/amazon/{id?}','MCController@getMCInfo')->where('id','[0-9]+');
-Route::post('/amazon/multiCharge','MCController@multiCharge');
+//Route::post('/amazon','MCController@multiedit');
+//Route::get('/amazon/{id?}','MCController@getMCInfo')->where('id','[0-9]+');
+//Route::post('/amazon/multiCharge','MCController@multiCharge');
 
 Route::post('/amazonThr','AmazonThrController@multiedit');
 Route::get('/amazonThr/{id?}','AmazonThrController@getInfo')->where('id','[0-9]+');
