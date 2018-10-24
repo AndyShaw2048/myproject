@@ -190,7 +190,7 @@
                     }
                 },
                 error: function(xhr, type){
-                    toastr.error('充值失败');
+                    toastr.error('添加失败');
                 }
             });
 

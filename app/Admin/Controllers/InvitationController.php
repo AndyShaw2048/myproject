@@ -79,6 +79,7 @@ class InvitationController extends Controller
             $grid->code('邀请码');
             $grid->user_id('使用者 ( ID ) ')->display(function($id){
                 if(!$id) return '未使用';
+                if(!AdminUser::find($id)) return '使用者已删除';
                 return AdminUser::find($id)->name.' ( '.$id.' ) ';
             });
             $grid->disableFilter();
