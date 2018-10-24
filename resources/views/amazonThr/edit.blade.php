@@ -11,7 +11,7 @@
                 <label class="layui-form-label">机器码</label>
                 <div class="layui-input-block">
                     <input type="text" hidden value="{{$r->id}}" name="id">
-                    <input type="text" name="machine_code" value="{{$r->machine_code}}" required  lay-verify="required"  autocomplete="off" class="layui-input">
+                    <input type="text" name="machine_code" value="{{$r->machine_code}}"   required  lay-verify="required"   autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">

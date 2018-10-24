@@ -43,7 +43,7 @@
                 <div class="layui-form-item" style="padding-left: 232px">
                     <label class="layui-form-label" style="width: 130px">拉群人数：</label>
                     <div class="layui-input-block">
-                        <input style="width: 165px" type="text" name="intoGroupNumber" required  lay-verify="required" placeholder="请输入拉进群的人数" autocomplete="off" class="layui-input">
+                        <input style="width: 165px" type="text" name="intoGroupNumber" placeholder="请输入拉进群的人数" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
@@ -84,14 +84,14 @@
                 <div class="layui-inline">
                     <label class="layui-form-label" style="width: 130px">小组名称：</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="appointGroupName"   lay-verify="required" placeholder="请填写指定小组名" autocomplete="off" class="layui-input">
+                        <input type="text" name="appointGroupName"  placeholder="请填写指定小组名" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <br>
                 <div class="layui-inline" style="padding-left: 230px">
                     <label class="layui-form-label" style="width: 130px">小组人数：</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="appointGroupNumber"   lay-verify="required" placeholder="请填写每次加好友人数" autocomplete="off" class="layui-input">
+                        <input type="text" name="appointGroupNumber"  placeholder="请填写每次加好友人数" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <p style="font-size: 14px;margin-top: 10px;margin-left: 20px;">通讯录加好友条件</p>
@@ -104,7 +104,7 @@
                 <div class="layui-inline">
                     <label class="layui-form-label" style="width: 130px">好友人数：</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="contactAddNumber"   lay-verify="required" placeholder="请输入通讯录加好友人数" autocomplete="off" class="layui-input">
+                        <input type="text" name="contactAddNumber"  placeholder="请输入通讯录加好友人数" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <br>

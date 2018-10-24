@@ -27,49 +27,49 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">首次运行授权码</label>
                 <div class="layui-input-block">
-                    <input value="{{$r->auth_code}}" type="text" name="authCode" required  lay-verify="required" placeholder="请输入授权码" autocomplete="off" class="layui-input">
+                    <input value="{{$r->auth_code}}" type="text" name="authCode"  placeholder="请输入授权码" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">评论输入框</label>
                 <div class="layui-input-block">
-                    <input value="{{$r->comment}}" type="text" name="comment" required  lay-verify="required" placeholder="输入要评论话语" autocomplete="off" class="layui-input">
+                    <input value="{{$r->comment}}" type="text" name="comment" placeholder="输入要评论话语" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">搜索话题</label>
                 <div class="layui-input-block">
-                    <input value="{{$r->topic}}" type="text" name="topic" required  lay-verify="required" placeholder="输入5个话题（用逗号隔开）" autocomplete="off" class="layui-input">
+                    <input value="{{$r->topic}}" type="text" name="topic" placeholder="输入5个话题（用逗号隔开）" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">给粉丝发消息</label>
                 <div class="layui-input-block">
-                    <input value="{{$r->message}}" type="text" name="message" required  lay-verify="required" placeholder="输入给粉丝的消息" autocomplete="off" class="layui-input">
+                    <input value="{{$r->message}}" type="text" name="message" placeholder="输入给粉丝的消息" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">上传照片数量</label>
                 <div class="layui-input-block">
-                    <input value="{{$r->images_num}}" type="text" name="imagesNum" required  lay-verify="required" placeholder="输入数字，最多为10" autocomplete="off" class="layui-input" max="10">
+                    <input value="{{$r->images_num}}" type="text" name="imagesNum"  placeholder="输入数字，最多为10" autocomplete="off" class="layui-input" max="10">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">评论发布照片</label>
                 <div class="layui-input-block">
-                    <input value="{{$r->comment_images}}" type="text" name="commentImages" required  lay-verify="required" placeholder="输入3句评论（用逗号隔开）" autocomplete="off" class="layui-input">
+                    <input value="{{$r->comment_images}}" type="text" name="commentImages"  placeholder="输入3句评论（用逗号隔开）" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">人物点击间隔时间</label>
                 <div class="layui-input-block">
-                    <input value="{{$r->interval_time}}" type="text" name="intervalTime" required  lay-verify="required" placeholder="请输入人物点击间隔时间" autocomplete="off" class="layui-input">
+                    <input value="{{$r->interval_time}}" type="text" name="intervalTime" placeholder="请输入人物点击间隔时间" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">每轮运行间隔</label>
                 <div class="layui-input-block">
-                    <input value="{{$r->round_time}}" type="text" name="roundTime" required  lay-verify="required" placeholder="输入运行停止时间（分）" autocomplete="off" class="layui-input">
+                    <input value="{{$r->round_time}}" type="text" name="roundTime" placeholder="输入运行停止时间（分）" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
