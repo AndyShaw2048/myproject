@@ -90,7 +90,7 @@ class MCController extends Controller
             $serials = DB::table('serials')->where('status','0')->get();
             foreach($serials as $i => $serial)
             {
-                $sheet->setCellValueExplicit('A'.($i+2), " ".$serial->content,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+                $sheet->setCellValueExplicit('A'.($i+2), $serial->content,\PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
                 $sheet->setCellValue('B'.($i+2), $serial->money);
                 $ascii++;
             }
