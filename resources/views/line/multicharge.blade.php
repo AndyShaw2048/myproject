@@ -1,6 +1,6 @@
 <div class="layui-collapse">
     <div class="layui-colla-item">
-        <h2 class="layui-colla-title" style="border-radius: 10px;background-color: #dde1e6">批量充值（<span style="color: darkcyan">请确保余额充足</span>）</h2>
+        <h2 class="layui-colla-title" style="border-radius: 10px;background-color: #dde1e6">批量续费（<span style="color: darkcyan">请确保余额充足</span>）</h2>
         <div class="layui-colla-content">
             <form class="layui-form" action="" method="post">
                 <div class="layui-inline">
@@ -65,10 +65,13 @@
                     },
                     success: function(data){
                         window.setTimeout("window.location='/admin/line'",2000);
-                        toastr.success('更新成功');
+                        if(data[0]['code'] == '201')
+                            toastr.error(data[0]['msg']);
+                        else
+                            toastr.success('续费成功');
                     },
                     error: function(xhr, type){
-                        toastr.error('更新失败');
+                        toastr.error('续费失败');
                     }
                 });
             }

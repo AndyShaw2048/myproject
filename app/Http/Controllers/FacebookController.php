@@ -74,7 +74,7 @@ class FacebookController extends Controller
         $acceptRequestNum = $request->detail['acceptRequestNum'];
         $intoGroupBool = isset($request->detail['intoGroupBool']) ? 'true':'false';
         $intoGroupName = $request->detail['intoGroupName'];
-        $intoGroupNumber = $request->detail['$intoGroupNumber'];
+        $intoGroupNumber = $request->detail['intoGroupNumber'];
         $pointZanBool = isset($request->detail['pointZanBool']) ? 'true':'false';
         $pointZanNum = $request->detail['pointZanNum'];
         $mutualFriendBool = isset($request->detail['mutualFriendBool']) ? 'true':'false';
