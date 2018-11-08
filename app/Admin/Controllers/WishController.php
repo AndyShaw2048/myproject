@@ -97,6 +97,7 @@ class WishController extends Controller
                 });
             }
             $grid->note('备注')->sortable();
+            $grid->end_time('过期时间')->sortable();
             $grid->updated_at('修改时间');
 
             $grid->actions(function ($actions) {
