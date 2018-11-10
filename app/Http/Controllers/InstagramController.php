@@ -33,69 +33,75 @@ class InstagramController extends Controller
                                ),JSON_UNESCAPED_UNICODE);
         return json_encode(array([
                                      'Model' => $r->model,
-                                     'auth_code' => $r->auth_code,
-                                    'comment' => $r->comment,
-                                    'topic' => $r->topic,
-                                    'message' => $r->message,
-                                    'images_num' => $r->images_num,
-                                    'comment_images' => $r->comment_images,
-                                    'interval_time' => $r->interval_time,
-                                    'round_time' => $r->round_time,
+                                     'thumb_prime' => $r->thumb_prime,
+                                     'follow_prime' => $r->follow_prime,
+                                     'message_prime' => $r->message_prime,
+                                     'topic' => $r->topic,
+                                     'thumb_count' => $r->thumb_count,
+                                     'context' => $r->context,
+                                     'pic_count' => $r->pic_count,
+                                     'message' => $r->message,
+                                     'interval' => $r->interval
                                  ]), JSON_UNESCAPED_UNICODE);
     }
     
     public function multiedit(Request $request)
     {
 
-        $auth_code = $request->data['authCode'];
-        $comment = $request->data['comment'];
+        $thumb_prime = isset($request->data['thumb_prime']) ? 'true' : 'false' ;
+        $follow_prime = isset($request->data['follow_prime']) ? 'true' : 'false' ;
+        $message_prime = isset($request->data['message_prime']) ? 'true' : 'false' ;
         $topic = $request->data['topic'];
+        $thumb_count = $request->data['thumb_count'];
+        $context = $request->data['context'];
+        $pic_count = $request->data['pic_count'];
         $message = $request->data['message'];
-        $images_num = $request->data['imagesNum'];
-        $comment_images = $request->data['commentImages'];
-        $interval_time = $request->data['intervalTime'];
-        $round_time = $request->data['roundTime'];
+        $interval = $request->data['interval'];
         $multiArray = $request->multi;
         
         foreach ($multiArray as $item) {
             if ( Admin::user()->isRole('admin') ) {
                 $r = Instagram::find($item);
-                if ( !is_null($auth_code) )
-                    $r->auth_code = $auth_code;
-                if ( !is_null($comment) )
-                    $r->comment = $comment;
+                if ( !is_null($thumb_prime) )
+                    $r->thumb_prime = $thumb_prime;
+                if ( !is_null($follow_prime) )
+                    $r->follow_prime = $follow_prime;
+                if ( !is_null($message_prime) )
+                    $r->message_prime = $message_prime;
                 if ( !is_null($topic) )
                     $r->topic = $topic;
+                if ( !is_null($thumb_count) )
+                    $r->thumb_count = $thumb_count;
+                if ( !is_null($context) )
+                    $r->context = $context;
+                if ( !is_null($pic_count) )
+                    $r->pic_count = $pic_count;
                 if ( !is_null($message) )
                     $r->message = $message;
-                if ( !is_null($images_num) )
-                    $r->images_num = $images_num;
-                if ( !is_null($comment_images) )
-                    $r->comment_images = $comment_images;
-                if ( !is_null($interval_time) )
-                    $r->interval_time = $interval_time;
-                if ( !is_null($round_time) )
-                    $r->round_time = $round_time;
+                if ( !is_null($interval) )
+                    $r->interval = $interval;
                 $r->save();
             } else
                 try {
                     $r = Instagram::where('user_id',Admin::user()->id)->find($item);
-                    if ( !is_null($auth_code) )
-                        $r->auth_code = $auth_code;
-                    if ( !is_null($comment) )
-                        $r->comment = $comment;
+                    if ( !is_null($thumb_prime) )
+                        $r->thumb_prime = $thumb_prime;
+                    if ( !is_null($follow_prime) )
+                        $r->follow_prime = $follow_prime;
+                    if ( !is_null($message_prime) )
+                        $r->message_prime = $message_prime;
                     if ( !is_null($topic) )
                         $r->topic = $topic;
+                    if ( !is_null($thumb_count) )
+                        $r->thumb_count = $thumb_count;
+                    if ( !is_null($context) )
+                        $r->context = $context;
+                    if ( !is_null($pic_count) )
+                        $r->pic_count = $pic_count;
                     if ( !is_null($message) )
                         $r->message = $message;
-                    if ( !is_null($images_num) )
-                        $r->images_num = $images_num;
-                    if ( !is_null($comment_images) )
-                        $r->comment_images = $comment_images;
-                    if ( !is_null($interval_time) )
-                        $r->interval_time = $interval_time;
-                    if ( !is_null($round_time) )
-                        $r->round_time = $round_time;
+                    if ( !is_null($interval) )
+                        $r->interval = $interval;
                     $r->save();
                 } catch (Exception $e) {
                     return response()->json(['status' => 'error', 'msg' => '无权操作']);

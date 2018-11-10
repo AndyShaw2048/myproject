@@ -482,36 +482,40 @@ EOT;
                     <td>{$this->row->id}</td>
                 </tr>
                 <tr>
-                    <td>首次运行授权码</td>
-                    <td>{$this->row->auth_code}</td>
+                    <td>点赞</td>
+                    <td>{$this->row->thumb_prime}</td>
                 </tr>
                 <tr>
-                    <td>评论输入框</td>
-                    <td>{$this->row->comment}</td>
+                    <td>关注</td>
+                    <td>{$this->row->follow_prime}</td>
                 </tr>
                 <tr>
-                    <td>搜索话题</td>
+                    <td>发动态</td>
+                    <td>{$this->row->message_prime}</td>
+                </tr>
+                <tr>
+                    <td>话题</td>
                     <td>{$this->row->topic}</td>
                 </tr>
                 <tr>
-                    <td>给粉丝发消息</td>
+                    <td>点赞</td>
+                    <td>{$this->row->thumb_count}</td>
+                </tr>
+                <tr>
+                    <td>评论内容</td>
+                    <td>{$this->row->context}</td>
+                </tr>
+                <tr>
+                    <td>图片数量</td>
+                    <td>{$this->row->pic_count}</td>
+                </tr>
+                <tr>
+                    <td>发帖</td>
                     <td>{$this->row->message}</td>
                 </tr>
                 <tr>
-                    <td>上传照片数量</td>
-                    <td>{$this->row->images_num}</td>
-                </tr>
-                <tr>
-                    <td>评论发布照片</td>
-                    <td>{$this->row->comment_images}</td>
-                </tr>
-                <tr>
-                    <td>人物点击间隔时间</td>
-                    <td>{$this->row->interval_time}</td>
-                </tr>
-                <tr>
-                    <td>每轮运行间隔</td>
-                    <td>{$this->row->round_time}</td>
+                    <td>间隔时间</td>
+                    <td>{$this->row->interval}</td>
                 </tr>
                 <tr>
                     <td>所属用户</td>

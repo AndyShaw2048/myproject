@@ -145,14 +145,15 @@ class InstagramController extends Controller
         $r = new Instagram();
         $r->machine_code = $request->data['machineCode'];
         $r->model = "Instagram";
-        $r->auth_code = $request->data['authCode'];
-        $r->comment = $request->data['comment'];
+        $r->thumb_prime = isset($request->data['thumb_prime']) ? 'true' : 'false' ;
+        $r->follow_prime = isset($request->data['follow_prime']) ? 'true' : 'false' ;
+        $r->message_prime = isset($request->data['message_prime']) ? 'true' : 'false' ;
         $r->topic = $request->data['topic'];
+        $r->thumb_count = $request->data['thumb_count'];
+        $r->context = $request->data['context'];
+        $r->pic_count = $request->data['pic_count'];
         $r->message = $request->data['message'];
-        $r->images_num = $request->data['imagesNum'];
-        $r->comment_images = $request->data['commentImages'];
-        $r->interval_time = $request->data['intervalTime'];
-        $r->round_time = $request->data['roundTime'];
+        $r->interval = $request->data['interval'];
         $r->user_id = Admin::user()->id;
         $r->end_time = date('Y-m-d',time());
         $r->save();
@@ -179,14 +180,15 @@ class InstagramController extends Controller
         Instagram::where('id',$request->data['id'])
             ->update([
                          'machine_code' => $request->data['machineCode'],
-                         'auth_code' => $request->data['authCode'],
-                         'comment' => $request->data['comment'],
+                         'thumb_prime' => isset($request->data['thumb_prime']) ? 'true' : 'false' ,
+                         'follow_prime' => isset($request->data['follow_prime']) ? 'true' : 'false' ,
+                         'message_prime' => isset($request->data['message_prime']) ? 'true' : 'false' ,
                          'topic' => $request->data['topic'],
+                         'thumb_count' => $request->data['thumb_count'],
+                         'context' => $request->data['context'],
+                         'pic_count' => $request->data['pic_count'],
                          'message' => $request->data['message'],
-                         'images_num' => $request->data['imagesNum'],
-                         'comment_images' => $request->data['commentImages'],
-                         'interval_time' => $request->data['intervalTime'],
-                         'round_time' => $request->data['roundTime'],
+                         'interval' => $request->data['interval']
                                      ]);
         return response()->json(array([
                                           'code'=>'200',

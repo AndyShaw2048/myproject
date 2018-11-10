@@ -24,51 +24,47 @@
 
             <p style="font-size: 14px;margin-top: 10px;margin-left: 20px;">筛选条件</p>
             <div class="layui-form-item">
-                <label class="layui-form-label">首次运行授权码</label>
+                <label class="layui-form-label"></label>
                 <div class="layui-input-block">
-                    <input type="text" name="authCode" placeholder="请输入授权码" autocomplete="off" class="layui-input">
+                    <input type="checkbox" name="thumb_prime" title="点赞">
+                    <input type="checkbox" name="follow_prime" title="关注">
+                    <input type="checkbox" name="message_prime" title="发动态">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">评论输入框</label>
+                <label class="layui-form-label">话题</label>
                 <div class="layui-input-block">
-                    <input type="text" name="comment"  placeholder="输入要评论话语" autocomplete="off" class="layui-input">
+                    <input type="text" name="topic" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">搜索话题</label>
+                <label class="layui-form-label">点赞</label>
                 <div class="layui-input-block">
-                    <input type="text" name="topic"  placeholder="输入5个话题（用逗号隔开）" autocomplete="off" class="layui-input">
+                    <input type="text" name="thumb_count"   autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">给粉丝发消息</label>
+                <label class="layui-form-label">评论内容</label>
                 <div class="layui-input-block">
-                    <input type="text" name="message"  placeholder="输入给粉丝的消息" autocomplete="off" class="layui-input">
+                    <input type="text" name="context"   autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">上传照片数量</label>
+                <label class="layui-form-label">图片数量</label>
                 <div class="layui-input-block">
-                    <input type="text" name="imagesNum"  placeholder="输入数字，最多为10" autocomplete="off" class="layui-input" max="10">
+                    <input type="text" name="pic_count"  autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">评论发布照片</label>
+                <label class="layui-form-label">发帖</label>
                 <div class="layui-input-block">
-                    <input type="text" name="commentImages" placeholder="输入3句评论（用逗号隔开）" autocomplete="off" class="layui-input">
+                    <input type="text" name="message"  autocomplete="off" class="layui-input" max="10">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">人物点击间隔时间</label>
+                <label class="layui-form-label">间隔时间</label>
                 <div class="layui-input-block">
-                    <input type="text" name="intervalTime" placeholder="请输入人物点击间隔时间" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">每轮运行间隔</label>
-                <div class="layui-input-block">
-                    <input type="text" name="roundTime" placeholder="输入运行停止时间（分）" autocomplete="off" class="layui-input">
+                    <input type="text" name="interval" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <hr>
