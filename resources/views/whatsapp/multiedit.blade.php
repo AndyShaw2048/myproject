@@ -3,7 +3,7 @@
         <h2 class="layui-colla-title" style="border-radius: 10px;background-color: #dde1e6">批量修改（<span style="color: darkcyan">留空则不修改当前项的值</span>）</h2>
         <div class="layui-colla-content">
             <form class="layui-form" action="" method="post">
-                <<div class="layui-form-item">
+                <div class="layui-form-item">
                     <label class="layui-form-label">语术语句</label>
                     <div class="layui-input-block">
                         <input type="text" name="terminology" placeholder="请填写发送的话术语句" autocomplete="off" class="layui-input">
