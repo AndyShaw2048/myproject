@@ -104,6 +104,7 @@ class UserController extends Controller
             $form->text('name', trans('admin.name'))->rules('required');
             $form->number('balance','余额');
             $form->image('avatar', trans('admin.avatar'));
+            $form->rate('rate','返利比率')->setWidth(1);
             $form->password('password', trans('admin.password'))->rules('required|confirmed');
             $form->password('password_confirmation', trans('admin.password_confirmation'))->rules('required')
                 ->default(function ($form) {
