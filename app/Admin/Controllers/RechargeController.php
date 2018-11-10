@@ -69,7 +69,6 @@ class RechargeController extends Controller
         $rebate->down_id = Admin::user()->id;
         $rebate->real_money = $sr->money;
         $rebate->return_money = $sr->money * Admin::user()->rate * 0.01;
-        $rebate->status = '0';
         $rebate->save();
 
         //增加提现余额至上级用户

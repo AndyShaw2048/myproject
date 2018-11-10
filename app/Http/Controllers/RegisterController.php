@@ -46,6 +46,7 @@ class RegisterController extends Controller
         $user->name = $request->username;
         $user->password = bcrypt($request->password);
         $user->balance = 0;
+        $user->rebate_money = 0;
         $user->rate = '10';
         $user->up_id = $code->id;
         $user->invitation_code = substr(md5(time().rand()),1,6);
