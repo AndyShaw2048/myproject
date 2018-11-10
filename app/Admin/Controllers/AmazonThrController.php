@@ -27,7 +27,6 @@ class AmazonThrController extends Controller
     public function index()
     {
         return Admin::content(function (Content $content) {
-            
             $content->header('AmazonThr模块');
 //            $content->description('description');
             

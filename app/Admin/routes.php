@@ -129,4 +129,17 @@ Route::group([
      */
     $router->resource('/invitation', InvitationController::class);
     $router->post('/invitation', 'InvitationController@generate');
+
+    /**
+     * 佣金返利模块
+     */
+    $router->resource('/rebate', RebateController::class);
+//    $router->post('/rebate', 'InvitationController@generate');
+    $router->post('/rebate/withdraw','RebateController@withdraw');
+
+    /**
+     * 佣金提现模块
+     */
+    $router->resource('/withdraw', WithdrawController::class);
+    $router->get('/withdraw/export/un','WithdrawController@export');
 });

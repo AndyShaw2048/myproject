@@ -4,6 +4,7 @@ namespace App\Admin\Controllers;
 
 use App\AdminUser;
 use App\MCInfo;
+use App\Rebate;
 use App\Recharge;
 
 use App\Script;
@@ -15,6 +16,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RechargeController extends Controller
 {
@@ -51,6 +53,7 @@ class RechargeController extends Controller
                                               ,'msg' => '该序列号已使用'
                                           ]));
 
+        //添加记录至充值详情表
         $time = date('Y-m-d H:i:s',time());
         $user = AdminUser::find(Admin::user()->id);
         $log = new Recharge();
@@ -59,6 +62,20 @@ class RechargeController extends Controller
         $log->user_id = Admin::user()->id;
         $log->pay_time = $time;
         $log->save();
+
+        //添加记录至佣金返利表
+        $rebate = new Rebate();
+        $rebate->up_id = Admin::user()->up_id;
+        $rebate->down_id = Admin::user()->id;
+        $rebate->real_money = $sr->money;
+        $rebate->return_money = $sr->money * Admin::user()->rate * 0.01;
+        $rebate->status = '0';
+        $rebate->save();
+
+        //增加提现余额至上级用户
+        $up = AdminUser::find(Admin::user()->up_id);
+        $money = ($sr->money * Admin::user()->rate * 0.01) + $up->rebate_money;
+        DB::update('update admin_users set rebate_money = ? where id = ?',[$money,$up->id]);
 
         Serial::where('content',$request->serial['number'])
             ->update([
