@@ -53,3 +53,7 @@ Route::get('/instagram/{id?}','InstagramController@getInfo')->where('id','[0-9]+
 Route::post('/instagram/multiCharge','InstagramController@multiCharge');
 
 Route::post('/invitation','InvitationController@generate');
+
+Route::group(['prefix'=>'v2'],function(){
+    Route::get('/','V2\HomeController@index');
+});
