@@ -56,4 +56,9 @@ Route::post('/invitation','InvitationController@generate');
 
 Route::group(['prefix'=>'v2'],function(){
     Route::get('/','V2\HomeController@index');
+    Route::put('/addgroup','V2\CommonController@addGroup');
+    Route::delete('/delgroup','V2\CommonController@deleteGroup');
+    Route::get('/showgroup','V2\CommonController@showGroup');
+
+    Route::get('/facebook','V2\FacebookController@index');
 });

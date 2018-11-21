@@ -8,7 +8,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1">
     <title>云控系统</title>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Set render engine for 360 browser -->
     <meta name="renderer" content="webkit">
 
@@ -28,10 +28,14 @@
     <!--
     <link rel="canonical" href="http://www.example.com/">
     -->
-    <link rel="stylesheet" href="assets/css/amazeui.min.css">
-    <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="stylesheet" href="css/checkbix.min.css">
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="{{url('assets/css/amazeui.min.css')}}">
+    <link rel="stylesheet" href="{{url('assets/css/app.css')}}">
+    <link rel="stylesheet" href="{{url('css/checkbix.min.css')}}">
+    <link rel="stylesheet" href="{{url('css/home.css')}}">
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="{{url('assets/js/jquery.min.js')}}"></script>
+    <script src="{{url('js/common.js')}}"></script>
+    <script src="{{url('js/jquery.page.js')}}"></script>
 </head>
 <body>
 {{--Header--}}
@@ -40,24 +44,31 @@
 {{--左侧模块导航--}}
 @include('partials.navbar',['nav'=>'facebook'])
 
-{{--公告模块--}}
-<div>公告</div>
+{{--分组模块--}}
+<div id="group" style="display: inline-block;border:solid 1px lightgray;float: left;text-align: center;position: relative;padding: 0" class="autoHeight am-u-sm-2 am-u-md-2 am-u-lg-2">
+    @include('v2.facebook.group')
+</div>
+
+
+{{--表格主体--}}
+<div id="table" style="float: left;position: relative;height: 100px;" class="autoHeight am-u-sm-9 am-u-md-9 am-u-lg-9">
+    @include('v2.facebook.table')
+</div>
 
 </div>
 
 
 
-<!--[if (gte IE 9)|!(IE)]><!-->
-<script src="assets/js/jquery.min.js"></script>
+
 <!--<![endif]-->
 <!--[if lte IE 8 ]>
-<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<script src="{{url('http://libs.baidu.com/jquery/1.11.3/jquery.min.js')}}"></script>
+<script src='{{url("http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js")}}'></script>
+<script src="{{url('assets/js/amazeui.ie8polyfill.min.js')}}"></script>
 <![endif]-->
-<script src="assets/js/amazeui.min.js"></script>
+<script src="{{url('assets/js/amazeui.min.js')}}"></script>
 
-<script src="js/checkbix.min.js"></script>
+<script src="{{url('js/checkbix.min.js')}}"></script>
 
 {{--获取浏览器高度并设置左侧导航高度--}}
 <script type="text/javascript">
@@ -80,8 +91,31 @@
         }
 
     }
+
     window.onresize=autodivheight; //浏览器窗口发生变化时同时变化DIV高度
     Checkbix.init();
+
+    //分组多选
+    function changeState(isChecked)
+    {
+        var chk_list=document.getElementsByClassName('checkbox-group');
+        for(var i=0;i<chk_list.length;i++)
+        {
+            if(chk_list[i].type=="checkbox")
+            {
+                chk_list[i].checked=isChecked;
+            }
+        }
+    }
+    var obj = $(".checkbox-group")
+    obj.click(function(){
+        if($("#checkAllGroup").prop('checked'))
+        {
+            console.log(true)
+            $("#checkAllGroup").prop("checked", false)
+        }
+    })
+
 </script>
 </body>
 </html>
